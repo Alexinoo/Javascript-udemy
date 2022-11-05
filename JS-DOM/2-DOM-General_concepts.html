@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM - General Concepts</title>
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+
+<body>
+    <h1>JS DOM (Document Object Model )</h1>
+    <div class="wrapper">
+        <div class="content">
+            <p id="topic">Topics</p>
+            <ul>
+                <li><a href="">Select Elements</a></li>
+                <li><a href="">Insert/Remove Elements</a></li>
+                <li><a href="">Traverse DOM</a></li>
+                <li><a href="">Apply Styling</a></li>
+                <li><a href="">Add / Remove CSS Classes</a></li>
+                <li>........</li>
+            </ul>
+        </div>
+        <div class="dom-image">
+            <img src="./images/DOM.png" alt="">
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script type="text/javascript">
+
+    /*similar to css
+    
+    >Select the element or group of elements that you want to affect
+    
+    >Decide the effect that you want to apply to the selection
+    
+    */
+
+    /**** EXAMPLES  ****
+    ---------------------
+> We have multiple ways of selecting an element..
+    
+    1. Select the element directly - ( Limitations )
+    
+        i). set body background color to blue
+            document.body.style.backgroundColor = 'blue';
+    
+        ii). set color of the text to yello
+            document.body.style.color = 'yellow';
+    
+        iii).set text of a button to red
+            document.getElementById('btn').style.color = 'red';
+    
+    2. Assign to a variable (Then do something ... )
+    
+        const element = document.getElementById('topic')
+
+        > Once we select the element we get a node object or a node list - Arraylike object
+
+        > Arraylike object - we can use some methods the way we use on arrays and others we can't
+
+        > There is also a way we can transform nodelist to an array and therefore not really a big deal
+    
+****/
+
+    const elementNode = document.getElementById('topic')
+    const elementName = elementNode.nodeName
+    const elementCssStyles = elementNode.style
+
+    console.log('Node object: '+ elementNode);
+    console.log('Element Name : '+ elementName);
+    console.log('Styles that we can apply Name : '+ elementCssStyles);
+
+
+/** BUT WHERE IS THE document coming from - window object ***
+     > window - Is a giant GLOBAL object that we can access anywhere within the application
+     > It gives us access to document property which is also a giant object with properties and methods such as :
+        *  getElementById()
+        *  body property
+**/
+</script>
