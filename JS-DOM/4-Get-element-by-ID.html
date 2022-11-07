@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="title">Hello</h1>
+    <button id="btn" class="btn">Click me</button>
+</body>
+<script type="text/javascript">
+
+/*
+- Select the element or group of elements that we want 
+
+- Decide the effect that we want to apply to the selection
+
+-getElementById('element')
+
+-Returns null if ID is not found
+
+*/
+  const titleEl = document.getElementById('title');
+  titleEl.style.color='blue';
+
+/****   The long way ****
+  document.getElementById('btn').style.backgroundColor = 'blue'
+  document.getElementById('btn').style.color = '#fff'
+
+****/
+
+/****   Using variables instead ****/
+
+const btnEl = document.getElementById('btn')
+btn.style.backgroundColor = 'blue'
+btn.style.color = 'white'
+  
+</script>
+</html>
