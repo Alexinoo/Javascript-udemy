@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>querySelector & querySelectorAll</title>
+</head>
+<body>
+    <ul id="result">
+        <li class="special">apple</li>
+        <li>orange</li>
+        <li class="special">banana</li>
+        <li>pear</li>
+        <li class="special last">tomato</li>
+    </ul>
+</body>
+<script type="text/javascript">
+/*
+ - Select the element or group of elements that we want
+
+ - Decide the effect that we want to apply to the selection
+
+     querySelector('any css selector') - selects single
+
+     querySelectorAll('any css selector') - selects all
+
+ -querySelectorAll returns a node list
+
+ -That means we can use any array method on the nodeList
+
+*/
+   
+/******* querySelector *********************/
+
+const resultEl = document.querySelector('#result')
+resultEl.style.backgroundColor = 'blue'
+
+const specialEl = document.querySelector('.special') //returns the first li element i.e the apple
+console.log(specialEl);
+
+
+
+// Target the last li element
+const lastliEl = document.querySelector('li:last-child')
+console.log(lastliEl);
+
+
+ /******* querySelectorAll  *********************/
+ const allLiItems = document.querySelectorAll('.special')
+
+    allLiItems.forEach((item)=>{
+        item.style.color = 'yellow'
+    })
+
+</script>
+</html>
