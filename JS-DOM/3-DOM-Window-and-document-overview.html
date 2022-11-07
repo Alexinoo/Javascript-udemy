@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM - Window and Document Overview</title>
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+
+<body>
+    <h1>JS DOM (Document Object Model )</h1>
+    <div class="wrapper">
+        <div class="content">
+            <p id="topic">Topics</p>
+            <ul>
+                <li><a href="">Select Elements</a></li>
+                <li><a href="">Insert/Remove Elements</a></li>
+                <li><a href="">Traverse DOM</a></li>
+                <li><a href="">Apply Styling</a></li>
+                <li><a href="">Add / Remove CSS Classes</a></li>
+                <li>........</li>
+            </ul>
+        </div>
+        <div class="dom-image">
+            <img src="./images/DOM.png" alt="">
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script type="text/javascript">
+
+/*
+
+Window object
+--------------- 
+
+> represents an open window in a browser
+
+> Fancy name is also Browser api
+
+> Is a giant GLOBAL object that contains properties and methods accessible anywhere in the document
+
+Some of the popular properties include :
+
+  > window.console.log('log'); 
+  > window.innerHeight - Returns the height of the content area of the browser window
+  > window.innerWidth - Returns the width of the window in pixels
+  > window.location - Gets/sets the location, or current URL, of the window object
+  > window.localStorage - Returns a reference to the local storage object used to store data that may only be accessed by the origin that created it
+  > window.sessionStorage - Returns a reference to the session storage object used to store data that may only be accessed by the origin that created it.
+  > window.name - Gets/sets the name of the window
+  > window.outerHeight - Gets the height of the outside of the browser window
+  > window.outerWidth - Gets the width of the outside of the browser window
+  > window.pageXOffset - An alias for window.scrollX
+  > window.pageYOffset -An alias for window.scrollY
+  > window.screen - Returns a reference to the screen object associated with the window.
+  > window.screenX and Window.screenLeft - Both properties return the horizontal distance from the left border of the user's browser viewport to the left side of the screen.
+  > window.screenY and Window.screenTop - Both properties return the vertical distance from the top border of the user's browser viewport to the top side of the screen.
+  > window.scrollX - Returns the number of pixels that the document has already been scrolled horizontally.
+  > window.scrollY - Returns the number of pixels that the document has already been scrolled vertically.
+  > window.self - Returns an object reference to the window object itself.
+
+
+Some of the popular methods include :
+
+  > window.setTimeout() - sets a timer which executes a function or specified piece of code once the timer expires
+  > window.setInterval() - repeatedly calls a function or executes a code snippet, with a fixed time delay between each call
+  > window.clearTimeout() - 
+  > window.clearInterval() -
+  > window.alert() - Displays an alert dialog
+  > window.blur() - Sets focus away from the window.
+  > window.open() - Opens a new window
+  > window.close() - Closes the current window.
+  > window.focus() - sets focus on the current window
+  > window.resizeBy - Resizes the current window by a certain amount.
+  > window.stop() - Stops window loading.
+  > window.resizeTo() - Dynamically resizes window.
+  > window.scroll() - Scrolls the window to a particular place in the document.
+  > window.scrollBy() - Scrolls the document in the window by the given amount.
+  > window.scrollByLines() - Scrolls the document by the given number of lines.
+  > window.scrollByPages() - Scrolls the current document by the specified number of pages.
+  > window.scrollTo() - Scrolls to a particular set of coordinates in the document.
+
+  Can be represented as follows :-
+
+  Window = {
+
+    window : window ,
+    self : Window ,
+    location : {
+            ancestorOrigin : DOMStringList ,
+            href : 'http://127.0.0.1:5500/JS-DOM/3-DOM-Window-and-document-overview.html',
+            origin : 'http://127.0.0.1:5500',
+            protocol :'http',
+            host :'127.0.0.1:5500',
+            port : '5500'
+            url : ,
+            ....
+        }
+
+  }
+
+  Examples :
+
+  console.log(window.location.href); 
+  console.log(window.location.host); 
+  console.log(window.name); 
+  console.log(window.document); 
+
+
+
+Document object
+------------------
+
+> document object is your html loaded into the browser
+
+>The document actually gets loaded inside the window object
+
+>The document is also a GIANT Object with some properties and methods
+
+
+Some of the properties include :- 
+
+title, URL, cookie
+
+Can be represented as follows :-
+
+Window = {
+
+    document: {
+
+            doctype : <!DOCTYPE html>,
+            title : 'DOM - Window and Document Overview',
+            body : {
+                background : "",
+                baseURI : ''
+            },
+            head :head,
+            location : {
+                    ancestorOrigin : DOMStringList ,
+                    href : 'http://127.0.0.1:5500/JS-DOM/3-DOM-Window-and-document-overview.html',
+                    origin : 'http://127.0.0.1:5500',
+                    protocol :'http',
+                    host :'127.0.0.1:5500',
+                    port : '5500'
+                    url : ,
+                    ....
+            },
+            all : [],
+            nodeName : '#document',
+    }
+}
+
+> console.log(document) OR console.dir(document) - Gives us the properties and methods that we can access
+
+
+*/
+//  console.log(console.log(document) == console.dir(document) ) //true
+
+
+</script>
