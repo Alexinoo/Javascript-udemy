@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traverse the DOM - Children</title>
+</head>
+<body>
+    <ul id="result">
+        <li>apple</li>
+        <li>orange</li>
+        <li>banana</li>
+        <li>pear</li>
+        <li>tomato</li>
+    </ul>
+</body>
+<script type="text/javascript">
+/*
+
+ - Select the element or group of elements that we want
+
+ - Decide the effect that we want to apply to the selection
+
+  > childNodes - returns all childNodes including the white spaces which is treated as a text node
+
+  > children  - Returns actual children (space not included)
+  > firstChild - Returns the first child with whitespace included
+  > lastChild  - Returns the last child with white space included
+
+
+ */
+
+ const resultUl = document.querySelector('#result')
+ 
+ 
+ const allChildrenWithSpaces = resultUl.childNodes
+ console.log('All children with spaces : ');
+ console.log(allChildrenWithSpaces);
+
+ 
+ const children = resultUl.children
+ console.log('All children with no spaces : ');
+ console.log(children);
+ 
+ 
+ const firstChild = resultUl.firstChild
+ console.log('firstChild includes space : ');
+ console.log(firstChild);
+ 
+ const lastChild = resultUl.lastChild
+ console.log('lastChild includes space : ');
+ console.log(lastChild);
+</script>
+</html>
