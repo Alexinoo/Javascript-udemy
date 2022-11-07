@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM - Get Element By Tag Name</title>
+</head>
+<body>
+ <h2>hello world</h2>   
+ <h2>hello people</h2>  
+ <ul>
+    <li>apple</li>
+    <li>banana</li>
+    <li>orange</li>
+    <li>pear</li>
+    <li>tomato</li>
+ </ul> 
+</body>
+<script type="text/javascript">
+/*
+- Select the element or group of elements that we want
+
+- Decide the effect that we want to apply to the selection
+
+-getElementsByTagName('element')
+
+-Returns HTMLCollection which is an array-like object
+
+-This means we can access index and length properties but not array methods (forEach)
+
+-Need to transform into an array by using spread operator [...] first and then we can apply any array methods
+
+*/
+
+const headingsEl = document.getElementsByTagName('h2');
+
+ console.log(headingsEl.length);    //returns the length of the collection
+ headingsEl[0].style.color = 'red' //turns the first h2 element to red with index-0
+
+ const fruitsEl = document.getElementsByTagName('li');
+ fruitsEl[2].style.color = 'orange'
+
+/*  
+- Try forEach() on the li elements (WONT WORK !!!)
+- Complains that we cannot use forEach on fruitsEl
+
+
+    fruitsEl.forEach(fruit => {
+        console.log(fruit);
+    });
+
+*/
+
+let fruitsArray = [...fruitsEl]
+
+fruitsArray.forEach((fruit)=>{
+    console.log(fruit);
+})
+
+/* 
+N/B
+------
+querySelectorAll() is commonly used in most cases
+-Returns a nodeList object - is a collection of nodes
+-can run forEach()
+-turn them into array - spread operator [...]
+-after that can use any array properties
+
+*/
+</script>
+</html>
