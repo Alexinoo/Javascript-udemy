@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traverse the DOM - nextElementSibling /previousElementSibling </title>
+</head>
+<body>
+  <ul id="result">
+    <li id="first">first</li>
+    <li>list item 2</li>
+    <li>list item 3</li>
+    <li id="last">last</li>
+  </ul>
+</body>
+<script type="text/javascript">
+/*
+
+  > nextElementSibling && previousElementSibling
+
+  > Do not return space
+
+  > Both of them can be chained since the first value is going to be the white space
+
+  > returns null if not nextElementSibling/previousElementSibling is not found
+
+ */
+
+ /***** Next Element Sibling to first li with id of #first *****/
+
+ const firstLi = document.querySelector('#first')
+ firstLi.nextElementSibling.style.color='red'
+
+
+/***** Previous Element Sibling to last li with id of #last *****/
+const lastLi = document.querySelector('#last')
+lastLi.previousElementSibling.style.color='blue'
+ 
+</script>
+</html>
