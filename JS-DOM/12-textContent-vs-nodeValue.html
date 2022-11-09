@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>textContent vs nodeValue</title>
+</head>
+<body>
+    <h1 id="special">this is a special content</h1>
+</body>
+<script type="text/javascript">
+/*
+nodeValue vs textContent
+
+ > Both Returns the text value within your HTML element
+
+ > nodeValue is abit tricky
+    -Can't access it directly
+    -Need to get into childNodes first 
+    -Use first index [0] and access nodeValue property
+
+>textContent is as straight forward as it gets
+
+*/
+const headingOne = document.getElementById('special')
+
+// nodeValue
+const nullValue = headingOne.nodeValue 
+const nodeValue = headingOne.childNodes[0].nodeValue 
+console.log(nullValue); //returns null
+console.log(nodeValue); //WORKS !!!
+
+//textContent
+const easyValue = headingOne.textContent
+console.log(easyValue);
+
+
+
+
+</script>
+</html>
