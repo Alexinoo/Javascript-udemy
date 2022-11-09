@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traverse the DOM - Parent Element</title>
+</head>
+<body>
+   <div id="result">
+    <h1>hello word</h1>
+    <div class="second">
+        <h2>second heading</h2>
+    </div>
+   </div>
+</body>
+<script type="text/javascript">
+/*
+
+ - Select the element or group of elements that we want
+
+ - Decide the effect that we want to apply to the selection
+
+  > parentElement - Returns the direct parent
+
+  > We can also chain parentElement to get the grand parent element
+
+  > We get null after getting <html></html>
+
+  > Be careful when chaining because there are cases where you are going to get null when there is no more parent element
+
+ */
+
+ const resultUl = document.querySelector('h2')
+ 
+ 
+ const parentEl = resultUl.parentElement
+ parentEl.style.color = 'red'
+
+ console.log('Parent Element to second heading');
+ console.log(parentEl);
+ 
+ 
+ const grandParentEl = resultUl.parentElement.parentElement
+ console.log('Grand Parent Element to second heading');
+ console.log(grandParentEl);
+
+ const grandGrandParentEl = resultUl.parentElement.parentElement.parentElement
+ console.log('Grand Grand Parent Element to second heading');
+ console.log(grandGrandParentEl);
+
+ const grandGrandGrandParentEl = resultUl.parentElement.parentElement.parentElement.parentElement
+ console.log('Grand Grand Grand Parent Element to second heading');
+ console.log(grandGrandGrandParentEl);
+ 
+</script>
+</html>
