@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>getAttribute() vs setAttribute() </title>
+</head>
+<body>
+    <ul>
+        <li class="first" id="special">I have a class of first</li>
+        <a href="first.html" id="link">random link</a>
+        <li>I have no attributes</li>
+    </ul>
+</body>
+<script type="text/javascript">
+
+/* getAttribute() && setAttribute() 
+
+    > All html elements have attributes i.e class / href / id / selected and so on
+
+    > In javascript , we can get these attributes as well as the values of these attributes
+
+    > getAttribute('attribute') - We pass the attribute that we are looking for and this returns the value of that attribute otherwise null
+
+    > We can also set these attributes using setAttribute()
+
+    > setAttribute('attr','value') - Takes in 2 params i.e The attribute and the value
+*/
+
+ /*////////   getAttribute() ////////////*/
+
+
+//first <li class="first" id="special">I have a class of first</li>
+const firstLiEl = document.querySelector('.first')
+const idValue = firstLiEl.getAttribute('id')
+const classValue = firstLiEl.getAttribute('class')
+console.log('Value of id attribute: '+ idValue);
+console.log('Value of class attribute: '+ classValue);
+
+//link <a href="first.html" id="link">random link</a>
+const link = document.querySelector('#link')
+const hrefValue = link.getAttribute('href')
+console.log(hrefValue);
+
+
+/*////////   setAttribute()  ////////////*/
+// Navigate to the last li using nextElementSibling property
+// use setAttribute('class','first')
+// set the content of the text to "I have a class of first"
+
+const lastLi = link.nextElementSibling
+lastLi.setAttribute('class','first')
+lastLi.textContent='I also have a class of first'
+
+
+
+
+// 
+const linksEl = document.querySelectorAll('.first')
+console.log(linksEl);
+
+</script>
+</html>
