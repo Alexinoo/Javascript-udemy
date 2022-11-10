@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add CSS classes Dynamically</title>
+</head>
+<style>
+    .colors {
+        background: red;
+        color: #fff;
+    }
+
+    .text {
+        font-size: 2rem;
+        letter-spacing: 1rem;
+    }
+</style>
+<body>
+    <h1 id="first" class="text">I am first element</h1>
+    <h1 id="second">I am second element</h1>
+    <h1 id="third">I am third element</h1>
+</body>
+<script type="text/javascript">
+
+/* Adding CSS classes dynamically
+
+    classList and className
+    ---------------------------
+
+    > how we can add /remove CSS classes to HTML elements dynamically using JS
+
+    > ANd also check whether the class is on the element
+
+    > className (Limitation - Not able to add multiple classes )
+        > allows us to check for the css class name on HTML elements
+        > change a class name
+        > add a new class name
+        > Gotcha - Careful when adding multiple classes to avoid overriding
+        > Need to do the following secondHeading.className = 'colors text'
+
+    > classList
+        > allows us to add/remove/toggle classes to HTML elements
+        > Allows us to check if has a certain class through -contains() method
+        > allows us to access (add/remove/toggle) functions attached to the classlist
+        > add('colors') - Then specify which class we want to add
+        > works for multiple classes -  separate with comma
+   
+*/
+
+ /*////////   className ////////////*/
+
+    //Select Elements
+    const firstHeading = document.querySelector('#first')
+    const secondHeading = document.querySelector('#second')
+    const thirdHeading = document.querySelector('#third')
+
+
+    //check for className
+    const firstHeadingClassName = firstHeading.className
+    console.log(firstHeadingClassName);
+
+    //add a class name to second heading
+    secondHeading.className = 'colors'
+
+    //adding multiple classes using className (Use classList instead)
+    //secondHeading.className = 'colors text' (This works too anyway)
+
+
+ /*////////   classList  ////////////*/    
+
+    //1. Adding Classes
+
+        // thirdHeading.classList.add('colors')
+        // thirdHeading.classList.add('text')
+        // Multiple classes at once - separate with comma
+        thirdHeading.classList.add('colors','text')
+
+            const classValues = thirdHeading.classList
+            console.log(classValues);
+
+    //2. Removing Classes
+        thirdHeading.classList.remove('text')
+
+    //3. Check if a certain class exists - Returns boolean
+        let ifClassExist = thirdHeading.classList.contains('colors')
+        console.log(ifClassExist);
+
+</script>
+</html>
