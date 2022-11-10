@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>insertBefore() method</title>
+</head>
+<style>
+    .red {
+        background: red;
+        color: #fff;
+    }
+    .blue {
+        background: blue;
+        color: #fff;
+    }
+</style>
+<body>
+    <div id="wrapper">
+        <h1 class="red">I am the child of the wrapper div</h1>
+    </div>
+</body>
+<script type="text/javascript">
+/*
+    insertBefore()
+    --------------------
+        > Is more specific than the appendChild()
+
+        > appendChild is still useful when appending text content to the element
+        
+        > Takes in 2 params insertBefore('element','location')
+
+*/
+
+// --- EXERCISE 1: ---//////////
+//  Add a simple div with content "A simple body div" dynamically before the div#wrapper
+
+    const wrapperDiv = document.querySelector('#wrapper')
+
+
+    // STEP -1: Create a div and append text content
+    const simpleDiv = document.createElement('div')
+    const simpleDivText = document.createTextNode('I am a simple div')
+    simpleDiv.appendChild(simpleDivText)
+
+    // STEP -2: Append the div created above before div#wrapper element
+    document.body.insertBefore(simpleDiv, wrapperDiv)
+
+
+
+// --- EXERCISE 2: ---//////////
+//  Add a heading 2 with content "dynamic heading" before h1.red and within the div#wrapper element
+
+    const h1El = document.querySelector('.red')
+
+    // STEP -1: Create h2 and append text content
+        const h2El = document.createElement('h2')
+        const h2Text = document.createTextNode('i am a dynamic heading')
+        h2El.appendChild(h2Text)
+
+    // STEP -2: Append the h2 created above before h1.red element
+        wrapperDiv.insertBefore(h2El,h1El)
+
+
+    // STEP -3: Add class of Blue
+        h2El.classList.add('blue')
+
+
+
+</script>
+</html>
