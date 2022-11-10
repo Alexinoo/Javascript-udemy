@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>prepend() and innerText property</title>
+</head>
+<style>
+    .red {
+        background: red;
+        color: #fff;
+    }
+    .blue {
+        background: blue;
+        color: #fff;
+    }
+</style>
+<body>   
+   <h1>first heading</h1>
+</body>
+<script type="text/javascript">
+/*
+   prepend() and innerText property
+    --------------------
+        1. innerText property
+        
+            - works similarly to createTextNode instead of using both createTextNode() and appendChild() for this
+
+        2. prepend('element')
+            - inside the body tags - not like append which places the element after the script tags
+*/
+
+// Step-1 : Create <h2>/h2> element
+    const headingTwoElement = document.createElement('h2')
+    
+// Step-2 : use innerText property to add content 'second heading'
+    headingTwoElement.innerText = `i am a dynamic heading`
+
+// Step-3 : in front of h1{first heading}
+    document.body.prepend(headingTwoElement)
+
+</script>
+</html>
