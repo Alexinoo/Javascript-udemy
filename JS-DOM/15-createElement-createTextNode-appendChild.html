@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Elements Dynamically</title>
+</head>
+<style>
+    .red {
+        background: red;
+        color: #fff;
+    }
+
+    .blue {
+        background: blue;
+        color: #fff;
+    }
+</style>
+<body>
+   <div id="wrapper">
+    <h1 class="red">I am the child of the wrapper div</h1>
+   </div>
+</body>
+<script type="text/javascript">
+
+/* Adding CSS classes dynamically
+
+    document.createElement() vs createTextNode() vs appendChild()
+    ------------------------------------------------------
+       1. createElement('element')
+          -----------------
+            > Creates HTML element - takes in the tag name of what kind of element we would like to create
+
+       2. createTextNode('text content')
+          ------------------
+            > Takes in whatever content that we would like to place as our text
+
+       3. appendChild(childElement)
+          ------------------
+            > Appends to where exactly in the HTML body - takes in the element to be appended
+            > Appends the element after the <>script </> tags
+            > Is the most basic one
+            > It's not the only method we can use while inserting elements dynamically
+   
+   
+*/
+
+// Create a div with the content "I am a simple div" and append to the body
+
+
+    /*////////   createElement() HTML element ////////////*/
+    
+        const divEl = document.createElement('div')  
+
+
+    /*////////   createTextNode() - text content ////////////*/ 
+
+        const text = document.createTextNode('I am a simple div')
+
+ 
+    /*////////   appendChild(element)  ////////////*/    
+   
+         // Append text to the divEl
+            divEl.appendChild(text)
+
+        //Then append to the body element
+            document.body.appendChild(divEl)
+
+
+
+// Create a heading2 with the content "Dynamic heading" and append to the wrapper div
+
+    const divWrapper = document.querySelector('#wrapper')
+
+    //Check it has how many childrens using 
+    console.log(divWrapper.children) 
+
+    //create <h2></h2> element
+    const heading = document.createElement('h2')
+
+    //create Text node and append to the <h2></h2> element 
+    const headingContent = document.createTextNode('Dynamic heading')
+
+    heading.appendChild(headingContent)
+
+    //Append content to the <div id='wrapper'></div> element
+
+    divWrapper.appendChild(heading)
+
+
+
+
+//---------------------------------------------------------------------------
+
+////// EXTRA STUFF /////////
+
+//Add class of blue to the h2
+    heading.classList.add('blue')    
+
+</script>
+</html>
