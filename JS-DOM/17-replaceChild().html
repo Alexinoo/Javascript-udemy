@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>replaceChild() method</title>
+</head>
+<style>
+    .red {
+        background: red;
+        color: #fff;
+    }
+    .blue {
+        background: blue;
+        color: #fff;
+    }
+</style>
+<body>
+    <div id="simple-div">
+        I am simple div
+    </div>
+    <div id="wrapper">
+        <h1 class="red">I am the child of the wrapper div</h1>
+    </div>
+</body>
+<script type="text/javascript">
+/*
+    replaceChild()
+    --------------------
+        > Takes in 2 arguments replaceChild('new','old')
+
+        > new - The new element that we will inserting
+
+        > old - The old element that we will be replacing
+
+*/
+
+const simpleDiv = document.querySelector('#simple-div')
+const wrapperDiv = document.querySelector('#wrapper')
+const headingOne = document.querySelector('.red')
+
+// --- EXERCISE 1: ---//////////
+//  Replace #simple-div with h6 added dynamically
+
+
+    // STEP -1: Create a div and append text content
+        const h6El = document.createElement('h6')
+        const h6ElText = document.createTextNode(`I'm am heading 6`)
+        h6El.appendChild(h6ElText)
+
+    // STEP -2: Add a class of blue to heading 6
+        h6El.classList.add('blue')
+
+    // STEP -3: Replace #simple-div with h6
+        document.body.replaceChild(h6El, simpleDiv)
+
+
+
+
+</script>
+</html>
