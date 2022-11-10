@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>remove() and removeChild()</title>
+</head>
+<body>
+    <h1>hello world</h1>
+    <div id="wrapper">
+        <h1>second heading</h1>
+    </div>
+</body>
+<script type="text/javascript">
+/*
+    remove() and removeChild('child element') 
+    -------------------------------
+
+    remove()
+    -----------------
+
+        > Allow us to remove elements from the DOM
+
+        > We call it on the actual element that we would like to remove could be a <div> , <h1> , <p> and so on..
+
+        > Does not take in any parameters
+        
+        
+    removeChild('element') 
+    ---------------
+        > Allow us to remove child elements from the DOM by calling it on the Parent Element i.e <div> ,<ul> and so on...
+        
+
+        > A better way is to call querySelector not on the document but the node that we are getting back i.e. wrapperDivEl
+
+        > This means that we are not looking  for all headings (h1) in the document but only the ones within the div#wrapper element
+
+        > Takes in the child element as the parameter - element that is being removed
+
+
+*/
+
+
+// Exercise 1 : use remove() to remove div#result element
+
+    const wrapperDivEl = document.querySelector('#wrapper')
+    // wrapperDivEl.remove()
+
+// Exercise 2 : Remove h1{second heading}
+    const headingOneEl = wrapperDivEl.querySelector('h1')
+    wrapperDivEl.removeChild(headingOneEl)
+
+</script>
+</html>
