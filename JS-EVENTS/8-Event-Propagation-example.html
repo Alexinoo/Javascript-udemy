@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS EVENTS - Event Propagation Example</title>
+</head>
+<style>
+    .btn {
+        background: #777;
+        color: #fff;
+        padding: 8px 16px;
+        border: 1px solid transparent;
+        border-radius: 3px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        
+    }
+    .btn:hover {
+        background: #555;
+        color: #fff;
+
+    }
+</style>
+<body>
+    <div class="container">
+    </div>
+    <button class="btn">click me</button>
+</body>
+
+
+<script type="text/javascript">
+
+/* Example of Event Propagation */
+
+    // Works with dynamic elements
+    // Add h1 dynamically
+    // Listen to a click event on the parent container since the event will bubble up
+
+    // Step-1 : Select div.container and button.btn
+
+        const containerDivEl = document.querySelector('.container')
+        const buttonEl = document.querySelector('.btn')  
+
+    //Step-2 : Add h1 dynamically to the div.container after click event on the button
+
+    buttonEl.addEventListener('click',function(){
+            const h1Element = document.createElement('h1')
+            h1Element.classList.add('heading')
+            h1Element.textContent = `i'm sitting inside container`
+            containerDivEl.appendChild(h1Element)
+        })
+
+    // We can listen for a click event on the parent container 
+    // Once the heading is added dynamically and we click on it , the event will bubble up to the parent container and we are able to see hello world in the console
+
+    // Event bubbling 
+
+    containerDivEl.addEventListener('click',function(e){      
+       
+        if(event.target.classList.contains('heading')){
+            console.log('hello there');
+        }
+    })
+
+    
+
+
+
+
+</script>
+</html>
