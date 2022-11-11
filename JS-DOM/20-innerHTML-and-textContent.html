@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>innerHTML and textContent Property</title>
+</head>
+<body>
+  <ul id="first">
+    <li class="item">list item 1</li>
+    <li>list item 2</li>
+  </ul>
+  <div id="second">
+    i have some text content
+  </div>
+    
+</body>
+<script type="text/javascript">
+/*
+
+innerHTML and textContent properties
+------------------------------------
+
+innerHTML
+-----------
+    > Returns whole html content with html tags
+
+textContent
+------------
+    > Returns plain text without HTML tags
+
+*/
+
+const ulElement = document.querySelector('#first')
+const liElement = document.querySelector('.item')
+const divElement = document.querySelector('#second')
+
+console.log(divElement.textContent);  //logs   i have some text content
+console.log(ulElement.innerHTML);    /*logs  <li class="item">list item 1</li>
+    <li>list item 2</li> */
+console.log(ulElement.textContent); //logs  list item 1 list item 2
+
+
+
+
+// EEXRCISE : Create another <ul> with some list items
+
+    // Step 1: create HTML element
+
+        const ulFruitsElement = document.createElement('ul')
+    
+    // Step 2: Add a class
+
+        ulFruitsElement.classList.add('third')
+
+    // Step 3: Append list items
+
+        ulFruitsElement.innerHTML = `<li>Mango</li><li>Banana</li>`
+
+
+    // Step 4: Insert into the Document body
+        document.body.appendChild(ulFruitsElement)
+        console.log(ulFruitsElement);
+
+</script>
+</html>
