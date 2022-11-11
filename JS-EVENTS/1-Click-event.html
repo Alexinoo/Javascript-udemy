@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS EVENTS</title>
+</head>
+<style>
+    .red {
+        background-color: red;
+        color: #fff;
+        text-transform: capitalize;
+        font-size: 2rem;
+    }
+    .blue {
+        background-color: blue;
+        color: #fff;
+        text-transform: capitalize;
+        letter-spacing: 10px;
+    }
+
+    .btn {
+        background-color: gray;
+        color: #eee;
+        font-size: 1.2rem;
+        border: none;
+    }
+</style>
+<body>
+    <h2>events in javascript</h2>
+    <button class="btn">click me</button>
+    <!-- javascript -->
+    <p onclick="this.classList.add('red')"> the old style</p>
+</body>
+
+<script type="text/javascript">
+
+/*
+
+    ADDING INLINE ( OLD STYLE )
+    ------------------------------
+        > Works though not a good approach / not recommended
+
+        > <p onclick="this.classList.add('red')"> the old style</p>
+
+
+    ADDING ON SCRIPT.JS ( OLD STYLE )
+    ----------------------------------
+
+        > select element -  can be button/heading/div etc
+
+        > addEventListener('event',callback) - listen for some event and do something in the callback
+
+        > event - can be a  ( click /submit / mouseenter /mouseleave/ hover ) etc
+
+        > callback - A function that runs when the event happens
+
+        > why callback - Because we don't want that function to be executed right away; We want to it to run after the event has happened/occured
+        
+        > We can write the callback in two ways
+        i. anonymous function
+        ii. function reference
+*/
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+/// EXERCISE - Click Button and add class of blue to h2 ///
+
+    // Step 1 : Select elements
+
+        const buttonEl = document.querySelector('.btn')
+
+        const h2El = document.querySelector('h2')
+
+    // Step 2 : Listen for a click event and Add CSS Class (blue) to h2...
+
+        buttonEl.addEventListener('click', function(){
+            
+                h2El.classList.add('blue')
+        })
+
+
+</script>
+
+</html>
