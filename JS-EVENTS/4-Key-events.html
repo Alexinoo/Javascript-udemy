@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS EVENTS - Key Events In Action</title>
+</head>
+<body>
+    <input type="text" name="name" id="name" />
+</body>
+<script type="text/javascript">
+
+/*
+    KEY EVENTS
+    --------------
+
+    - We will cover the following key events
+        > keypress - fires when a key is pressed
+        > keydown - fires when a key is down
+        > keyup - fires when a key is released
+
+    - We will test this with an input field
+
+*/
+
+const inputEl = document.getElementById('name')
+
+
+// keypress - fires when a key is pressed
+    inputEl.addEventListener('keypress',function(){
+        console.log('keypress fired');
+    })
+
+// keydown - fires when a key is long pressed
+    inputEl.addEventListener('keydown',function(){
+        console.log('keydown fired - as long the key is long pressed');
+    })
+
+// keyup - fires when a key is released
+// Retrieve the value of the key pressed
+    inputEl.addEventListener('keyup',function(){
+        console.dir(inputEl.value);
+    })
+
+
+</script>
+</html>
