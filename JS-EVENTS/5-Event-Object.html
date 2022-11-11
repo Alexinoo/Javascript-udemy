@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS EVENTS - Event Object</title>
+</head>
+<style>
+    .blue {
+        background: blue;
+        color: #fff;
+        font-size: 1.2rem;
+        text-transform: capitalize;
+        letter-spacing: 10px;
+    }
+    .btn {
+        background: red;
+        color: #fff;
+        border: none;
+        font-size: 1.5rem;
+    }
+    
+    a {
+        display: inline-block;
+        margin-top: 100vh;
+    }
+
+</style>
+<body>
+    <button class="btn">click me</button>
+    <h1>some heading</h1>
+    <a href="#" id="link">random link </a>    
+</body>
+<script type="text/javascript">
+/*
+    Event Object
+    -----------------
+        > Is a giant event object argument passed to the callback function
+
+        > Abbreviated as e, evt
+
+        > gives more info about the trigerred event
+
+        > contains properties and methods that we can access with event.property / event.method()
+
+        > some of the properties include :
+
+            i. type - type of the event (click / submit )
+            2. currentTarget - element within which the event occured / points to the element that has event listener attached to it
+        
+        > preventDefault() - Helps us to prevent default behavior for some elements e.g link
+
+        > this keyword - Also selects the element within which the event occured / points to the element that has event listener attached to it
+
+        > We can use event.currentTarget to traverse the DOM ..parentElement / children and all that good stuff
+
+N/B: this keyword works the same way as event.currentTarget - Both return the element attached to the event that occured
+
+N/B: this keyword does not work with the arrow functions (LIMITATION )
+*/
+
+const buttonEl = document.querySelector('.btn')
+const headingEl = document.querySelector('h1')
+const linkEl = document.getElementById('link')
+
+
+
+// BASICS EXAMPLE : Add class of blue to heading 1
+    // headingEl.addEventListener('click',function(){
+    //     headingEl.classList.add('blue')
+    // })
+
+
+
+// Explore how we can use event object to always always select the element that has the event listener attached to it (Same example)
+
+// This means that we can do the same things that we did before in the BASICS EXAMPLE above (add class of blue)
+
+headingEl.addEventListener('click',event =>{
+        console.log(event.type); //logs click
+        console.log(event.currentTarget); //logs <h1>some heading</h1>
+        event.currentTarget.classList.add('blue')
+        console.log(this);//POints to the global Window - when used with the callback function
+    })
+
+buttonEl.addEventListener('click',function(event){
+        console.log(event.type); //logs click
+        console.log(event.currentTarget); //logs <button class="btn">click me</button>
+})
+
+
+//Explore how we can preventDefault with the link - This is because currently when we click the random link it takes us to the top which is not what we want
+
+linkEl.addEventListener('click',someFunc)
+
+
+function someFunc(e){
+    e.preventDefault();    
+    console.log(this);
+    
+}
+
+// N/B: this keyword does not work with the arrow function -- POINTS TO THE GLOBAL WINDOW
+
+</script>
+</html>
