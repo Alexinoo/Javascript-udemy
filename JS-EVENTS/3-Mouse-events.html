@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS EVENTS - Mouse Events</title>
+</head>
+<style>
+    .red {
+        background-color: red;
+        color: #fff;
+        text-transform: capitalize;
+        font-size: 2rem;
+    }
+
+    .blue {
+        background-color: blue;
+        color: #fff;
+        text-transform: capitalize;
+        letter-spacing: 10px;
+    }
+
+    .btn {
+        background-color: gray;
+        color: #eee;
+        font-size: 1.2rem;
+        border: none;
+    }
+</style>
+<body>
+    <h2>events in javascript</h2>
+    <button class="btn">click me</button>
+</body>
+<script type="text/javascript">
+
+/* 
+
+MOUSE EVENTS
+---------------
+    > click - fires after full action occurs
+    > mouseenter - moved onto an element
+    > mouseleave - moved out of an element
+
+    > mouseup - button is released
+    > mousedown - button is pressed
+    
+N/B : click is fired when both of these 2 actions occur 
+
+*/
+const headingTwoEl = document.querySelector('h2')
+const btnEl = document.querySelector('.btn')
+
+/// EXERCISE:  TEST ( mouseup / mousedown / click ) events on the button ////
+
+// mouse click - fires after full action occurs
+    btnEl.addEventListener('click',function() {
+       console.log('mouse click event fired'); 
+    })
+
+// mouseup - button is released
+    btnEl.addEventListener('mouseup',function() {
+       console.log('mouseup event fired'); 
+    })
+
+// mousedown - button is pressed
+    btnEl.addEventListener('mousedown',function() {
+       console.log('mousedown event fired'); 
+    })
+
+
+
+/// EXERCISE:  Add class to h2 when mouseenter and remove it on mouseleave event - Hover Effect ////
+
+// mouseenter - button is pressed
+    headingTwoEl.addEventListener('mouseenter',function() {
+       headingTwoEl.classList.add('blue')
+    })
+    
+    // mouseleave - button is pressed
+    headingTwoEl.addEventListener('mouseleave',function() {
+        headingTwoEl.classList.remove('blue')
+    })
+
+
+</script>
+</html>
