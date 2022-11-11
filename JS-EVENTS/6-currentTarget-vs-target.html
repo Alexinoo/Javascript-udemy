@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS EVENTS - currentTarget vs target (and the differences )</title>
+</head>
+<style>
+    .btn {
+        background-color: red;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        text-transform: uppercase;
+    }
+
+    .green {
+        background-color: green;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        text-transform: uppercase;
+    }
+</style>
+<body>
+    <button class="btn">first button</button>
+    <button class="btn">
+        second <strong>button</strong>
+        <strong>more nested</strong>
+    </button>
+    <button class="btn">third button</button>
+</body>
+<script type="text/javascript">
+/*
+    currentTarget vs Target
+    -------------------------------
+
+    currentTarget
+    -------------
+        > always refers to the element to which the event handler has been attached to
+
+    target
+    --------
+
+        > Identifies the element in which the event occured
+
+        > More specific onto which element the event occured 
+        
+        > Helps with deeply nested elements
+
+*/
+
+const buttonsEl = document.querySelectorAll('.btn')
+
+
+// Loop through the Node list and listen for a click event in any of the buttons
+// Add Green color to the button that we click on:
+
+    buttonsEl.forEach(function(button){
+        button.addEventListener('click',function(event){
+            //currentTarget
+             console.log('currentTarget',event.currentTarget);
+            // event.currentTarget.classList.add('green')
+
+            //Target
+            console.log('target',event.target);
+            event.target.classList.add('green')
+
+        })
+    })
+
+</script>
+</html>
