@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS EVENTS - Event Propagation - Bubbling and Capturing</title>
+</head>
+<body>
+    <div class="container">
+        <ul class="list-items">
+            <li class="item"><a href="#" class="link">link</a></li>
+            <li class="item"><a href="#" class="link">link</a></li>
+            <li class="item"><a href="#" class="link">link</a></li>
+        </ul>
+    </div>
+</body>
+<script type="text/javascript">
+/*
+Events Propagation , Bubbling and Capturing
+-----------------------------------------------
+
+- Allows us to select dynamic elements added by JavaScript - 
+
+N/B: This means that we can select elements even without targeting them
+
+    Events Propagation
+    -------------------
+        > order the events are fired
+
+    Events Bubbling
+    -------------------
+        > clicked element first then bubbles up (default)
+        > registers that event up the chain
+        > If we click on the actual link ..both of the methods are fired
+         i.e. list and the container events
+         
+        > But why... since we did not add event listeners to the actual link but added to the parent containers
+
+        > By default , we have bubbling where we click on the element (link) but then the event is registered up the chain
+
+        > This means that even if we did not add event listener to the link, we are still able to access it
+
+        >Please note that we cannot prevent that behavior but only ovewrite
+
+    Events Capturing
+    --------------------
+        > fires at the root and bubbles until it reaches target
+
+        > Reverses the order 
+          ul.list-items -> div.container -> document -> window
+
+        > To 
+         window -> document -> container -> ul
+
+        > Done by adding it as an object to addEventListener() method
+          {
+            capture : true
+          }
+
+*/
+
+
+const containerDivEl = document.querySelector('.container')
+
+const  listItemsUlEl = document.querySelector('.list-items')
+
+function showBubbling(e){
+    
+    console.log('current target',e.currentTarget);
+
+    if(e.target.classList.contains('link')){
+        console.log('You clicked on the link: ', e.target);
+    }
+}
+
+//stops bubbling up the chain - If you click the link - event does not bubble up
+function stopPropagation(e){
+    console.log('you clicked on the link');
+    e.stopPropagation()
+}
+
+
+listItemsUlEl.addEventListener('click', showBubbling , { capture : true })
+containerDivEl.addEventListener('click',showBubbling , { capture : true })
+document.addEventListener('click',showBubbling , { capture : true })
+window.addEventListener('click',showBubbling , { capture : true })
+
+</script>
+</html>
