@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Local Storage</title>
+</head>
+<body>
+    
+</body>
+<script>
+/* 
+
+Web storage API
+---------------------------
+
+sessionStorage - Persists the data only for that session ( if you close the broser the data is lost )
+
+localStorage - Persists the data even after closing the browser
+
+ Methods : 
+ ----------
+
+ localStorage.setItem('key','value') 
+    > Takes in a key and value parameters
+    > If we use the same key again , we ovewrite the data
+ 
+ localStorage.getItem('key') 
+    > Returns value based on the key specified
+ 
+ localStorage.removeItem('key') 
+    > Removes specific value from the localStorage based on the key specified
+
+ localStorage.clear() 
+    > Deletes/clears all items from the localStorage
+ 
+ */
+
+//  localStorage.setItem('key','value') in action
+
+    localStorage.setItem('name','Alex')
+    localStorage.setItem('friend','Peter')
+    localStorage.setItem('job','developer')
+    localStorage.setItem('address','street 123')
+
+//  localStorage.setItem('key') in action
+
+    const name = localStorage.getItem('name')
+    console.log(name);
+
+//  localStorage.removeItem('key') in action
+    localStorage.removeItem('address')
+
+
+//  localStorage.removeItem('key') in action
+    localStorage.clear()
+
+
+
+</script>
+</html>
