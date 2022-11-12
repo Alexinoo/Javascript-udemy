@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS EVENTS - load event</title>
+</head>
+<body>
+    <h3>load event in action</h3>
+    <img src="./images/food.jpg" alt="food">
+</body>
+<script type="text/javascript">
+/*
+
+    load event
+    ..............
+
+        > fired when the whole page has loaded , including all dependent resources such as stylesheets and images
+
+        > This is in contrast to DOMContentLoaded which is fired as soon as the page DOM has been loaded without waiting for resources to finish loading
+
+    Features
+    ----------
+
+        > listens on the window and not document
+
+        window.addEventListener('load', (event) => {
+                    console.log('load event in action');
+                });
+
+*/
+
+//  load event in Action
+//  waits for images/stylesheets to load first
+
+    window.addEventListener('load',function(){
+        console.log('load event loaded : i will run second');
+        const imgPhoto = document.querySelector('img')
+        console.log(imgPhoto);
+        console.log(imgPhoto.width);
+    })
+
+
+//And what would be the difference between the 2
+// Not ideal for slow networks does not wait for images/stylesheets to load
+
+    window.addEventListener('DOMContentLoaded', function () {
+        console.log('DOMContentLoaded loaded : i will run first');
+        const imgPhoto = document.querySelector('img')
+        console.log(imgPhoto);
+        console.log(imgPhoto.width);
+    })
+</script>
+</html>
