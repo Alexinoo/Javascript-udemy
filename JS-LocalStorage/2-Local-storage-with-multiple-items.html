@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS - Local Storage with Multiple Items</title>
+</head>
+<body>
+    
+</body>
+<script>
+/*
+
+GOTCHAS To be aware of - When working with complicated datatypes ( arrays and objects )
+................................................................
+
+const friends = ['john','bob','peter']
+
+localStorage.setItem('friends',friends) //does not store as array
+
+//And now let's try to access our array
+const values = localStorage.getItem('friends')
+
+//If we try to access the first element in the array - there is a problem
+console.log(values[0]); j 
+
+// In short, we don't get john but j instead
+
+SOLUTION
+----------------
+   
+JSON.stringify()
+    > Use it when storing / saving the data into the localStorage
+
+JSON.parse()
+    > Use it when getting the data from localStorage
+
+*/
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+/* JSON.stringify() and JSON.parse() in action */
+
+// Declare the array that you want to store in the local storage
+
+const friends = ['john', 'bob', 'peter']
+
+//JSON.stringify() in action
+    localStorage.setItem('friends',JSON.stringify(friends))
+
+//JSON.parse() in action
+
+    const values = JSON.parse(localStorage.getItem('friends'))
+    console.log(values[2]); //peter
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/* HOW TO CHECK IF THE KEY IS ALREADY IN THE LOCAL STORAGE 
+    IF YES 
+        > Add /get  values.
+        
+    If NOT 
+        > create an empty array
+*/
+
+let fruits;
+
+if(localStorage.getItem('fruits')){
+
+    fruits = JSON.parse(localStorage.getItem('fruits'))
+}else{
+
+    fruits = []
+}
+
+console.log(fruits); //[]
+
+// fruits.push('apple')
+fruits.push('orange')
+
+localStorage.setItem('fruits',JSON.stringify(fruits))
+
+</script>
+</html>
