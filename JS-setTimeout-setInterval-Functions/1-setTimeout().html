@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS setTimeout() Function</title>
+</head>
+<body>
+    <h3>JS setTimeout() Function in Action</h3>
+</body>
+<script type="text/javascript">
+/*
+    setTimeout()
+    .............
+
+        > runs function once after specific time
+
+    Features
+    -------------
+        > available on window object ( window.setTimeout())
+        > pass function as a reference (DON'T INVOKE THE FUNCTION !!!)
+        > we can also pass the function directly as an argument
+        > duration in ms (1000ms = 1 sec )
+        > default 0 , will cover more extensively in async/await section
+        > returns unique identifier
+        > clearTimeout (we can use the unique identifier to achieve this)
+
+    Arguments
+    -------------
+        > arguments are passed after the duration when we pass the function as reference e.g
+            setTimeout(showScore,1000,'Alex',98)
+*/
+
+
+
+// APPROACH -1 :  pass function as a reference
+
+    function sayHello(){
+        console.log('hello john');
+    }
+
+    // sayHello() // Executes immediately after saving
+
+
+    // But suppose we want this function to run after 1 sec - use setTimeout()
+
+    setTimeout(sayHello,1000)
+
+
+
+
+// APPROACH -2 : pass function as an argument
+
+    setTimeout(function(){
+        console.log('hello alex');
+    } ,2000)
+
+// APPROACH -3 : pass function with params as an argument to setTimeout
+
+function showScore(name,score){
+    console.log(`hello ${name} , your score is ${score}`);
+}
+
+setTimeout(showScore,3000,'Alex',98)
+
+
+// APPROACH -3 : get Unique identifier from setTimeout
+// The function still runs
+
+let uniqueID = setTimeout(showScore, 4000, 'Peter', 90)
+
+let uniqueIDTwo = setTimeout(showScore, 5000, 'Susy', 85)
+
+console.log(`The unique id is `,uniqueID);
+console.log(`The second unique id  is `, uniqueIDTwo);
+
+
+// clearTimeout 
+//stops the function from running
+
+clearTimeout(uniqueIDTwo)
+
+</script>
+</html>

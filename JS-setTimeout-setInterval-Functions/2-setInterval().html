@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS setInterval() Function</title>
+</head>
+<body>
+    <h3>JS setInterval() Function in Action</h3>
+</body>
+<script type="text/javascript">
+/*
+    setInterval()
+    .............
+
+        > runs function repeatedly ,at specific intervals
+
+    Features
+    -------------
+        > available on window object ( window.setInterval())
+        > pass function as a reference (DON'T INVOKE THE FUNCTION !!!)
+        > we can also pass the function directly as an argument
+        > duration in ms (1000ms = 1 sec )
+        > default 0 , will cover more extensively in async/await section
+        > returns unique identifier
+        > clearInterval (we can use the unique identifier to achieve this)
+       
+*/
+
+// setInterval(function ,duration) in Action
+
+    function sayHello(){
+        console.log('hello')
+    }
+    setInterval(sayHello,1000)
+
+//setInterval(function ,duration) with arguments
+
+    function showScore(name,score){
+        console.log(`hello ${name}, your score is ${score}`)
+    }
+
+    setInterval(showScore, 2000,'Alex',50)
+
+// clearInterval(uniqueID)
+
+    let uniqueID = setInterval(showScore, 3000, 'Susy', 60)
+
+    clearInterval(uniqueID)
+
+</script>
+</html>
