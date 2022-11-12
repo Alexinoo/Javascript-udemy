@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS EVENTS - Scroll event</title>
+</head>
+<body>
+    <h3>Scroll event in action</h3>
+    <img src="./images/food.jpg" alt="Food">
+</body>
+<script type="text/javascript">
+/*
+    Scroll event
+    ................
+
+        > Trigered if and only if we can scroll (when vertical/horizontal scroll bar is available)
+
+        > we can listen to this event either on the window , document or the element
+
+        > syntax would be the following
+
+            window.addEventListener('scroll',function(){
+                console.log(window.scrollY + 'px')
+                console.log(window.scrollX + 'px')
+            })
+
+    on the document
+    ----------------
+
+        > scrollY
+            - returns the number of pixels the document is currently scrolled along the vertical-axis
+
+            - also known as pageYOffset
+
+        > scrollX
+            - returns the number of pixels the document is currently scrolled along the horizontal-axis
+
+            - also known as pageXOffset
+
+        > Both scrollY and scrollX are available on the window object
+
+    N/B:
+        > pageYOffset and pageXOffset are deprecated
+
+*/
+
+
+// scroll event in action
+//If we want to know how many pixels we have scrolled either vertically/horizontally then scrollY and scrollX will give us that info
+
+
+
+    window.addEventListener('scroll',function(){
+        console.log(window.scrollY + 'px');
+        console.log(window.scrollX + 'px');
+    })
+
+
+</script>
+</html>
