@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS EVENTS - innerWidth & innerHeight and getBoundingClientRect window properties</title>
+</head>
+<style>
+    .btn {
+        background: #777;
+        color: #fff;
+        border: 1px solid transparent;
+        padding: 6px 12px;
+        border-radius: 4px;
+        font-size: 16px;
+    }
+
+    .box {
+        margin: 1rem;
+        width: 150px;
+        height: 150px;
+        background: #888;
+    }
+</style>
+<body>
+    <h1>innerWidth & innerHeight and getBoundingClientRect() window properties</h1>
+    <button class="btn">click me</button>
+    <div class="box"></div>
+</body>
+<script type="text/javascript">
+/*
+    innerWidth & innerHeight and getBoundingClientRect()
+    ...................................................
+
+        > Returns the size of any element,
+        
+        > As well as the height and width of any window/document
+
+    innerWidth
+    -----------
+        > a read-only property of the window object
+        > returns the interior width of the window in pixels
+
+    innerHeight
+    -----------
+        > a read-only property of the window object
+        > returns the interior height of the window in pixels
+
+
+    element.getBoundingClientRect()
+        > gives the width,height and the location of any element
+        > returns a DOMRect Object with info about the size of an element and its position relative to the viewport
+        >info
+            - height (of the box)
+            - width (of the box)
+            - top (distance from the top relative to the viewport)
+            - bottom (top + height of the box)
+            - left ( distance from the left from the viewport)
+            - right (left + width of the box )
+
+
+*/
+
+//innerWidth & innerHeight in action
+
+    console.log('height of the window : '+ window.innerHeight);
+    console.log('width of the window : '+ window.innerWidth);
+
+// getBoundingClientRect()
+
+    const btnElement = document.querySelector('.btn')
+    const boxElement = document.querySelector('.box')
+
+    btnElement.addEventListener('click',function(){
+        const values = boxElement.getBoundingClientRect()
+        console.log(values);
+
+    })
+
+</script>
+</html>
