@@ -84,8 +84,7 @@ const menuItemsArray = [
 // select div.section-center
 const sectionCenterDivElmnt = document.querySelector('.section-center')
 
-// select filter buttons
-const filterBtnElmnts = document.querySelectorAll('.filter-btn')
+
 
 //
 const btnContainerElmnt = document.querySelector('.btn-container')
@@ -94,47 +93,15 @@ const btnContainerElmnt = document.querySelector('.btn-container')
 // Display Items when page loads
 window.addEventListener('DOMContentLoaded', function () {
   displayMenuItems(menuItemsArray)
-
-  // Get unique categories usine arr.reduce()
-
-  const categories = menuItemsArray.reduce(function (acc, menu) {
-    if (!acc.includes(menu.category)) {
-      acc.push(menu.category)
-    }
-    return acc
-  }, ['all'])
-
-  // Get unique categories (ES6 style) uniqueCategories = new Set(categories);
-
-  // console.log(uniqueCategories);
+  
+  displayMenuButtons()
+  
 })
-
-
-// Add event listener to filter buttons
-
-filterBtnElmnts.forEach(function (button) {
-  button.addEventListener('click', function (e) {
-
-    const menuCategory = e.currentTarget.dataset.category
-
-    let filteredMenuItems = menuItemsArray.filter(menu => menu.category === menuCategory)
-
-    if (menuCategory === 'all') {
-      displayMenuItems(menuItemsArray)
-    } else {
-
-      displayMenuItems(filteredMenuItems)
-    }
-  })
-})
-
 
 
 // functions
 function displayMenuItems(arr) {
-
   let newMenuItemsArray = arr.map(function (menu) {
-
     let { img, title, price, desc } = menu
     return `<article class="menu-item">
               <img src=${img} alt=${title} class="photo" />
@@ -150,5 +117,43 @@ function displayMenuItems(arr) {
   }).join('')
 
   sectionCenterDivElmnt.innerHTML = newMenuItemsArray
+}
 
+function displayMenuButtons(){
+    // Get unique categories (ES6 style) uniqueCategories = new Set(categories);
+  // Get unique categories usine arr.reduce()
+
+  const categories = menuItemsArray.reduce(function (acc, menu) {
+    if (!acc.includes(menu.category)) {
+      acc.push(menu.category)
+    }
+    return acc
+  }, ['all'])
+
+  const btnCategoriesArr = categories.map(function(category){
+
+    return `<button class="filter-btn" type="button" data-category=${category}>${category}</button>`
+  }).join('')
+  btnContainerElmnt.innerHTML = btnCategoriesArr
+
+  // select filter buttons once they have been added to the DOM dynamically
+  const filterBtnElmnts = btnContainerElmnt.querySelectorAll('.filter-btn')
+
+  // Add event listener to filter buttons
+  filterBtnElmnts.forEach(function (button) {
+
+     button.addEventListener('click', function (e) {
+
+      const menuCategory = e.currentTarget.dataset.category
+
+      let filteredMenuItems = menuItemsArray.filter(menu => menu.category === menuCategory)
+
+      if (menuCategory === 'all') {
+        displayMenuItems(menuItemsArray)
+      } else {
+
+        displayMenuItems(filteredMenuItems)
+      }
+    })
+  })
 }
