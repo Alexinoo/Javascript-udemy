@@ -22,3 +22,14 @@ switchBtnElmnt.addEventListener('click',function(){
         videoContElmnt.play()
     }
 })
+
+// Once everything loads, hide the preloader
+
+// select preloader
+
+const preloaderDivElmnt = document.querySelector('.preloader')
+
+// load event
+window.addEventListener('load',function(){
+    preloaderDivElmnt.classList.add('hide-preloader')
+})
