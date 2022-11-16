@@ -76,10 +76,32 @@ const menuItemsArray = [
 // select div.section-center
 const sectionCenterDivElmnt = document.querySelector('.section-center')
 
+// select filter buttons
+const filterBtnElmnts = document.querySelectorAll('.filter-btn')
+
 
 // Display Items when page loads
 window.addEventListener('DOMContentLoaded',function(){
     displayMenuItems(menuItemsArray)
+})
+
+
+// Add event listener to filter buttons
+
+filterBtnElmnts.forEach(function(button){
+  button.addEventListener('click',function(e){
+
+    const menuCategory = e.currentTarget.dataset.category
+
+    let filteredMenuItems = menuItemsArray.filter(menu => menu.category === menuCategory)
+
+    if(menuCategory === 'all'){
+      displayMenuItems(menuItemsArray) 
+    }else{
+
+      displayMenuItems(filteredMenuItems) 
+    }
+  })
 })
 
 
