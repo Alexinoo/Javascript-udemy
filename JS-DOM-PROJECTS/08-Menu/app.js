@@ -71,6 +71,14 @@ const menuItemsArray = [
     img: "./images/item-9.jpeg",
     desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
   },
+  {
+    id: 10,
+    title: "steak dinner",
+    category: "dinner",
+    price: 39.99,
+    img: "./images/item-10.jpeg",
+    desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
+  },
 ];
 
 // select div.section-center
@@ -79,27 +87,43 @@ const sectionCenterDivElmnt = document.querySelector('.section-center')
 // select filter buttons
 const filterBtnElmnts = document.querySelectorAll('.filter-btn')
 
+//
+const btnContainerElmnt = document.querySelector('.btn-container')
+
 
 // Display Items when page loads
-window.addEventListener('DOMContentLoaded',function(){
-    displayMenuItems(menuItemsArray)
+window.addEventListener('DOMContentLoaded', function () {
+  displayMenuItems(menuItemsArray)
+
+  // Get unique categories usine arr.reduce()
+
+  const categories = menuItemsArray.reduce(function (acc, menu) {
+    if (!acc.includes(menu.category)) {
+      acc.push(menu.category)
+    }
+    return acc
+  }, ['all'])
+
+  // Get unique categories (ES6 style) uniqueCategories = new Set(categories);
+
+  // console.log(uniqueCategories);
 })
 
 
 // Add event listener to filter buttons
 
-filterBtnElmnts.forEach(function(button){
-  button.addEventListener('click',function(e){
+filterBtnElmnts.forEach(function (button) {
+  button.addEventListener('click', function (e) {
 
     const menuCategory = e.currentTarget.dataset.category
 
     let filteredMenuItems = menuItemsArray.filter(menu => menu.category === menuCategory)
 
-    if(menuCategory === 'all'){
-      displayMenuItems(menuItemsArray) 
-    }else{
+    if (menuCategory === 'all') {
+      displayMenuItems(menuItemsArray)
+    } else {
 
-      displayMenuItems(filteredMenuItems) 
+      displayMenuItems(filteredMenuItems)
     }
   })
 })
@@ -107,12 +131,12 @@ filterBtnElmnts.forEach(function(button){
 
 
 // functions
-function displayMenuItems(arr){
+function displayMenuItems(arr) {
 
- let newMenuItemsArray = arr.map(function(menu){
+  let newMenuItemsArray = arr.map(function (menu) {
 
-  let {img , title , price , desc } = menu
-   return  `<article class="menu-item">
+    let { img, title, price, desc } = menu
+    return `<article class="menu-item">
               <img src=${img} alt=${title} class="photo" />
               <div class="item-info">
                 <header>
@@ -125,6 +149,6 @@ function displayMenuItems(arr){
             `;
   }).join('')
 
- sectionCenterDivElmnt.innerHTML = newMenuItemsArray
+  sectionCenterDivElmnt.innerHTML = newMenuItemsArray
 
 }
