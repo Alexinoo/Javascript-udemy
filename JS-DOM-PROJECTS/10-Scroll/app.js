@@ -121,5 +121,62 @@ window.addEventListener('scroll',function(){
 
 
 
-// ********** smooth scroll ************
-// select links
+/*********** smooth scroll ************
+
+    > Add scroll-behavior property to enable smooth scrolling on different sections
+
+        html {
+            scroll-behavior: smooth;
+            }
+    > Current setup misses on certain sections when navigating to specific sections with the nav-links
+
+    > So how do we  navigate precisely to the desired sections...
+    
+    
+    Well we can use Javascript for that
+    .....................................
+
+        > Listen for click events on the scroll links and prevent default behavior of links
+
+        > use e.currentTarget property and getAttribute to get href attribute
+
+        > use slice to remove the # 
+
+        > use offsetTop to get position from the top - gives us an idea where the actual element is sitting
+
+        > In order to scroll to that position use window.scrollTo and get the exact coordinates
+
+*/
+
+// select links .scroll-links
+// Loop through each and listen for click event
+
+const scrollLinks  = document.querySelectorAll('.scroll-link')
+
+scrollLinks.forEach(function(link){
+    link.addEventListener('click',function(e){
+        
+        // prevent default
+        e.preventDefault()
+
+        // navigate to specific spot
+
+        const id = e.currentTarget.getAttribute('href').slice(1)
+
+        // get the element with the specified id
+        const element = document.getElementById(id)
+
+        // get the position of that element using offsetTop (gives us the value from the top to that element )
+        let elementPosition = element.offsetTop
+
+        // scrollTo the exact co-ordinates
+        window.scrollTo({
+            left : 0,
+            top : elementPosition,
+        })
+
+        // close the links on small screen
+        linksContDiv.style.height = 0
+
+    })
+})
