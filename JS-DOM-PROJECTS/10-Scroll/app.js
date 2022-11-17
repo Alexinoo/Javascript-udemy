@@ -54,13 +54,68 @@ navToggleBtn.addEventListener('click',function(){
 
 })
 
- 
-
-
-
 
 
 // ********** fixed navbar ************
+/*
+    > Once we scroll past the height of the navbar 
+    > then we want to set up a class on the navbar (fixed class)
+     
+        .fixed-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: var(--clr-white);
+        box-shadow: var(--light-shadow);
+         }
+
+    > So that if we keep on scrolling ,navbar stays fixed at the top 
+
+    
+
+    Back To Top button
+    ...................
+        > Hidden by default
+
+        > Will only show up once we scroll up past certain point (arbitrary value of your choice)
+
+        > Add .show-link  class to .top-link
+
+            .show-link {
+                visibility: visible;
+                z-index: 100;
+            }
+
+*/
+
+// select navbar and topLink button
+
+const navbarElmnt = document.getElementById('nav')
+const topLink = document.querySelector('.top-link')
+
+
+window.addEventListener('scroll',function(){
+    const scrollHeight = window.scrollY
+    const navbarElmntHeight = navbarElmnt.getBoundingClientRect().height
+    
+    // If we scroll past the height of the nav ..add fixed else remove it
+    if(scrollHeight > navbarElmntHeight){
+        navbarElmnt.classList.add('fixed-nav')
+    }else{
+         navbarElmnt.classList.remove('fixed-nav')
+    }
+
+    // If we scroll past an arbitrary value (say 500 ) , show top-link button
+
+    if( scrollHeight > 500 ){
+        topLink.classList.add('show-link')
+    }else{
+        topLink.classList.remove('show-link')
+    }
+
+
+})
 
 
 
