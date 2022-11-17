@@ -166,8 +166,31 @@ scrollLinks.forEach(function(link){
         // get the element with the specified id
         const element = document.getElementById(id)
 
+
+
+        //**********Calculate the heights ****/
+        const navHeight = navbarElmnt.getBoundingClientRect().height
+        const containerHeight = linksContDiv.getBoundingClientRect().height
+        
+        // holds the value of whether the navbar has .fixed-nav or not
+        const hasFixedNavClass = navbarElmnt.classList.contains('fixed-nav')     
+
+        // The reason why we are not at the exact position is because the fixed-nav is sitting there / or is covering it, therefore we need to subtract navHeight from the offsetTop
+
+
         // get the position of that element using offsetTop (gives us the value from the top to that element )
-        let elementPosition = element.offsetTop
+        let elementPosition = element.offsetTop - navHeight
+
+        // FIX !!!! Factor to consider - IF THE NAVBAR HAS .fixed-nav or not
+
+        if(!hasFixedNavClass){
+            elementPosition = elementPosition - navHeight
+        }
+
+        // FIX !!!!For small screens because of the containerHeight
+        if(navHeight > 82){
+            elementPosition = elementPosition + containerHeight
+        }
 
         // scrollTo the exact co-ordinates
         window.scrollTo({
