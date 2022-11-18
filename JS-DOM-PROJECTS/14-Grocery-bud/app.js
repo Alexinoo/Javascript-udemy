@@ -35,15 +35,48 @@ function addItem(e){
     const id = new Date().getTime().toString()
     
     if(groceryValue && !isEditing ){
-        console.log('add item to the list');
+
+        const articleElement = document.createElement('article')
+
+        // add class
+        articleElement.classList.add('grocery-item')
+
+        //add attr
+        const attr = document.createAttribute('data-id')
+        attr.value = id
+
+        // attach it to the element
+        articleElement.setAttributeNode(attr)
+
+        // add HTML
+        articleElement.innerHTML = `
+            <p class="title">${groceryValue}</p>
+            <div class="btn-container">
+              <button type="button" class="edit-btn"><i class="fas fa-edit"></i></button>
+              <button type="button" class="delete-btn"><i class="fas fa-trash"></i></button>
+            </div>
+            `;
+        // append to div.grocery-list
+        groceryListElmnt.appendChild(articleElement)
+
+        // display alert
+         displayAlert('item added to the list','success')
+
+        // add .show-container to show container
+        groceryContElmnt.classList.add('show-container')
+
+        //add to local storage
+        addToLocalStorage(id,groceryValue)
+
+        // set back to default
+        setBackToDefault()
+
     }
     else if(groceryValue && isEditing){
         console.log('editing');
     }
     else{
-    
         displayAlert('please enter value','danger')
-       
     }
     
 }
@@ -61,6 +94,15 @@ function displayAlert(message,action){
     },2000)
 }
 
+// set back to default
+function setBackToDefault(){
+    console.log('set back to default');
+}
+
+
 // ****** LOCAL STORAGE **********
+function addToLocalStorage(id,grocery){
+    console.log('added to local storage');
+}
 
 // ****** SETUP ITEMS **********
