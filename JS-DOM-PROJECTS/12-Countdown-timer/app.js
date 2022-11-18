@@ -98,7 +98,30 @@ const deadlineDivElmnt = document.querySelector('.deadline')
 const deadlineH4FormatElmnt = document.querySelectorAll('.deadline-format h4')
 
 // set a future date when the offer is ending
-let futureDate = new Date(2022,10,18,13,00,0,0);
+// let futureDate = new Date(2022,10,18,13,00,0,0);
+
+/*
+Set the countdown so that it does not expire ( To show that the application works )
+      ------------------------------------------------------------------------------------
+
+          > Instead of hard coding the future date - set it to always add 10 days every day
+
+             let tempDate = new Date()
+             let tempYear = tempDate.getFullYear()
+             let tempMonth = tempDate.getMonth()
+             let tempDate = tempDate.getDate()
+
+          > Pass it to futureDate
+
+              let futureDate = new Date(tempYear,tempMonth,tempDate + 10,11,30,0,0);
+*/
+
+let tempDate = new Date()
+let tempYear = tempDate.getFullYear()
+let tempMonth = tempDate.getMonth()
+let tempDay = tempDate.getDate()
+
+let futureDate = new Date(tempYear,tempMonth,tempDay+10,11,30,0,0);
 
 
 // get year
