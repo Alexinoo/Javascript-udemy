@@ -4,6 +4,7 @@
 const alertParagraphElmnt = document.querySelector('.alert')
 const formElmnt = document.querySelector('.grocery-form')
 const groceryInputElmnt = document.getElementById('grocery')
+const submitBtnElmnt = document.getElementById('.submit-btn')
 const groceryContElmnt = document.querySelector('.grocery-container')
 const groceryListElmnt = document.querySelector('.grocery-list')
 const editBtnElmnt = document.querySelector('.edit-btn')
@@ -96,7 +97,11 @@ function displayAlert(message,action){
 
 // set back to default
 function setBackToDefault(){
-    console.log('set back to default');
+    groceryInputElmnt.value = ''
+    isEditing = false
+    editId = ''
+    submitBtnElmnt.textContent = 'submit'
+
 }
 
 
