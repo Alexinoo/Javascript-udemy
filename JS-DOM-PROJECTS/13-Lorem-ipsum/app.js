@@ -46,6 +46,16 @@ function generateLoremText(e){
   }else{
 
     // for values between ( 1 - 9 )
+
+    /* slice(start,end) 
+
+          > does not change the original array
+
+          > selects from a given start, up to a (not inclusive) given end.
+
+          > returns selected elements in an array, as a new array
+
+    */    
   
       let loremIpsumText = textArray.slice(0,value)
 
