@@ -7,9 +7,6 @@ const groceryInputElmnt = document.getElementById('grocery')
 const submitBtnElmnt = document.querySelector('.submit-btn')
 const groceryContElmnt = document.querySelector('.grocery-container')
 const groceryListElmnt = document.querySelector('.grocery-list')
-const editBtnElmnt = document.querySelector('.edit-btn')
-const deleteBtnElmnt = document.querySelector('.delete-btn')
-
 const clearBtnElmnt = document.querySelector('.clear-btn')
 
 
@@ -58,6 +55,13 @@ function addItem(e){
               <button type="button" class="delete-btn"><i class="fas fa-trash"></i></button>
             </div>
             `;
+        // select edit and delete buttons
+        const deleteBtnElmnt = articleElement.querySelector('.delete-btn')
+        const editBtnElmnt = articleElement.querySelector('.edit-btn')
+
+        deleteBtnElmnt.addEventListener('click',deleteItem)
+        editBtnElmnt.addEventListener('click',editItem)
+
         // append to div.grocery-list
         groceryListElmnt.appendChild(articleElement)
 
@@ -124,6 +128,15 @@ function clearItems(){
     // localStorage.removeItem('list')
     setBackToDefault()
 
+}
+
+// delete function
+function deleteItem(){
+    console.log('item deleted');
+}
+// edit function
+function editItem(){
+    console.log('edit item');
 }
 
 
