@@ -4,7 +4,7 @@
 const alertParagraphElmnt = document.querySelector('.alert')
 const formElmnt = document.querySelector('.grocery-form')
 const groceryInputElmnt = document.getElementById('grocery')
-const submitBtnElmnt = document.getElementById('.submit-btn')
+const submitBtnElmnt = document.querySelector('.submit-btn')
 const groceryContElmnt = document.querySelector('.grocery-container')
 const groceryListElmnt = document.querySelector('.grocery-list')
 const editBtnElmnt = document.querySelector('.edit-btn')
@@ -24,6 +24,7 @@ let editId = ''
 // submit form
 
 formElmnt.addEventListener('submit',addItem)
+clearBtnElmnt.addEventListener('click',clearItems)
 
 
 // ****** FUNCTIONS **********
@@ -103,6 +104,30 @@ function setBackToDefault(){
     submitBtnElmnt.textContent = 'submit'
 
 }
+
+// clear items .. loop through the groceries added and remove child elements
+// And then hide the grocery-container
+// Display the alert
+// clear localstorage
+function clearItems(){
+    const groceries = document.querySelectorAll('.grocery-item')
+    
+    if(groceries.length > 0){
+
+        groceries.forEach(function(grocery){
+            groceryListElmnt.removeChild(grocery)
+    })
+
+    }
+    groceryContElmnt.classList.remove('show-container')
+    displayAlert('all groceries deleted','success')
+    // localStorage.removeItem('list')
+    setBackToDefault()
+
+}
+
+
+/*******END OF FUNCTIONS **********/
 
 
 // ****** LOCAL STORAGE **********
