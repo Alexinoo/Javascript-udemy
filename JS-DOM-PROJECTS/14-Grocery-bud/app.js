@@ -41,9 +41,24 @@ function addItem(e){
         console.log('editing');
     }
     else{
-        console.log('empty values');
+    
+        displayAlert('please enter value','danger')
+       
     }
     
+}
+
+// display alert and remove after some seconds
+
+function displayAlert(message,action){
+    alertParagraphElmnt.textContent = message
+    alertParagraphElmnt.classList.add(`alert-${action}`)
+
+    //remove alert after 3seconds
+    setTimeout(function(){
+        alertParagraphElmnt.textContent = ''
+        alertParagraphElmnt.classList.remove(`alert-${action}`)
+    },2000)
 }
 
 // ****** LOCAL STORAGE **********
