@@ -30,12 +30,14 @@ formElmnt.addEventListener('submit',addItem)
 function addItem(e){
     e.preventDefault();
     const groceryValue = groceryInputElmnt.value
+
+    // generate unique id for added item
     const id = new Date().getTime().toString()
     
-    if(groceryValue !== '' && isEditing === false){
+    if(groceryValue && !isEditing ){
         console.log('add item to the list');
     }
-    else if(groceryValue !== '' && isEditing === true){
+    else if(groceryValue && isEditing){
         console.log('editing');
     }
     else{
