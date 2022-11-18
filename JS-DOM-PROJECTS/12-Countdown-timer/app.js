@@ -98,7 +98,7 @@ const deadlineDivElmnt = document.querySelector('.deadline')
 const deadlineH4FormatElmnt = document.querySelectorAll('.deadline-format h4')
 
 // set a future date when the offer is ending
-let futureDate = new Date(2022,11,17,17,12,0,0);
+let futureDate = new Date(2022,10,18,13,00,0,0);
 
 
 // get year
@@ -128,4 +128,170 @@ const seconds = futureDate.getSeconds()
 const milliseconds = futureDate.getMilliseconds()
 
 // Output on the screen
-giveawayH4Elmnt.textContent = `giveaway ends on ${weekday}, ${date} ${month} ${year}, ${hours}:${minutes} ${hours >= 12 ? 'pm' : 'am'}`
+giveawayH4Elmnt.innerHTML = `giveaway ends on ${weekday}, ${date} ${month} ${year}, ${hours}:${minutes}
+ ${hours >= 12 ? `<span style="text-transform:lowercase;">pm</span` :
+ `<span style="text-transform:lowercase;">am</span>`}`
+
+
+/*
+
+      Calculate Remaining Time in Days/Hours/Mins/seconds
+      ................................................... 
+
+          > use Date().getTime() - returns time in ms
+
+          > get future date 
+          
+              futureTime = futureDate.getTime()
+
+          > get current date 
+              currentTime = new Date().getTime()
+
+          > Get the remaining time
+              remainingTimeInMs = futureTime - currentTime  
+
+
+      Calculate days/hours/min/sec in Ms
+      --------------------------------------------------------------------
+
+          > How many ms are there in 1 day ( 24 * 60 * 60 *1000 )
+          > How many ms are there in 1 hr ( 60 * 60 *1000 )
+          > How many ms are there in 1 min ( 60 *1000 )
+
+
+      Calculate how many (days/hours/min/sec) in full are left - Modulus operator
+      ----------------------------------------------------------------------------
+
+          > NoOfDaysRemaining 
+
+              e.g Math.floor( remainingTimeInMs / oneDayinMs )
+
+          > NoOfHrsRemaining
+
+              e.g Math.floor( (remainingTimeInMs % oneDayinMs) / OnehourInMS )
+
+          > NoOfMinsRemaining
+
+              e.g Math.floor( (remainingTimeInMs % OnehourInMS) / OneMinInMS )
+
+          > NoOfSecRemaining
+
+              e.g Math.floor( (remainingTimeInMs % OneMinInMS) / 1000 )
+
+
+      Store NoOfDaysRemaining , NoOfHrsRemaining, NoOfMinsRemaining, NoOfSecRemaining values in array
+      ----------------------------------------------------------------------------
+
+          > const values = [NoOfDaysRemaining,NoOfHrsRemaining,NoOfMinsRemaining, NoOfSecRemaining]
+
+          > Loop through the deadlineH4FormatElmnt NodeList and set innerHTML to values[index]
+
+      Use setInterval to run the function repeatedly
+      -----------------------------------------------------------
+
+          > store the id from setInterval() in a countdown variable
+             let countdown = setInterval(getRemainingTime,1000)
+
+      Clear countdown variable once the remainingTimeInMs expires
+      -----------------------------------------------------------
+
+          > Remove the deadlineDivElmnt with the content that the giveaway has expired
+
+           if(remainingTimeInMs < 0){
+              clearInterval(countdown)
+              deadlineDivElmnt.innerHTML = `<h4 class="expired"> sorry, this giveaway has expired </h4>`
+             }
+
+*/
+
+
+// Future time in ms
+
+const futureTimeInMs = futureDate.getTime()
+// console.log('Future time in Ms',futureTimeInMs);
+
+
+// function
+
+function getRemainingTime(){
+
+  const todayTimeInMs = new Date().getTime()
+  // console.log('Today\'s time in MS',todayTimeInMs);
+
+  const remainingTimeInMs = futureTimeInMs - todayTimeInMs
+
+  //console.log('Remaining time in MS',remainingTimeInMs);
+
+  /*
+     General Concepts
+     ................. 
+
+        1sec    = 1000ms =   1000ms
+        1min    = 60sec  =   60*1000ms
+        1hr     = 60min  =   60*60*1000ms
+        1day    = 24hrs  =   24*60*60*1000ms
+
+  */
+
+    const oneDayinMs = 24 * 60 * 60 *1000
+    //console.log('One Day in Ms',oneDayinMs);
+
+    const oneHrinMs = 60*60*1000
+    //console.log('One Hour in Ms',oneHrinMs);
+
+    const oneMininMs = 60*1000
+    //console.log('One Min in Ms',oneMininMs);
+
+    // Calculate NoOfDaysRemaining , NoOfHrsRemaining , NoOfMinRemaining , NoOfSecRemaining values in Full
+
+
+    // NoOfDaysRemaining - Days in full (Use Math.floor)
+
+    let NoOfDaysRemaining = Math.floor(remainingTimeInMs / oneDayinMs) // 1.2581301851851852
+    //console.log('No of Days remaining',NoOfDaysRemaining);
+
+
+    // NoOfHrsRemaining  - GOTCHA !!!!
+    // Use modulus operator - calculate how many hours are left
+ 
+    let NoOfHrsRemaining = Math.floor( (remainingTimeInMs % oneDayinMs) / oneHrinMs) 
+    //console.log('No of Hours remaining',NoOfHrsRemaining);
+
+    // NoOfMinsRemaining  - GOTCHA !!!!
+   // Use modulus operator - calculate how many minutes are left
+ 
+    let NoOfMinsRemaining = Math.floor((remainingTimeInMs % oneHrinMs) / oneMininMs)
+    //console.log('No of Minutes remaining',NoOfMinsRemaining);
+
+    // NoOfSecRemaining  - GOTCHA !!!!
+    // Use modulus operator - calculate how many seconds are left
+ 
+    let NoOfSecRemaining = Math.floor ( (remainingTimeInMs % oneMininMs) / 1000 )
+    // console.log('No of Seconds remaining',NoOfSecRemaining);
+
+    const deadLineInDaysHoursMinSecArray = [ NoOfDaysRemaining , NoOfHrsRemaining ,NoOfMinsRemaining, NoOfSecRemaining ]
+
+    function format(item){
+      if(item < 10 ){
+        return `0${item}`
+      }
+      return item
+    }
+
+    deadlineH4FormatElmnt.forEach(function(deadline , index){
+      deadline.textContent =  format ( deadLineInDaysHoursMinSecArray[index] )
+    })
+
+    if(remainingTimeInMs < 0){
+      clearInterval(countdown)
+      deadlineDivElmnt.innerHTML = `<h4 class="expired"> sorry, this giveaway has expired </h4>`
+    }
+}
+
+// countdown
+
+let countdown = setInterval(getRemainingTime,1000)
+
+
+// It's important you invoke after the countdown variable
+getRemainingTime()
