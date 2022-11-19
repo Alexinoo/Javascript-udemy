@@ -204,7 +204,15 @@ function getItemsFromLocalStorage(){
 }
 
 function deleteGroceryFromLocalStorage(id){
-      console.log('grocery deleted from local storage');
+    //get items from localStorage
+    let items = getItemsFromLocalStorage()
+    
+    //return the items that do not match the id
+    items = items.filter(function(item){
+        return item.id !== id
+    })
+    // set back grocery-list to the new items / overwrite local storage
+    localStorage.setItem('grocery-list',JSON.stringify(items))
 }
 
 function updateLocalStorage(id,value){
