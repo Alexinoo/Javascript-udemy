@@ -132,7 +132,7 @@ function clearItems(){
     }
     groceryContElmnt.classList.remove('show-container')
     displayAlert('all groceries deleted','success')
-    // localStorage.removeItem('list')
+    localStorage.removeItem('grocery-list')
     setBackToDefault()
 
 }
