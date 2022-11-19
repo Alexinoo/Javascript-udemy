@@ -181,8 +181,26 @@ function editItem(e){
 
 
 // ****** LOCAL STORAGE **********
+// methods available to us from localStorage API
+// localStorage.setItem()
+// localStorage.getItem(key)
+// localStorage.removeItem(key)
+// localStorage.clearItem()
 function addToLocalStorage(id,grocery){
-    console.log('added to local storage');
+    const groceries = {id, grocery}
+
+    let items = getItemsFromLocalStorage()
+    items.push(groceries)
+    localStorage.setItem('grocery-list',JSON.stringify(items))
+}
+
+function getItemsFromLocalStorage(){    
+    // check if there are any items in the localstorage
+    // If there are items .. return them
+    // else return an empty array
+    return localStorage.getItem('grocery-list') ? 
+    JSON.parse(localStorage.getItem('grocery-list')) :
+    []
 }
 
 function deleteGroceryFromLocalStorage(id){
@@ -190,7 +208,7 @@ function deleteGroceryFromLocalStorage(id){
 }
 
 function updateLocalStorage(id,value){
-    
+
 }
 
 // ****** SETUP ITEMS **********
