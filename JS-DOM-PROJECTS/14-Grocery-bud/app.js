@@ -215,8 +215,20 @@ function deleteGroceryFromLocalStorage(id){
     localStorage.setItem('grocery-list',JSON.stringify(items))
 }
 
-function updateLocalStorage(id,value){
+function updateLocalStorage(id,grocery){
+    //get items from Local Storage
+    let items = getItemsFromLocalStorage()
 
+    // use map - update the value with the matching id
+    items = items.map(function(item){
+        if(item.id === id ){
+            item.grocery = grocery
+        }
+        return item
+    })
+    
+    // set back grocery-list to the new items / overwrite local storage
+    localStorage.setItem('grocery-list',JSON.stringify(items))
 }
 
 // ****** SETUP ITEMS **********
