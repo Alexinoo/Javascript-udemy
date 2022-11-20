@@ -62,3 +62,15 @@
             } 
 
 */
+
+// select Elements
+
+const sliderDivElmnts = document.querySelectorAll('.slide')
+const prevBtnElmnt = document.querySelector('.prevBtn')
+const nextBtnElmnt = document.querySelector('.nextBtn')
+
+// iterate through the slides and change the transform-translate value through Javascript depending with where the element is sitting
+
+sliderDivElmnts.forEach(function(slide,index){
+    slide.style.left = `${index * 100}%`
+})
