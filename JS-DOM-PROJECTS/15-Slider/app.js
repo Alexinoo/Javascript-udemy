@@ -90,17 +90,62 @@ prevBtnElmnt.addEventListener('click',function(){
 })
 
 // Set a function that controls the transform property when the counter variable is incremented
+/*
 function carousel(){
 
     // working with slides.length
-
     if(counter === sliderDivElmnts.length){
         counter = 0
-    }
-    
+    }    
     if( counter < 0 ){
         counter = sliderDivElmnts.length - 1
     }
+    sliderDivElmnts.forEach(function(slide){
+    slide.style.transform = `translateX(-${counter*100}%)`
+})
+}
+*/
+
+/* 
+    Working with Buttons
+    ......................
+
+      Previous Button
+      -----------------
+
+        > Hide Prev Button when the application loads
+
+        > Only show when the counter is greater than 1
+
+
+      Next Button
+      -----------------
+
+        > Hide Next Button when you get to the last slide
+
+        > Show when the application loads
+
+*/
+
+ prevBtnElmnt.style.display = 'none'
+
+ function carousel(){
+
+    // next button
+    if( counter < sliderDivElmnts.length - 1 ){
+        nextBtnElmnt.style.display = 'block'
+    }else {
+        nextBtnElmnt.style.display = 'none'
+    } 
+    
+    // show prev button when you get to the last slide
+
+    if( counter > 0 ) {
+        prevBtnElmnt.style.display = 'block'
+    }else{
+        prevBtnElmnt.style.display = 'none'
+    }
+
 
     sliderDivElmnts.forEach(function(slide){
     slide.style.transform = `translateX(-${counter*100}%)`
