@@ -69,8 +69,40 @@ const sliderDivElmnts = document.querySelectorAll('.slide')
 const prevBtnElmnt = document.querySelector('.prevBtn')
 const nextBtnElmnt = document.querySelector('.nextBtn')
 
-// iterate through the slides and change the transform-translate value through Javascript depending with where the element is sitting
+// iterate through the slides and add the left-property to each slide based on their index on where the element is sitting
 
 sliderDivElmnts.forEach(function(slide,index){
     slide.style.left = `${index * 100}%`
 })
+
+// Add the functionality that control which slide is shown and which ones are hidden
+
+let counter = 0
+
+nextBtnElmnt.addEventListener('click',function(){
+    counter++
+    carousel()
+})
+
+prevBtnElmnt.addEventListener('click',function(){
+    counter--
+    carousel()
+})
+
+// Set a function that controls the transform property when the counter variable is incremented
+function carousel(){
+
+    // working with slides.length
+
+    if(counter === sliderDivElmnts.length){
+        counter = 0
+    }
+    
+    if( counter < 0 ){
+        counter = sliderDivElmnts.length - 1
+    }
+
+    sliderDivElmnts.forEach(function(slide){
+    slide.style.transform = `translateX(-${counter*100}%)`
+})
+}
