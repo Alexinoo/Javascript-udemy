@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS OBJECTS - Basics</title>
+</head>
+<style>
+    html {
+        font-family: 'Jost', sans-serif;
+    }
+    .container {
+        max-width: 40rem;
+        height: 5rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+        margin: 3rem auto;
+        padding: 0.5rem;
+        background-color: #880017;
+        color: white;
+        text-align: center;
+        border-radius: 12px;
+    }
+
+    .title h1{
+        font-size: 24px;
+        letter-spacing: 1.5px;
+        text-transform: capitalize;        
+    }
+</style>
+<body>
+    <div class="container">
+        <div class="title">
+            <h1> js objects basics</h1>
+        </div>
+    </div>
+
+</body>
+<script type="text/javascript">
+   
+/* 
+    JS Objects - Basics
+    ......................
+
+        > Objects are collections of key (property) value pairs 
+
+        > Property values can be of the following types
+
+            - Strings
+            - Numbers
+            - Booleans
+            - Arrays
+            - Objects
+            - Functions
+
+        > If a property value is a function , the key is called a method.
+
+
+    Object Literal Syntax
+    ......................... 
+
+        > represented with two value pairs {}
+
+    Accessing Property
+    ..........................
+
+        > dot notation (object.property)
+*/
+
+
+
+/****** OBJECTS IN ACTION ************/
+
+const person = {
+    name : 'Alex',
+    age : 32,
+    married : true,
+    siblings : ['anna','peter'],
+    greet : function(name){
+        console.log(`Hello, my name is ${name}`);
+    },
+
+    sayHello(name){
+        console.log(`Hello, my name is ${name}`);
+    }
+}
+
+
+/****** Accessing Properties/Methods In Action ************/
+//syntax: const  = object.property
+
+
+console.log(person);
+
+const nameStr = person.name
+console.log(`Name : ${nameStr}`);
+
+const ageNum = person.age
+console.log(`Age : ${ageNum}`);
+
+const isMarried = person.married
+console.log(`Married : ${isMarried}`);
+
+const firstSibling = person.siblings[0]
+const secondSibling = person.siblings[1]
+
+console.log(`Siblings are : ${firstSibling.toUpperCase()} and ${secondSibling.toUpperCase()} `);
+
+
+
+//////////////////// Updating values for the properties /////////////////
+
+// Opposite of accessing  object.property =  value
+
+// Siblings
+ person.siblings[0] = `Antony`;
+ person.siblings[1] = `None`;
+
+// Names
+person.name = 'Cyrus'
+person.age = 34
+person.married = false
+
+
+///////// ADDING PROPERTY ////////////////////////////
+// object.newProperty = newValue
+
+person.city = 'Nairobi, Kenya'
+
+
+
+/////////  DELETE PROPERTY ///////////////////////
+//use keyword delete object.property
+
+ delete person.siblings
+
+
+// Alternatively, we can assign it to a variable which returns true/false depending with whether the property was successfully deleted
+
+const isCountryDeleted = delete person.country
+console.log('Property deleted : ', isCountryDeleted);
+
+
+
+console.log(person)
+
+</script>
+</html>
