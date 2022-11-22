@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS OBJECTS - Factory Functions</title>
+</head>
+<style>
+
+    :root {
+          --clr-white: #fff;
+    }
+
+
+    html {
+        font-family: 'Jost', sans-serif;
+    }
+
+    .container {
+        max-width: 40rem;
+        height: 8rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+        margin: 3rem auto;
+        padding: 0.5rem;
+        background-color: #880017;
+        color: white;
+        text-align: center;
+        border-radius: 12px;
+    }
+
+    .title h1 {
+        font-size: 32px;
+        letter-spacing: 1.5px;
+        text-transform: capitalize;
+        
+    }
+
+    .title span {
+        text-transform: uppercase;
+    }
+
+   .underline {
+    width: 10rem;
+    height: 0.25rem;
+    background: var(--clr-white);
+    margin-left: auto;
+    margin-right: auto;
+    }
+
+    .links {
+        text-align: center;
+    }
+
+    .links li{
+        text-transform: capitalize;
+        list-style-type: disc;
+        list-style-position: inside;
+        font-size: 24px;
+    }
+    
+  
+</style>
+
+<body>
+    <div class="container">
+        <div class="title">
+            <h1> <span>js</span> objects </h1>
+            <div class="underline"></div>
+        </div>
+        <ul class="links">
+            <li>factory functions</li>
+        </ul>
+    </div>
+
+</body>
+<script type="text/javascript">
+/*
+    Factory Functions
+    ............................... 
+
+        > Acts as blue print
+
+        > For each and every object we have fullName() repeated in every object
+
+        > Suppose we change/add functionality of fullName() to john object , what happens to Bob
+
+        > Only do-able when you have 2 objects but not practical for a 1000 objects
+
+    So what would be a solution
+    -----------------------------------
+
+        > Well , the solution would be to setup a Factory function.
+        
+        > A function that returns the object and based on the parameter , it sets up that object
+
+        > Any changes , done only on one place and no need to change in multiple places ..all instances are updated
+
+*/
+
+const john = {
+    firstName: 'john',
+    lastName: 'anderson',
+    fullName: function () {
+        console.log(this);
+        console.log(`My full name is ${this.firstName} ${this.lastName} and I love JS`);
+    }
+}
+const bob = {
+    firstName: 'peter',
+    lastName: 'sanders',
+    fullName: function () {
+        console.log(this);
+        console.log(`My full name is ${this.firstName} ${this.lastName} `);
+    }
+}
+//////////////////////////////////////////////////////////////////////////////////////////  Factory Functions IN ACTION ////////////////////////////////////////////
+
+//create a function that returns an object
+
+function createPerson(firstName, lastName){
+    return {
+        firstName : firstName,
+        lastName : lastName,
+        fullName : function(){
+            console.log(`My full name is ${this.firstName} ${this.lastName} and I love JS and HTML`);
+        }
+    }
+}
+
+// store the result in a variable
+const james = createPerson('Jane', 'Doe')
+const alex = createPerson('Alex', 'Mwangi')
+
+// We can even use our methods..AWESOME !!!
+    james.fullName()
+    alex.fullName()
+
+</script>
+ </html>
