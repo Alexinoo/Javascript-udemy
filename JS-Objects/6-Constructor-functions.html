@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS OBJECTS - Constructor Functions</title>
+</head>
+<style>
+    :root {
+        --clr-white: #fff;
+    }
+
+
+    html {
+        font-family: 'Jost', sans-serif;
+    }
+
+    .container {
+        max-width: 40rem;
+        height: 8rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+        margin: 3rem auto;
+        padding: 0.5rem;
+        background-color: #880017;
+        color: white;
+        text-align: center;
+        border-radius: 12px;
+    }
+
+    .title h1 {
+        font-size: 32px;
+        letter-spacing: 1.5px;
+        text-transform: capitalize;
+
+    }
+
+    .title span {
+        text-transform: uppercase;
+    }
+
+    .underline {
+        width: 10rem;
+        height: 0.25rem;
+        background: var(--clr-white);
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .links {
+        text-align: center;
+        margin-bottom: 5rem;
+    }
+
+    .links li {
+        text-transform: capitalize;
+        list-style-type: disc;
+        list-style-position: inside;
+        font-size: 24px;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="title">
+            <h1> <span>js</span> objects </h1>
+            <div class="underline"></div>
+        </div>
+        <ul class="links">
+            <li>constructor functions</li>
+        </ul>
+    </div>
+
+</body>
+<script type="text/javascript">
+/*
+
+    Constructor Functions
+    ......................... 
+
+        > A common practice / convention  is to name the function starting with a capital letter (though there is nothing really special about using the Capital letter anyway )
+
+        > use keyword new to create a new object and points to it
+
+        > omit return (that is why we are using new keyword )
+
+        > If we omit the new keyword - 'this' points to the global window object and therefore no access to fullName() methods
+
+        > This is because there are no methods like fullName() in the global window object
+*/
+
+
+//////////////////////////////////////////////////////////////////////////////////////////  Constructor Functions IN ACTION ////////////////////////////////////////
+
+
+// constructor function
+function Person(firstName, lastName){
+    this.firstName = firstName,
+    this.lastName = lastName,
+    this.fullName = function(){
+        console.log(`My full name is ${this.firstName} ${this.lastName} and I love React`);
+    }
+    console.log('this points/refers to the object invoking fullName() :' ,this);
+}
+
+// create a new object
+const john = new Person('John','Anderson')
+
+// invoke our method
+john.fullName()
+
+
+// create a new object
+const bob = new Person('Bob','Jordan')
+
+// invoke our method
+bob.fullName()
+
+
+
+////////////////////////////////////////////////////////////////////////////////////// Factory Function vs Constructor function ///////////////////////////////////
+function createPerson(firstName, lastName) {
+        return {
+            firstName: firstName,
+            lastName: lastName,
+            fullName: function () {
+                console.log(`My full name is ${this.firstName} ${this.lastName} and I love JS and HTML`);
+            }
+        }
+ }
+</script>
+</html>
