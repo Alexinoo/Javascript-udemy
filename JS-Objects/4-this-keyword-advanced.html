@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS OBJECTS - this keyword Advanced</title>
+</head>
+<style>
+    html {
+        font-family: 'Jost', sans-serif;
+    }
+
+    .container {
+        max-width: 40rem;
+        height: 8rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+        margin: 3rem auto;
+        padding: 0.5rem;
+        background-color: #880017;
+        color: white;
+        text-align: center;
+        border-radius: 12px;
+    }
+
+    .title h1 {
+        font-size: 24px;
+        letter-spacing: 1.5px;
+        text-transform: capitalize;
+    }
+
+    .title #this {
+        text-transform: lowercase;
+    }
+
+    button {
+        font-size: 18px;
+        color: #fff;
+        letter-spacing: 1.5px;
+        padding: 8px 16px;
+        margin-left: 10px;
+        outline: none;
+        border: 1px solid #222;
+        background:crimson ;
+        border-radius: 5px;
+        transition: background-color 0.2s ease-in-out ;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color : transparent;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="title">
+            <h1> js objects - <span id="this">this</span> keyword advanced</h1>
+        </div>
+        <div class="btn-container">
+            <button class="btn-1" type="button">click me</button>
+            <button class="btn-2" type="button">click me</button>
+            <button class="btn-3" type="button">click me</button>
+        </div>
+    </div>
+
+</body>
+<script type="text/javascript">
+/*
+    this keyword
+    ...................
+
+    Regular Functions
+    --------------------------------
+        > 'this' - determined by "HOW" !!! a function is invoked (left of .)
+
+        > essentially who is invoking the function
+
+            e.g. person.fullName()
+
+
+    Arrow functions
+    --------------------------------
+
+        > If we invoke the function without anything on the leftside of the . 'this' will default to the global window object     
+
+        {window: Window, self: Window, document: document, name: '', location: Location, …}
+
+*/
+
+////////////////////////////////////////////////////////////////////////////////////////////// this keyword advanced in Action /////////////////////////////////////
+
+function showThis(){
+     console.log(this);
+ }
+
+ const john = {
+    name : 'john',
+    showThis : function(){
+        console.log(this);
+    }
+ }
+
+ const bob = {
+    name : 'bob',
+    showThis : showThis
+ }
+
+//  Both of them points to the object on the left side of the dot(.)
+//with regular object , 'this' is determined by HOW we invoke the function
+// if the object is doing the invokation , then of course we are going to point to the object
+
+
+console.log('Invoke john.showThis() ...')
+john.showThis()
+// {name: 'john', showThis: ƒ}
+
+
+
+console.log('Invoke bob.showThis()...')
+bob.showThis()
+// { name: 'bob', showThis: ƒ }
+
+
+// However if we invoke the function directly 
+// We point to the global window object
+
+ console.log('Invoke showThis() directly...')
+ showThis()
+ //Window {window: Window, self: Window, document: document, name: '', location: Location, …}
+
+
+ 
+ ////////////////////////////////////////////////////////////////////////////////////////////// More Examples With buttons  /////////////////////////////////////
+
+ const btnElement = document.querySelector('.btn-1')
+ const btnElement2 = document.querySelector('.btn-2')
+ const btnElement3 = document.querySelector('.btn-3')
+
+
+//  Event Listeners
+// since showThis is left of btnElement - it's going to point to the btn-1.button
+btnElement.addEventListener('click',showThis)
+
+// since showThis is left of btnElement2 - it's going to point to the btn-2.button
+ btnElement2.addEventListener('click',showThis)
+
+ 
+
+//HOWEVER !!!
+// since the left is empty - it's going to point to the global function
+btnElement3.addEventListener('click',function(){
+        showThis()
+ })
+
+
+</script>
+
+</html>
