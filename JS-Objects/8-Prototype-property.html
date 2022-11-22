@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS OBJECTS - Prototype property</title>
+</head>
+<style>
+    :root {
+        --clr-white: #fff;
+    }
+
+
+    html {
+        font-family: 'Jost', sans-serif;
+    }
+
+    .container {
+        max-width: 40rem;
+        height: 8rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+        margin: 3rem auto;
+        padding: 0.5rem;
+        background-color: #880017;
+        color: white;
+        text-align: center;
+        border-radius: 12px;
+    }
+
+    .title h1 {
+        font-size: 32px;
+        letter-spacing: 1.5px;
+        text-transform: capitalize;
+
+    }
+
+    .title span {
+        text-transform: uppercase;
+    }
+
+    .underline {
+        width: 10rem;
+        height: 0.25rem;
+        background: var(--clr-white);
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .links {
+        text-align: center;
+        margin-bottom: 5rem;
+    }
+
+    .links li {
+        text-transform: capitalize;
+        list-style-type: disc;
+        list-style-position: inside;
+        font-size: 24px;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="title">
+            <h1> <span>js</span> objects </h1>
+            <div class="underline"></div>
+        </div>
+        <ul class="links">
+            <li>prototype property</li>
+        </ul>
+    </div>
+
+</body>
+<script type="text/javascript">
+/*
+    Prototypal Inheritance Model
+    .............................. 
+
+        > In simple terms, this means that we are going to store some properties and more importantly methods on a prototype ..meaning on the constructor instead of creating a new copy each and every time we create an instance
+
+        > Each instance/object , (alex , jane ) has deposit: ƒ function
+
+        > We can already imagine that , it's probably not the best idea that we are creating copies of the same function in the memory
+
+        > Because , its one thing we have 2 customers , but realistically for a bank we will have thousands of thousands.
+
+        > So even though, our functionality works really nicely , we are making copies of the same function.
+
+        > Yeah we can change the functionality of the deposit: ƒ function in one central location but each instance is making a copy of itself
+
+    So, what would be the solution
+    -----------------------------------
+
+        > The solution is the fact that each and every time , we work with a constructor , constructor has the prototype property that is shared by every instance of the constructor/class.
+
+        > So any properties and methods can be acessed by every instance
+
+        > Prototype property returns an object
+
+        > Account.prototype returns {constructor: ƒ} which is basically an object 
+
+        > We don't need to add a parameter to our Account Constructor function because bank_name is gonna be exactly the same
+        
+            Account(name,initialBalance , bank_name)
+
+        > So, this is what we can do, we can setup our prototype
+        
+        > Therefore, we can add a property to our Account.prototype object which will be shared by every instance of the constructor/class
+
+            Account.prototype.bank_name = 'CHASE'
+
+        > Therefore, we can set this up in one place , in the prototype and of course what is really cool , is that if I want it in the john instance , we can access it by
+         
+            e.g.
+
+                const bank_name = john.bank_name
+
+                const bank_name = bob.bank_name
+
+        > Really shines when we are setting up methods , because again, we can imagine that , we have 10000 bank accounts and probably have 10 methods.
+
+        > So it might as well make sense for us to set those methods on the prototype instead of copying each and every time that functionality
+
+        Account.prototype.deposit = function(amount){
+                                        this.balance += amount
+                                        console.log(`Hello ${this.name} , your balance is ${this.balance}`);
+                                    }
+
+        
+
+*/
+
+
+/////////////////////////////////////////////////////////////////////////////////////////// Account Constructor Function //////////////////////////////////////////
+
+
+function Account(name,initialBalance){
+    this.name = name 
+    this.balance = initialBalance
+}
+
+const alex = new Account('Alex',200)
+
+const jane = new Account('Jane',0)
+
+
+console.log(Account.prototype);
+
+
+// Add bank_name property to Account.prototype which is an object by design
+Account.prototype.bank_name = 'CHASE BANK'
+
+// Accessing bank_name from alex/jane instance
+
+console.log('alex\'s instance : ',alex.bank_name);
+
+console.log('jane\'s instance : ',jane.bank_name);
+
+// Add deposit: ƒ function to Account.prototype 
+Account.prototype.deposit = function (amount) {
+    this.balance += amount
+    console.log(`Hello ${this.name} , your balance is ${this.balance}`);
+}
+
+alex.deposit(300)
+
+jane.deposit(1000)
+
+</script>
+
+</html>
