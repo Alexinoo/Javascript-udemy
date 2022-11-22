@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS OBJECTS - Constructor property</title>
+</head>
+<style>
+    :root {
+        --clr-white: #fff;
+    }
+
+
+    html {
+        font-family: 'Jost', sans-serif;
+    }
+
+    .container {
+        max-width: 40rem;
+        height: 8rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+        margin: 3rem auto;
+        padding: 0.5rem;
+        background-color: #880017;
+        color: white;
+        text-align: center;
+        border-radius: 12px;
+    }
+
+    .title h1 {
+        font-size: 32px;
+        letter-spacing: 1.5px;
+        text-transform: capitalize;
+
+    }
+
+    .title span {
+        text-transform: uppercase;
+    }
+
+    .underline {
+        width: 10rem;
+        height: 0.25rem;
+        background: var(--clr-white);
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .links {
+        text-align: center;
+        margin-bottom: 5rem;
+    }
+
+    .links li {
+        text-transform: capitalize;
+        list-style-type: disc;
+        list-style-position: inside;
+        font-size: 24px;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="title">
+            <h1> <span>js</span> objects </h1>
+            <div class="underline"></div>
+        </div>
+        <ul class="links">
+            <li>constructor property</li>
+        </ul>
+    </div>
+
+</body>
+<script type="text/javascript">
+/*
+    Constructor Property
+    ........................
+
+        > All objects in Javascript have access to constructor property that returns a constructor function that created it.
+
+        > We have built-in constructor functions 
+           e.g. 
+                 ƒ Object() { [native code] }
+
+        > That means we have Object() constructor function that creates an empty object
+
+        > Arrays and functions are objects in javascript
+
+        e.g. 
+            Arrays
+            ........
+
+                ƒ Array() { [native code] }
+
+            functions
+            ..........
+
+                ƒ Function() { [native code] }
+
+        > We can also create an object by pointing to new object.constructor property
+
+        > We don't always have to use new Person('Alex','Mwangi') in order to create a new instance for example
+
+        > We can do it this way too..
+
+            const susy = new john.constructor('Susan','Jordan')
+
+*/
+
+function Person(firstName,lastName){
+    this.firstName = firstName
+    this.lastName = lastName
+    this.fullName = function(){
+        console.log(`My full name is ${this.firstName} ${this.lastName} and I love React`);
+    }
+}
+
+const alex = new Person('Alex','Mwangi')
+console.log(alex.constructor);
+
+// built-in constructor functions
+const bob = {}
+console.log(bob.constructor);
+
+// arrays
+const listArray = []
+console.log(listArray.constructor);
+
+// functions
+const emptyFunction = function(){}
+console.log(emptyFunction.constructor);
+
+// create a new instance without using new Person('Alex','Mwangi')
+const susy = new alex.constructor('Susan', 'Jordan')
+susy.fullName()
+
+</script>
+</html>
