@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS OBJECTS - this keyword</title>
+</head>
+<style>
+    html {
+        font-family: 'Jost', sans-serif;
+    }
+
+    .container {
+        max-width: 40rem;
+        height: 5rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+        margin: 3rem auto;
+        padding: 0.5rem;
+        background-color: #880017;
+        color: white;
+        text-align: center;
+        border-radius: 12px;
+    }
+
+    .title h1 {
+        font-size: 24px;
+        letter-spacing: 1.5px;
+        text-transform: capitalize;
+    }
+
+    .title #this {
+        text-transform: lowercase;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="title">
+            <h1> js objects - <span id="this">this</span> keyword basics</h1>
+        </div>
+        <ul class="topics">
+
+        </ul>
+    </div>
+
+</body>
+<script type="text/javascript">
+/*
+    this keyword
+    ...................
+
+        > points to the left of the dot
+
+        > this points to the object {  } itself 
+        
+        e.g 
+
+        
+        const john = {
+            firstName : 'john',
+            lastName : 'anderson',
+            fullName : function(){
+                
+                console.log(this); 
+             //   {firstName: 'john', lastName: 'anderson', fullName: ƒ}
+            }
+        }
+
+        > when we invoke john.fullName() , john is on the left side of the dot
+
+        > therefore "this" will ALWAYS ALWAYS point to that object
+
+        > this represents the object invoking the function
+            e.g.
+
+            john.fullName() - this points to john object
+
+
+
+            bob.fullName() -  this points to bob object
+
+
+*/
+
+////////////////////////////////////////////////////////////////////////////////////////////////////// this keyword in Action /////////////////////////////////////
+
+const john = {
+    firstName : 'john',
+    lastName : 'anderson',
+    fullName : function(){
+        console.log(this);
+        console.log(`My full name is ${this.firstName} ${this.lastName} `);
+    }
+}
+const bob = {
+    firstName : 'peter',
+    lastName : 'sanders',
+    fullName : function(){
+        console.log(this);
+        console.log(`My full name is ${this.firstName} ${this.lastName} `);
+    }
+}
+
+john.fullName()
+bob.fullName()
+
+
+</script>
+</html>
