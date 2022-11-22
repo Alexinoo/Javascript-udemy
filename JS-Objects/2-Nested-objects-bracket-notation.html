@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS OBJECTS - Nested Objects , Bracket Notation</title>
+</head>
+<style>
+    html {
+        font-family: 'Jost', sans-serif;
+    }
+
+    .container {
+        max-width: 40rem;
+        height: 5rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+        margin: 3rem auto;
+        padding: 0.5rem;
+        background-color: #880017;
+        color: white;
+        text-align: center;
+        border-radius: 12px;
+    }
+
+    .title h1 {
+        font-size: 24px;
+        letter-spacing: 1.5px;
+        text-transform: capitalize;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="title">
+            <h1> js objects - nested objects , bracket notation</h1>
+        </div>
+        <ul class="topics">
+
+        </ul>
+    </div>
+
+</body>
+<script type="text/javascript">
+
+    /*
+
+        Nested Objects & Bracket Notation
+        ....................................
+
+            > set variable as property value
+        
+        Nested Objects
+        ------------------------------------
+
+            > We can go as many levels deep as we would want
+
+             job : {
+                 title : 'developer',
+                 company : {
+                      name : 'coding addict',
+                      address : '123 main street'
+                     }
+                  }
+
+
+        dot notation vs bracket notation
+        ------------------------------------ 
+        
+            > Remember we said when setting variable..we have rules
+
+            > There are something that we are allowed to do and others not allowed to do
+
+                  e.g const random-value;
+
+            > Again we can't set random-value as a property just like that
+
+                  e.g.
+                        const person = {
+                             random-value : 98
+                          }
+
+            >  We need to wrap it in the quotations marks (either single/double)
+
+                  e.g.
+                         const person = {
+                              'random-value' : 98
+                           }
+            > But the problem is , we cant access it using the dot.notation like this.
+                  e.g. 
+                        const randomValue = person.random-value
+
+            > This is where the bracket notation comes into play
+                  e.g.
+                        const randomValue = person['random-value']
+
+            > ['random-value'] needs to be wrapped in either single/double quotes     
+            
+            > We can also use bracket notation to access other properties as well
+
+                  e.g.
+
+                        const name = person['name']
+                        const age = person['age']
+                        const id_no = person['id_no']
+
+            > We can also dynamically access the object properties
+
+                 e.g 
+                        let random = 'random-value'
+                 - And now instead of accessing this way :- person['random-value'] 
+
+                 -We can just pass the variable that we have created above as below
+                        const randomValue = person[random]
+
+           > This is the same thing and the only difference is passing it as variable
+                        const randomValue = person[random] //random
+                        const randomValue = person['random-value'] //random
+
+           > This allows us to change this values
+
+                        let random = 'random-value'
+                            random = 'age'
+           
+           > But the string ('age') needs to match with the object properties 
+               
+                i.e. There needs to be an age property in your object
+
+           > Proper use case - [react forms]
+
+    */
+
+
+///////////////////////////////////////////////////////////////////////////////// 
+////////////// Nested Objects In Action/////////////////////////////////////////
+
+let random = 'random-value'
+random = 'age'
+
+   const person = {
+        name: 'Alex',
+        age: 32,
+        married: true,
+        siblings: ['anna', 'peter'],
+        greet: function (name) {
+            console.log(`Hello, my name is ${name}`);
+        },
+
+        sayHello(name) {
+            console.log(`Hello, my name is ${name}`);
+        },
+
+        job : {
+            title : 'developer',
+            company : {
+                name : 'coding addict',
+                address : '123 main street'
+            }
+        },
+
+        'random-value' : 'random',
+
+    }
+
+/////////////////////////////////////////////////////////////////////////////////
+////////////// Accessing Properties /////////////////////////////////////////
+
+// returns undefined if the property you are accessing is not found
+
+    const companyAddress = person.job.company.address
+    console.log('Company Address : ', companyAddress); // 123 main street
+
+
+    const work = person.work
+    console.log(work); // undefined
+
+    // Uncaught TypeError: Cannot read properties of undefined (reading 'title')
+    // means you cannot get title from undefined property
+    
+    // const title = person.work.title
+    // console.log(work); 
+
+    const jobTitle = person.job.title
+    console.log('Job Title : ',jobTitle);
+
+/////////////////////////////////////////////////////////////////////////////////
+/////// Set variable as property value  /////////////////////////////////////////
+
+    const idNo = 28483114
+
+    person.id_no = idNo
+
+    
+/////////////////////////////////////////////////////////////////////////////////
+/////// bracket notation in action  /////////////////////////////////////////
+    
+    const randomValue = person['random-value']
+    console.log(randomValue);
+
+    const firstName = person['name']
+    console.log(firstName);
+
+// dynamically accessing object properties
+
+    const dynamicValue = person[random]
+
+    // logged random
+    // But then after reassigning random = 'age'
+    //logged 32
+    console.log('Dynamic value : ', dynamicValue);
+
+</script>
+</html>
