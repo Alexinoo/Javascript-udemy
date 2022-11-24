@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS OBJECTS - call(), apply() , bind()</title>
+</head>
+<style>
+    :root {
+        --clr-white: #fff;
+    }
+
+
+    html {
+        font-family: 'Jost', sans-serif;
+    }
+
+    .container {
+        max-width: 40rem;
+        height: 10rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+        margin: 3rem auto;
+        padding: 0.5rem;
+        background-color: #880017;
+        color: white;
+        text-align: center;
+        border-radius: 12px;
+    }
+
+    .title h1 {
+        font-size: 32px;
+        letter-spacing: 1.5px;
+        text-transform: capitalize;
+
+    }
+
+    .title span {
+        text-transform: uppercase;
+    }
+
+    .underline {
+        width: 10rem;
+        height: 0.25rem;
+        background: var(--clr-white);
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .links {
+        text-align: center;
+        margin-bottom: 2rem;
+        height: 3rem;
+    }
+
+    .links li {
+        text-transform: capitalize;
+        list-style-type: disc;
+        list-style-position: inside;
+        font-size: 24px;
+    }
+
+    .wrapper {
+
+        margin-top: 5rem;
+    }
+
+    .increment {
+        font-size: 18px;
+        background-color: #555;
+        color: #fff;
+        padding: 6px 12px;
+        margin: 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+        letter-spacing: 1.5px;
+        transition: all 0.5s ease-in-out;
+    }
+
+    .increment:hover {        
+        background-color: #222;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="title">
+            <h1> <span>js</span> objects </h1>
+            <div class="underline"></div>
+        </div>
+        <ul class="links">
+            <li> call(), apply() , bind() in Action</li>
+        </ul>
+        <div class="wrapper">
+            <button class="increment">increment</button>
+        </div>
+    </div>
+
+</body>
+<script type="text/javascript">
+/* 
+
+    call(), apply() , bind() in Action
+    -----------------------------------
+
+*/
+
+
+const counter = {
+    
+    count : 0,
+    increment : function(){
+        console.log(this);
+        this.count++
+        console.log(this.count);
+    }
+}
+
+const btnIncrementElmnt = document.querySelector('.increment')
+
+
+//fail
+//does not work because it's pointing to the button and not the counter
+//NaN
+//btnIncrementElmnt.addEventListener('click', counter.increment)
+
+
+///////////////////////  WHAT WOULD BE THE SOLUTION...? //////////////////////////////
+
+// working - some edge cases
+// works because we have changed it to point to the counter instead and not the button itself
+// btnIncrementElmnt.addEventListener('click', counter.increment.bind(counter)) 
+
+
+
+// assigning to a variable and then running it on a click event
+// And this works too because we have reference to our function
+const increment = counter.increment.bind(counter)
+btnIncrementElmnt.addEventListener('click', increment) 
+
+// in the event of remove event listener
+// we can click all day long and nothing will happen but the cool thing is that we have reference to ur function
+btnIncrementElmnt.removeEventListener('click', increment) 
+
+
+// counter.increment.bind(counter) - THIS IS A PERFECT SOLUTION THAT WE SHOULD REMEMBER BECAUSE IT WILL COME IN HANDY ONCE IN A WHILE
+
+
+
+
+
+
+
+</script>
+</html>
