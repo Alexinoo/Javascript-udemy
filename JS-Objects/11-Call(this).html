@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS OBJECTS - call()</title>
+</head>
+<style>
+    :root {
+        --clr-white: #fff;
+    }
+
+
+    html {
+        font-family: 'Jost', sans-serif;
+    }
+
+    .container {
+        max-width: 40rem;
+        height: 10rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+        margin: 3rem auto;
+        padding: 0.5rem;
+        background-color: #880017;
+        color: white;
+        text-align: center;
+        border-radius: 12px;
+    }
+
+    .title h1 {
+        font-size: 32px;
+        letter-spacing: 1.5px;
+        text-transform: capitalize;
+
+    }
+
+    .title span {
+        text-transform: uppercase;
+    }
+
+    .underline {
+        width: 10rem;
+        height: 0.25rem;
+        background: var(--clr-white);
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .links {
+        text-align: center;
+        margin-bottom: 2rem;
+        height: 3rem;
+    }
+
+    .links li {
+        text-transform: capitalize;
+        list-style-type: disc;
+        list-style-position: inside;
+        font-size: 24px;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="title">
+            <h1> <span>js</span> objects </h1>
+            <div class="underline"></div>
+        </div>
+        <ul class="links">
+            <li> call() - runs instantly , arguments - list of items</li>
+        </ul>
+    </div>
+
+</body>
+<script type="text/javascript">
+
+/*
+
+    call() - runs instantly , arguments - list of items
+    ....................................................         
+
+        > We know that if we would want to have the same setup for susan, we would need to copy and paste greet() to Susan as well 
+    
+        > The only way to have greet() on Susan , we would need to setup the same functionality on susan
+
+    MULTIPLE THINGS THAT WILL FAIL 
+    ------------------------------
+
+            1. susan.greet() 
+                 WONT WORK BECAUSE !!!!
+                    - greet() is in john and not susan
+
+            2. setup a separate function and invoke it right away
+
+                 WONT WORK BECAUSE !!!!
+                
+                    - greet() when invoked points to global window object
+                    - We will not therefore be able to access this.name or this.age 
+
+                    function greet(){
+                        // console.log(this); 
+                        console.log(`Hello , I'm ${this.name} and I'm ${this.age} years old`);
+                    }
+
+                    greet();
+
+            3. setup a variable that is going to to be a reference to our john.greet() and the invoke it
+
+                WONT WORK BECAUSE !!!!
+
+                    - We are pointing to the window object therefore undefined
+
+                    - Nothing is there on the left of the dot 
+                    
+                
+                    const secondGreet = john.greet
+                    secondGreet()
+    
+    
+    SO WHAT WOULD BE THE SOLUTION - call()
+    ------------------------------
+        > We can use call() which runs instantly and this is important because there will be some functions that you don't need to run instantly and as far as the arguments we have list of argument which we don't need to worry about now.
+
+        > We can go with our greet : ƒ greet() or with john.greet() and then just add call
+
+        > Then the first argument that we pass in is 'this' - you pass in where 'this' should be pointing
+
+            e.g.     greet.call(john)
+
+        > Because remember , when we had simple greet() , secondGreet or susan.greet() , 'this' did not exist and was pointing to the global window object
+
+        > And now we are changing where 'this' should be pointing to john
+
+        > So in short , it can be written like below
+
+                function greet() {
+                    console.log(this); //points to the window when we invoke greet()
+                    console.log(`Hello , I'm ${this.name} and I'm ${this.age} years old`);
+                 }
+
+        > And then call it as below
+
+                e.g.   greet.call(john)
+
+        > So of course, what we could do is also call susan 
+
+                e.g.   greet.call(susan)
+
+        > We can also pass a separate object that we have not created all together and then pass the properties 
+
+                 e.g.   greet.call({ name :'jane' , age:18 })
+
+        /////////// OPTION 2 - Function inside john's object  //////////////////////
+
+        > We can invoke the function inside john's object directly by changing where 'this' is pointing to
+                 e.g. john.greet.call(this)
+
+
+*/
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////// 3 Objects  ( john and susan) // /////////////////////////////////
+
+
+    const john = {
+        name : 'john',
+        age : 24,
+        greet : function(){
+            // console.log(this); - pointing back to the object on the left of the function that is invoking it i.e. john
+            console.log(`Hello , I'm ${this.name} and I'm ${this.age} years old`);
+        }
+    }
+
+    const susan = {
+        name: 'susan',
+        age: 33
+    
+    }
+
+    const anna = {
+        name: 'anna',
+        age: 40
+    
+    }
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    // john.greet()
+
+    function greet() {
+       // console.log(this); //points to the window when we invoke greet()
+        console.log(`Hello , I'm ${this.name} and I'm ${this.age} years old`);
+    }
+
+    // calling function outside - if invoked it's going to point to the window but if we chain call then we can change to where 'this' is pointing to
+    greet.call(john)
+    greet.call(susan)
+    greet.call({ name: 'jane', age: 18 })
+
+    // function inside
+    john.greet.call(anna)
+
+    
+
+
+
+
+</script>
+</html>
