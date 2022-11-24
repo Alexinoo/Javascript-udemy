@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS OBJECTS - apply()</title>
+</head>
+<style>
+    :root {
+        --clr-white: #fff;
+    }
+
+
+    html {
+        font-family: 'Jost', sans-serif;
+    }
+
+    .container {
+        max-width: 40rem;
+        height: 10rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+        margin: 3rem auto;
+        padding: 0.5rem;
+        background-color: #880017;
+        color: white;
+        text-align: center;
+        border-radius: 12px;
+    }
+
+    .title h1 {
+        font-size: 32px;
+        letter-spacing: 1.5px;
+        text-transform: capitalize;
+
+    }
+
+    .title span {
+        text-transform: uppercase;
+    }
+
+    .underline {
+        width: 10rem;
+        height: 0.25rem;
+        background: var(--clr-white);
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .links {
+        text-align: center;
+        margin-bottom: 2rem;
+        height: 3rem;
+    }
+
+    .links li {
+        text-transform: capitalize;
+        list-style-type: disc;
+        list-style-position: inside;
+        font-size: 24px;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="title">
+            <h1> <span>js</span> objects </h1>
+            <div class="underline"></div>
+        </div>
+        <ul class="links">
+            <li> apply() - runs instantly , arguments - array of items</li>
+        </ul>
+    </div>
+
+</body>
+<script type="text/javascript">
+/*
+    apply - runs instantly , arguments - array of items
+    ................................................... 
+
+    apply(this,[item1, item2 , item3 ,...])
+    ----------------------------------------
+
+        > apply() takes the first argument as 'this' - the object that you are pointing to
+
+        > Then pass the second parameter as array of items 
+
+                greet.apply(john,['Khartoum', 'Sudan'])
+                greet.apply(susan,['Kairo', 'Ethiopia'])
+                greet.apply({ name: 'jane', age: 18 },['Cairo', 'Egypt'])
+
+
+   call(this,'item1', 'item2' , 'item3' ,...)
+    ------------------------------------------
+
+        > Whereas call takes in object that you are pointing to and then a list of items
+        
+
+*/
+
+////////////// ////////////////////////////////////////////////////////////////////////////////////////////   APPLY IN ACTION ///////////////////////////////////////////////////
+
+    const john = {
+        name: 'john',
+        age: 24,        
+    }
+
+    const susan = {
+        name: 'susan',
+        age: 33
+
+    }
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    function greet(city,country) {
+        // console.log(this); //points to the window when we invoke greet()
+        console.log(`Hello , I'm ${this.name} and I'm ${this.age} years old and I live in ${city} , ${country}`);
+    }
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////// CALL() IN ACTION ///////////////////////////////////////////////////////
+
+
+    greet.call(john,'Nairobi','Kenya')
+    greet.call(susan,'San Diego','US')
+    greet.call({ name: 'jane', age: 18 }, 'Johannesburg','SA')
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////// APPLY() IN ACTION //////////////////////////////////////////////////////
+
+
+    greet.apply(john,['Khartoum', 'Sudan'])
+    greet.apply(susan,['Kairo', 'Ethiopia'])
+    greet.apply({ name: 'jane', age: 18 },['Cairo', 'Egypt'])
+
+
+ </script>
+</html>
