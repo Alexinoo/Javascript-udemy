@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS OBJECTS - ES6 class syntax</title>
+</head>
+<style>
+    :root {
+        --clr-white: #fff;
+    }
+
+
+    html {
+        font-family: 'Jost', sans-serif;
+    }
+
+    .container {
+        max-width: 40rem;
+        height: 8rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+        margin: 3rem auto;
+        padding: 0.5rem;
+        background-color: #880017;
+        color: white;
+        text-align: center;
+        border-radius: 12px;
+    }
+
+    .title h1 {
+        font-size: 32px;
+        letter-spacing: 1.5px;
+        text-transform: capitalize;
+
+    }
+
+    .title span {
+        text-transform: uppercase;
+    }
+
+    .underline {
+        width: 10rem;
+        height: 0.25rem;
+        background: var(--clr-white);
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .links {
+        text-align: center;
+        margin-bottom: 5rem;
+    }
+
+    .links li {
+        text-transform: capitalize;
+        list-style-type: disc;
+        list-style-position: inside;
+        font-size: 24px;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="title">
+            <h1> <span>js</span> objects </h1>
+            <div class="underline"></div>
+        </div>
+        <ul class="links">
+            <li> ES6 class syntax</li>
+        </ul>
+    </div>
+
+</body>
+<script type="text/javascript">
+/*
+
+    ES6 Classes - Prototype Inheritance
+    -----------------------------------
+
+    CLASSES
+    ---------------
+
+        > In Es6, the latest and greatest version of Javascript major update, they introduced ES6 classes but I would want you to think of ES6 classes as Syntactic sugar
+
+        > Syntactic sugar -  syntax within a programming language that is designed to make things easier to read or to express
+
+        > The same rules apply as far as the setup but much more cleaner way of writing it
+
+        > Think of a class as a constructor function my take
+
+            class Account {
+        
+                }
+
+    USING IT / CREATING OBJECTS / INSTANCES
+    -----------------------------------------
+
+        > Use new keyword and store it in some kind of a variable/object
+
+        > Then pass in whatever number of the arguments that the constructor is looking for 
+            e.g new Account('arg1','arg2',arg3...)
+
+            constructor(arg1,arg2,arg3...){
+                this.argument_one = arg1
+                this.argument_two = arg2
+                this.argument_three = arg3
+            }
+        
+        > create an object/instance - use new Account        
+         
+            const instance = new Account()
+
+    CONSTRUCTOR
+    ------------
+
+
+        > Constructor - A special method inside the class that is invoked each and everytime we create an instance
+
+        > set up constructor and initialize / assign properties to constructor
+
+            constructor(name,initialBalance){
+                this.name = name
+                this.balance = initialBalance
+            }
+
+    ADDING PROPERTIES
+    ------------------
+
+        > const / let / var keywords are not required when defining properties
+            e.g
+                    const bank_name,
+                    this.bank_name,
+                    let bank_name,
+                    var bank_name,
+        > We just go with the property directly and initialize it directly
+            e.g. 
+                    bank_name = 'KCB'
+                    
+
+        > to set up a property / value that is going to be attached to all my instances , instead of a prototype, it's going to be set on the instance
+
+            e.g.
+             constructor(name,initialBalance,bank_name){
+                        this.name = name
+                        this.balance = initialBalance
+                    }
+
+
+        > But remember we will repeat ourselves any time we are using the same name for example while creating instances for each and every user account
+            e.g 
+               = new Account('Alex',40000,'KCB')
+               = new Account('Cyrus',36570,'KCB')
+               = new Account('Pishie',50000,'KCB')
+               = new Account('Kinyae',60000,'KCB')
+
+       
+
+    SOLUTION
+    ---------
+
+        > So it would be better to create it inside the class and this means that the property will be accessible by all instances of that class.
+
+*/ 
+
+///////////////////////////////////////////////////////////////////////////////////////////////// JS CLASSES IN ACTION //////////////////////////////////////////////////////////
+
+class Account {
+
+    //Bank name property
+    bank_name = 'KCB'
+
+    // constructor
+    constructor(name,initialBalance){
+        this.name = name
+        this.balance = initialBalance
+    }
+
+    // methods
+    deposit(amount){
+        this.balance += amount
+        console.log(`Hello ${this.name} , your balance is ${this.balance}`);
+    }
+
+}
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////// CREATING AN INSTANCE /////////////////////////////////////////////////////////////
+const person = new Account('Alex',200)
+console.log(person);
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////// ACCESSING OBJECT PROPERTIES ////////////////////////////////////////////////////
+console.log(person.name);
+console.log(person.balance);
+console.log(person.bank_name);
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////// ACCESSING OBJECT METHODS ////////////////////////////////////////////////////
+
+const output = person.deposit(200)
+console.log(output);
+
+/////////BUT THEN AGAIN WE GET undefined..What is happening here..well we don't need to place it in the console.log //////////////////////
+    person.deposit(200)
+
+</script>
+</html>
