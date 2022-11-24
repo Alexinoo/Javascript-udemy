@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS OBJECTS - Property lookup</title>
+</head>
+<style>
+    :root {
+        --clr-white: #fff;
+    }
+
+
+    html {
+        font-family: 'Jost', sans-serif;
+    }
+
+    .container {
+        max-width: 40rem;
+        height: 8rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+        margin: 3rem auto;
+        padding: 0.5rem;
+        background-color: #880017;
+        color: white;
+        text-align: center;
+        border-radius: 12px;
+    }
+
+    .title h1 {
+        font-size: 32px;
+        letter-spacing: 1.5px;
+        text-transform: capitalize;
+
+    }
+
+    .title span {
+        text-transform: uppercase;
+    }
+
+    .underline {
+        width: 10rem;
+        height: 0.25rem;
+        background: var(--clr-white);
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .links {
+        text-align: center;
+        margin-bottom: 5rem;
+    }
+
+    .links li {
+        text-transform: capitalize;
+        list-style-type: disc;
+        list-style-position: inside;
+        font-size: 24px;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="title">
+            <h1> <span>js</span> objects </h1>
+            <div class="underline"></div>
+        </div>
+        <ul class="links">
+            <li> property lookup</li>
+        </ul>
+    </div>
+
+</body>
+<script type="text/javascript">
+/*
+    Property Look up
+    ..............................
+
+        > If child does not have ask parent
+
+        > If we console.log(alex.bank_name) we get 'CHASE BANK'
+
+        > But why that is happening is because the actual instance does not have that property
+        
+        > The property is on the prototype
+
+            e.g.
+                 Account.prototype.bank_name = 'CHASE BANK'
+
+        > However if the property would be on that instance 
+
+            e.g.
+
+                 function Account(name, initialBalance) {
+                        this.name = name
+                        this.balance = initialBalance
+                        this.bank_name = 'BANK OF AMERICA'
+                    }
+
+          - You will see that now in the console, we have "BANK OF AMERICA"   
+          
+                    alex's instance :  BANK OF AMERICA
+                    jane's instance :  BANK OF AMERICA
+        
+        > This is because,if the instance has that property..then its gonna take precedent but if it does not have , then Javascript will look that property on the prototype.
+
+        > However, if it's not on the prototype , then Javascript will say you know what..I KIF UP..
+
+        > Same case also applies to methods
+
+
+     Everything in JS is an Object (Arrays and Objects)
+     --------------------------------------------------
+
+     ARRAYS
+     ------------
+
+        > The moment you create an array, those methods are not on the instance..It's not like anytime we are creating an array we are copying those methods.
+
+        > The thing is that when we create an array we have access to __proto__ currently [[Prototype]] : Array(0) which contains length property and methods
+
+            properties
+            ------------
+            length : 0
+        
+            methods
+            ---------------
+             - at :ƒ at()
+             - concat :ƒ concat()
+             - constructor :ƒ Array()
+             - copyWithin : ƒ copyWithin()
+             - entries : ƒ entries()
+             - every : ƒ every()
+             - fill : ƒ fill()
+             - filter : ƒ filter()
+             - find : ƒ find()
+             - findIndex : ƒ findIndex()
+             - findLast : ƒ findLast()
+             - findLastIndex : ƒ findLastIndex()
+             - flat : ƒ flat()
+             - flatMap : ƒ flatMap()
+             - forEach : ƒ forEach()
+             - includes : ƒ includes()
+             - indexOf : ƒ indexOf()
+             - join : ƒ join()
+             - keys : ƒ keys()
+             - lastIndexOf : ƒ lastIndexOf()
+             - map : ƒ map()
+             - pop : ƒ pop()
+             - push : ƒ push()
+             - reduce : ƒ reduce()
+             - reduceRight : ƒ reduceRight()
+             - reverse : ƒ reverse()
+             - shift : ƒ shift()
+             - slice : ƒ slice()
+             - some : ƒ some()
+             - sort : ƒ sort()
+             - splice : ƒ splice()
+             - toLocaleString : ƒ toLocaleString()
+             - toString : ƒ toString()
+             - unshift : ƒ unshift()
+             - values : ƒ values()
+
+        > This means we have access to those methods from the __proto__ when working with arrays
+
+    OBJECTS
+    ------------
+
+        > constructor : f Object()
+
+        > f Object() is what creates array or objects
+
+*/
+
+///////////////////////////////////////////////////////////////////////////////////////////////// PROPERTY LOOK UP IN ACTION ////////////////////////////////////////////////////
+
+    function Account(name, initialBalance) {
+        this.name = name
+        this.balance = initialBalance
+        // first search 
+        //if found return
+        //if not - check with the prototype
+        this.bank_name = 'BANK OF AMERICA'
+    }
+
+    const alex = new Account('Alex', 200)
+
+    const jane = new Account('Jane', 0)
+
+    // Add bank_name property to Account.prototype which is an object by design
+        Account.prototype.bank_name = 'CHASE BANK'
+
+        // Accessing bank_name from alex/jane instance
+
+        console.log('alex\'s instance : ', alex.bank_name);
+
+        console.log('jane\'s instance : ', jane.bank_name);
+
+        // Add deposit: ƒ function to Account.prototype 
+        Account.prototype.deposit = function (amount) {
+            this.balance += amount
+            console.log(`Hello ${this.name} , your balance is ${this.balance}`);
+        }
+
+        alex.deposit(300)
+
+        jane.deposit(1000)
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////// EVERYTHING IN JAVASCRIPT IS AN OBJECT //////////////////////////////////////
+
+
+console.log({});
+
+
+console.log([]);
+
+
+</script>
+</html>
