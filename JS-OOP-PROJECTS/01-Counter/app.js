@@ -16,7 +16,20 @@
 
 //constructor function - Takes ( div.first-counter, initialValue )
 function Counter(element,value){
+    
     console.log(element,value);
+    // setup instance variables
+    this.counter = element
+    this.value = value
+
+    // select buttons
+    this.decreaseBtn = element.querySelector('.decrease')
+    this.resetBtn = element.querySelector('.reset')
+    this.increaseBtn = element.querySelector('.increase')
+
+    // select value from the DOM and update
+    this.valueDOM = element.querySelector('.value')
+    this.valueDOM.textContent = this.value
 }
 
 
