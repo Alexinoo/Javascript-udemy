@@ -54,16 +54,23 @@ function Counter(element,value){
      this.increaseBtn.addEventListener('click',increase)
      this.resetBtn.addEventListener('click',reset)
      this.decreaseBtn.addEventListener('click',decrease)     
-     */
     
-    const increase = this.increase.bind(this)
-    const reset = this.reset.bind(this)
-    const decrease = this.decrease.bind(this)
+    assign to a variable in case we want to remove event listeners
+    this.increaseBtn.addEventListener('click',this.increase.bind(this)) 
+    
+    WONT WORK!!! with removeEventListeners()
+
+    */
+
+    
+    this.increase = this.increase.bind(this)
+    this.reset = this.reset.bind(this)
+    this.decrease = this.decrease.bind(this)
     
     //// Event listeners /////
-    this.increaseBtn.addEventListener('click',increase)
-    this.resetBtn.addEventListener('click',reset)
-    this.decreaseBtn.addEventListener('click',decrease)
+    this.increaseBtn.addEventListener('click',this.increase)
+    this.resetBtn.addEventListener('click',this.reset)
+    this.decreaseBtn.addEventListener('click',this.decrease)
 }
 
 
@@ -95,5 +102,6 @@ Counter.prototype.reset = function(){
 
 const firstCounter = new Counter(getElement('.first-counter') , 100)
 const secondCounter = new Counter(getElement('.second-counter') , 200)
+const thirdCounter = new Counter(getElement('.third-counter') , 300)
 
 
