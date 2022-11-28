@@ -34,11 +34,17 @@ function Counter(element,value){
 
 
 
-// Creating counter instances 
+///////////////////////////////////////////////////////////////////////////////////////////////////// Creating counter instances ////////////////////////////////////////////////
+
 const firstCounter = new Counter(getElement('.first-counter') , 100)
 const secondCounter = new Counter(getElement('.second-counter') , 200)
 
-// function to select element and return element if exist else throw error
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////   FUNCTIONS        ///////////////////////////////////////////////////
+
+
+// getElement() - select element and return element if exist else throw error
 function getElement(selection){
     const element = document.querySelector(selection)
     if(element){
@@ -47,3 +53,31 @@ function getElement(selection){
     throw new Error(`please check " ${selection}" , no such element exist`)
 }
 
+
+// Set  increase() , reset() and decrease() methods on the Counter __proto__ (Prototype)instead of attaching to the constructor which just creates copies
+
+
+//increase()
+Counter.prototype.increase = function(){
+    console.log(this);
+    this.value++
+    this.valueDOM.textContent = this.value
+}
+
+
+//reset()
+Counter.prototype.reset = function(){
+    this.value = 0
+    this.valueDOM.textContent = this.value
+}
+
+// //decrease()
+Counter.prototype.decrease = function(){
+    this.value--
+    this.valueDOM.textContent = this.value
+}
+
+
+firstCounter.increase()
+secondCounter.increase()
+secondCounter.reset()
