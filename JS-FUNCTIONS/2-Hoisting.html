@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS FUNCTIONS - HOISTING</title>
+</head>
+<style>
+    html {
+        font-family: 'Jost', sans-serif;
+    }
+
+    .container {
+        max-width: 40rem;
+        height: 8rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+        margin: 3rem auto;
+        padding: 0.5rem;
+        background-color: #880017;
+        color: white;
+        text-align: center;
+        border-radius: 12px;
+    }
+
+    .title h1 {
+        font-size: 24px;
+        letter-spacing: 1.5px;
+        text-transform: capitalize;
+    }
+
+    .explanation ul li {
+        list-style-position: inside;
+        margin-bottom: 5px;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="title">
+            <h1> JS - HOISTING</h1>
+        </div>
+        <div class="explanation">
+            <ul>
+                <li>functions and variables are hoisted</li>
+                <li>safer to access only after initialized</li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+<script type="text/javascript">
+/*
+    JS - HOISTING
+    ........................................................
+
+        > functions and variables are hoisted
+
+        > safer to access only after initialized
+    
+    functions
+    ----------
+
+        > we can declare a function and then after invoke it
+
+            function display(){
+                console.log(`hello world`);
+            }
+
+            display()
+
+        > we can also invoke the function before declaring it ( but add definition after it )
+
+            display()
+
+            function display(){
+                console.log(`hello world`);
+
+        > This is because we can access the declaration before we have initialized it. - JS takes the function definition to the top of the document before invocation (behind the scenes stuff)
+
+    
+    variables
+    ----------
+
+        > wont work with const / let - gives Error  !!! - Need to initialize first
+
+           // console.log(firstName); Does not work with const
+           // console.log(lastName); Does not work with let
+
+           const firstName = 'alex'
+           let lastName = 'jordan'
+
+        > with var we can access the declaration but not the value
+            - returns undefined
+            - behind the scenes - JS moves var random to the top but not the value
+            - Though not really useful but that means we can acess the variable but not the value
+
+        > If we are trying to invoke a function that is expecting some variables before they have been declared we will get an error !!
+        
+            function moreComplex(){
+                console.log(`Accessing ${firstName} , ${lastName} , ${randomName}`);
+             }
+
+             const firstName = 'alex'
+             let lastName = 'jordan'
+             var randomName = 'random'
+
+        > But that works if the function is not expecting any variable like display()
+
+        > returns undefined if the function is only accepting var variables and is invoked before the function definition
+
+             moreComplex()
+
+             function moreComplex(){
+                console.log(`Accessing var ${randomName}`);
+            }
+            
+        > N/B : Will work if our moreComplex functionality depends on var only
+        > N/B : Will not work if our moreComplex functionality depends on const / let 
+*/
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////// HOISTING IN ACTION ///////////////////////////////////////////////////////
+display()
+moreComplex()
+
+console.log(display);
+console.log(moreComplex);
+
+// console.log(firstName); Does not work with const
+// console.log(lastName); Does not work with let
+// console.log(randomName); -Works but returns undefined
+
+const firstName = 'alex'
+let lastName = 'jordan'
+var randomName = 'random'
+
+console.log(firstName);
+
+function display(){
+    console.log(`hello world`);
+}
+
+
+function moreComplex(){
+    // console.log(`Accessing const , let and var ${lastName} , ${randomName}`);
+    console.log(`Accessing var ${randomName}`);
+}
+
+
+</script>
+</html>
