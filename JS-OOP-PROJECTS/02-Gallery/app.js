@@ -12,8 +12,11 @@ function getElement(selection) {
 // Constructor function
 function Gallery(element){
 
+  // target section.nature OR section.city sections
+  this.container = element
+
   // element.querySelectorAll('.img') returns a NodeList
-  // [...] - to convert it into an array
+  // [...] use spread operator to convert it into an array
   this.list = [...element.querySelectorAll('.img')];
 
   // Select Elements
@@ -25,7 +28,25 @@ function Gallery(element){
   this.closeBtn = getElement('.close-btn')
   this.prevBtn = getElement('.prev-btn')
   this.nextBtn = getElement('.next-btn')
+
+  // set self variable that points to the Gallery (self reference)
+  let self = this
+
+
+  // bind functions
+  // point to the Gallery instead of the container
+  // this.openModal = this.openModal.bind(this)
+  // used self instead
+  this.container.addEventListener('click',function(e){
+    
+    self.openModal()
+  })
   
+}
+
+// Methods on Prototype
+Gallery.prototype.openModal = function(){
+  this.modal.classList.add('open')
 }
 
 
