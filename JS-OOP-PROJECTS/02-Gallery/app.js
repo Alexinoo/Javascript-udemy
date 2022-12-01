@@ -85,14 +85,44 @@ Gallery.prototype.closeModal = function(){
   this.prevBtn.removeEventListener('click',this.prevImage)
 }
 
-// Gallery.nextImage()
+// Gallery.nextImage() - traverse the DOM (div.modal-images)
 Gallery.prototype.nextImage = function(){
   
+  // get the selected image from div.modal-images
+  const selectedImage = this.modalImages.querySelector('.selected')
+
+  // get the next image or if Its at the end of the array get the first one
+  const nextImage = selectedImage.nextElementSibling || this.modalImages.firstElementChild
+
+  // remove the class of selected to the current
+  selectedImage.classList.remove('selected')
+
+   // add .selected class to the next one
+  nextImage.classList.add('selected')
+
+  // update the mainImage (based on the next selected)
+  this.setMainImage(nextImage)
+
+
 }
 
-// Gallery.prevImage()
+// Gallery.prevImage() - traverse the DOM (div.modal-images)
 Gallery.prototype.prevImage = function(){
 
+  // get the selected image from div.modal-images
+  const selectedImage = this.modalImages.querySelector('.selected')
+
+  // get the next image or if Its at the end of the array get the first one
+  const previousImage = selectedImage.previousElementSibling || this.modalImages.lastElementChild
+
+  // remove the class of selected to the current
+  selectedImage.classList.remove('selected')
+
+   // add .selected class to the next one
+  previousImage.classList.add('selected')
+
+  // update the mainImage (based on the next selected)
+  this.setMainImage(previousImage)
 }
 
 
