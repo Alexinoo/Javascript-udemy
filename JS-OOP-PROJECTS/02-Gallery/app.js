@@ -23,6 +23,7 @@ function Gallery(element){
   // div.modal,button.close-btn , button.prev-btn, button.next-btn, div.modal-images 
   this.modal = getElement('.modal')
   this.modalImg = getElement('.main-img')
+  this.imageName = getElement('.image-name')
   this.modalImages = getElement('.modal-images')
 
   this.closeBtn = getElement('.close-btn')
@@ -36,18 +37,32 @@ function Gallery(element){
   // bind functions
   // point to the Gallery instead of the container
   // this.openModal = this.openModal.bind(this)
-  // used self instead
+  // used self variable instead
   this.container.addEventListener('click',function(e){
     
-    self.openModal()
+    //check if the target contains img class
+    if(e.target.classList.contains('img')){
+
+    //pass section.nature/section.city selected and the list of images under that section
+    self.openModal(e.target ,self.list)
+    }
   })
   
 }
 
 // Methods on Prototype
-Gallery.prototype.openModal = function(){
+// Gallery.openModal()
+Gallery.prototype.openModal = function(selectedImg,list){
+  this.setMainImage(selectedImg)
   this.modal.classList.add('open')
 }
+
+// Gallery.setMainImage()
+Gallery.prototype.setMainImage = function(selectedImg){
+   this.modalImg.src = selectedImg.src
+   this.imageName.textContent = selectedImg.title
+}
+
 
 
 
