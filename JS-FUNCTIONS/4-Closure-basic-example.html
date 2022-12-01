@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS FUNCTIONS - CLOSURES (Basic Example)</title>
+</head>
+<style>
+    html {
+        font-family: 'Jost', sans-serif;
+    }
+
+    .container {
+        max-width: 40rem;
+        height: 8rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+        margin: 3rem auto;
+        padding: 0.5rem;
+        background-color: #880017;
+        color: white;
+        text-align: center;
+        border-radius: 12px;
+    }
+
+    .title h1 {
+        font-size: 24px;
+        letter-spacing: 1.5px;
+        text-transform: capitalize;
+    }
+
+    .explanation ul li {
+        list-style-position: inside;
+        margin-bottom: 5px;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="title">
+            <h1> JS - CLOSURES - Basic Example</h1>
+        </div>
+        <div class="explanation">
+            <ul>
+                <li>closure gives you access to an outer function's scope from an inner function</li>
+                <li>make private variables with closures</li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+<script type="text/javascript">
+/*
+    Closures
+    .......... 
+        > closure gives you access to an outer function's scope from an inner function
+
+        > make private variables with closures  
+        
+        > JS considers Functions as first class citizens because they can accept functions as argument( callback ) and they can also return a function
+
+
+    Closure in action - invoke inner() inside outer :  ƒ 
+    -----------------------------------------------------
+
+        function outer(){
+            function inner() {
+                console.log(`Hello there secret is : `);
+              }
+            inner()
+        }
+
+        invoke outer :  ƒ
+
+            outer() 
+        
+        logs Hello there secret is :
+
+    Make this even more interesting by returning inner function
+    -----------------------------------------------------------
+        > We can do way more interesting things by assigning it into a variable and then invoking it or invoking the function itself again
+    
+            function outer(){
+                function inner() {
+                    console.log(`Hello there secret is : `);
+                }
+                return inner
+            }
+    
+        > most cases assigned to a variable
+
+            const value = outer() 
+            console.log(value);
+
+        > The above logs
+                ƒ inner() {
+                console.log(`Hello there secret is : `);
+            }
+    
+        > And therefore if we have assigned to a variable, we can invoke it 
+            value()
+
+        > logs in the console
+            Hello there secret is :
+        
+        > Idearly this should be the same as 
+            (ƒ inner() {
+                console.log(`Hello there secret is : `);
+            })()
+
+        > OR invoke outer again - would mean the same thing
+         
+            outer()()
+
+     Variables inside function are not accessible from outside
+    -----------------------------------------------------------
+         > Declare privateVar variable inside inner : ƒ 
+
+            function outer() {
+                let privateVar = 'secret'
+                
+                function inner() {
+                    console.log(`Hello there secret is : `);
+                }
+                return inner
+            }
+    
+         > We cannot access private variable from outside 
+            console.log(privateVar)
+
+        > However , we can access access privateVar within the inner : ƒ because it is within the scope of the outer : ƒ 
+
+            function outer() {
+                let privateVar = 'secret'
+                
+                function inner() {
+                    console.log(`Hello there secret is : ${privateVar}`);
+                }
+                return inner
+            }
+
+        > Now what really is mind blowing is the fact that privateVar is accessible to inner : ƒ even once we have invoked the outer
+
+             outer()()
+        > We still have access to it
+        
+        > What we can do is setup all kind of functionality in the outer: ƒ and then depending on what we would want to allow control from the outside returned with that function
+*/
+
+function newAccount(name,initialBalance) {
+    let balance = initialBalance
+
+        function showBalance() {
+            console.log(`Hey ${name}, your balance is Ksh: ${balance} `);
+        }
+        return showBalance
+    }
+
+newAccount('Alex',20000)()
+
+// What is really cool is that we can setup some other instances as well
+// For each and every instance we create, the showBalance remembers what was the value when the newAccount was invoked
+
+const stabilo = newAccount('Stabilo', 10000)
+const asabe = newAccount('Asabe', 5000)
+
+// And then invoke both of them as well
+    stabilo()
+    asabe()
+
+// True beauty of the closure is that it always remembers the value when every time the newAccount is invoked
+
+
+
+</script>
+
+</html>
