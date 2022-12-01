@@ -55,9 +55,9 @@
     JS - HOISTING
     ........................................................
 
-        > functions and variables are hoisted
+        > functions and variables(var) are hoisted
 
-        > safer to access only after initialized
+        > safer to access only after initialized (avoid unnecessary bugs)
     
     functions
     ----------
@@ -115,7 +115,7 @@
              function moreComplex(){
                 console.log(`Accessing var ${randomName}`);
             }
-            
+
         > N/B : Will work if our moreComplex functionality depends on var only
         > N/B : Will not work if our moreComplex functionality depends on const / let 
 */
