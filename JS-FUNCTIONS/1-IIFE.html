@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS FUNCTIONS - IIFE</title>
+</head>
+<style>
+    html {
+        font-family: 'Jost', sans-serif;
+    }
+
+    .container {
+        max-width: 40rem;
+        height: 5rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+        margin: 3rem auto;
+        padding: 0.5rem;
+        background-color: #880017;
+        color: white;
+        text-align: center;
+        border-radius: 12px;
+    }
+
+    .title h1 {
+        font-size: 24px;
+        letter-spacing: 1.5px;
+        text-transform: capitalize;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="title">
+            <h1> JS - IIFE ( Immediately Invoked Functions Expressions )</h1>
+        </div>
+    </div>
+
+</body>
+<script type="text/javascript">
+/*
+    JS - IIFE ( Immediately Invoked Functions Expressions )
+    ........................................................
+
+        > older approach - new modules
+
+        > offers simple approach to avoid global scope pollution
+
+        > Think of it as a good way of protecting the scope of your function and the variables within it
+
+        > global namespace , extra steps
+
+*/
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////// REGULAR APPROACH IN ACTION ///////////////////////////////////////////////
+
+    const numberOne = 30
+    const numberTwo = 50
+
+    function addNumbers(){
+        console.log(`Regular Approach : The sum is ${numberOne + numberTwo }`)
+    }
+
+    addNumbers();
+
+/* 
+
+    IIFE APPROACH IN ACTION
+    ................................
+
+        > OPTIONS - set it as anonymous function
+
+            function(){
+                console.log(`hello world`);
+            }
+
+        > wrapped the function inside parenthesis - avoid names collisions
+
+            (function(){
+                const numberOne
+                const numberTwo
+                console.log(`IIFE - hello world`);
+            })
+
+        > invoke it - avoid extra steps
+
+            (function(){
+                const numberThree = 27
+                const numberFour = 34
+                console.log(`IIFE Approach : The sum is ${numberThree + numberFour}`)
+            })()
+
+    Pass Arguments
+    -----------------
+              (function (numberFive, numberSix) {
+                    console.log(`IIFE Approach - pass arguments : The sum is ${numberFive + numberSix}`)
+              })(200,300)
+
+    Return a value
+    -----------------
+                const sum = (function (numberFive, numberSix) {
+                   return numberFive + numberSix
+              })(200,300)
+
+                console.log(sum)
+
+*/
+
+/////////////// IIFE IN ACTION ////////////////////////////////////////////////////////////////
+
+    (function() {
+        const numberThree = 27
+        const numberFour = 34
+        console.log(`IIFE Approach : The sum is ${numberThree + numberFour}`)
+    })();
+
+/////////////// IIFE IN ACTION - pass arguments //////////////////////////////////////////////
+
+        (function (numberFive, numberSix) {
+            console.log(`IIFE Approach - pass arguments : The sum is ${numberFive + numberSix}`)
+        })(200,300);
+
+
+/////////////// IIFE IN ACTION - return / assign to a variable //////////////////////////////////////////////
+
+      const sum =  (function (numberFive, numberSix) {
+           return numberFive + numberSix
+        })(500,900);
+
+    console.log(`IIFE Approach - return a value : The sum is ${sum}`);
+
+</script>
+</html>
