@@ -54,6 +54,10 @@ function Gallery(element){
 // Gallery.openModal()
 Gallery.prototype.openModal = function(selectedImg,list){
   this.setMainImage(selectedImg)
+  this.modalImages.innerHTML = list.map(function(image){
+    const { src,title,alt} = image
+    return `<img src="${src}" title="${title}" alt="${alt}" class="${selectedImg.dataset.id ===image.dataset.id ? "modal-img selected" : "modal-img"}" data-id="${image.dataset.id}">`
+  }).join('')
   this.modal.classList.add('open')
 }
 
