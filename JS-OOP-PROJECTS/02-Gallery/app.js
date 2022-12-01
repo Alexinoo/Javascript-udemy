@@ -41,6 +41,9 @@ function Gallery(element){
   this.closeModal = this.closeModal.bind(self)
   this.nextImage = this.nextImage.bind(self)
   this.prevImage = this.prevImage.bind(self)
+  
+  // bind chosen image to Gallery and not the button
+  this.choseImage = this.choseImage.bind(self)
 
   this.container.addEventListener('click',function(e){
     
@@ -64,10 +67,14 @@ Gallery.prototype.openModal = function(selectedImg,list){
   }).join('')
   this.modal.classList.add('open')
 
-  // close modal on click evnt
+  // listen for close modal event
   this.closeBtn.addEventListener('click',this.closeModal)
+  // listen for prev/next click events
   this.nextBtn.addEventListener('click',this.nextImage)
   this.prevBtn.addEventListener('click',this.prevImage)
+
+  // listen for click event on chose modal image
+  this.modalImages.addEventListener('click',this.choseImage)
 }
 
 // Gallery.setMainImage()
@@ -79,10 +86,11 @@ Gallery.prototype.setMainImage = function(selectedImg){
 // Gallery.closeModal()
 Gallery.prototype.closeModal = function(){
   this.modal.classList.remove('open')
-  // remove evnt listeners after closing the modal
+  // remove all evnt listeners after closing the modal
   this.closeBtn.removeEventListener('click',this.closeModal)
   this.nextBtn.removeEventListener('click',this.nextImage)
   this.prevBtn.removeEventListener('click',this.prevImage)
+  this.modalImages.removeEventListener('click',this.choseImage)
 }
 
 // Gallery.nextImage() - traverse the DOM (div.modal-images)
@@ -123,6 +131,22 @@ Gallery.prototype.prevImage = function(){
 
   // update the mainImage (based on the next selected)
   this.setMainImage(previousImage)
+}
+
+// Diplay chosen image functionality
+Gallery.prototype.choseImage = function(e){
+
+  // check if what is clicked has .modal-img class
+  if(e.target.classList.contains('modal-img')){
+
+    // remove .selected class from all the other modalImages
+    const selected = this.modalImages.querySelector('.selected')
+    selected.classList.remove('selected')
+
+    this.setMainImage(e.target)
+    // add .selected class to the chosen image
+    e.target.classList.add('selected')
+  }
 }
 
 
