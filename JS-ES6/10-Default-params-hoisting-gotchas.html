@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS ES6 - Arrow Functions</title>
+</head>
+<style>
+    html {
+        font-family: 'Jost', sans-serif;
+    }
+
+    .container {
+        max-width: 40rem;
+        height: auto;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+        margin: 3rem auto;
+        padding: 0.5rem;
+        background-color: #880017;
+        color: white;
+        border-radius: 12px;
+    }
+
+    .result {
+        margin-top: 3rem;
+        max-width: 40rem;
+        height: auto;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+        margin: 3rem auto;
+        padding: 2rem;
+        color: #444;
+        border-radius: 12px;
+        text-align: center;
+    }
+
+    .btn {
+        font-size: 18px;
+        text-transform: capitalize;
+        margin: 2rem;
+        padding: 6px 12px;
+        background: #555;
+        color: #fff;
+        letter-spacing: 1.5px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        border-radius: 5px;
+    }
+
+    .btn:hover {
+        background: #222;
+    }
+
+    .title h1 {
+        font-size: 24px;
+        text-align: center;
+        letter-spacing: 1.5px;
+        text-transform: capitalize;
+    }
+
+    .underline {
+        width: 100%;
+        height: 3px;
+        background-color: #f15025;
+    }
+
+    .intro ul li {
+        list-style-position: outside;
+        margin: 16px 16px;
+        font-size: 24px;
+    }
+
+    .intro ul li::before {
+        content: "\2022";
+        color: red;
+        font-weight: bold;
+        display: inline-block;
+        width: 1em;
+        margin-left: -1em;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="title">
+            <h1> JS - ES6 Arrow Functions</h1>
+            <div class="underline"></div>
+        </div>
+        <div class="intro">
+            <ul>
+                <li>Default Parameters </li>
+                <li>Hoisting Gotchas </li>
+            </ul>
+        </div>
+     
+    </div>
+
+</body>
+<script type="text/javascript">
+/*
+    default parameters and hoisting gotchas
+    .........................................
+
+        function sayHi(person){
+            console.log(`Hi ${person}`);
+          }
+
+        sayHi
+
+        - logs
+                Hi undefined
+
+    set Default parameters
+    ------------------------
+          - Falls back to the default parameter (person='Susan')
+
+          function sayHi(person='Susan'){
+            console.log(`Hi ${person}`);
+          }
+
+         - logs
+                Hi Susan
+
+         - Takes precedent if we are passing the parameter to sayHello(peter)
+            const sayHello = (person = 'Bob') => console.log(`Hello ${person}`);
+
+            sayHello(peter)
+        
+        - logs
+                Hello Peter
+
+        - Defaults back to default  sayHello()
+
+        - logs
+                Hello Bob
+
+    hoisting gotchas
+    ------------------
+
+         > Works with regular functions - we can call sayHi() before defining it
+
+         > Does not work with arrow functions because we are assigning to a variable
+            const sayHello = (person = 'Bob') => console.log(`Hello ${person}`);
+*/
+
+// in Action
+const john = 'john'
+const peter = 'peter'
+
+function sayHi(person='Susan'){
+    console.log(`Hi ${person}`);
+}
+
+const sayHello = (person = 'Bob') => console.log(`Hello ${person}`);
+
+sayHi()
+sayHello()
+
+</script>
+</html>
