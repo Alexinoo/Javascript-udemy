@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS ES6 - Array Destructuring</title>
+</head>
+<style>
+    html {
+        font-family: 'Jost', sans-serif;
+    }
+
+    .container {
+        max-width: 40rem;
+        height: 18rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+        margin: 3rem auto;
+        padding: 0.5rem;
+        background-color: #880017;
+        color: white;
+        border-radius: 12px;
+    }
+
+    .title h1 {
+        font-size: 24px;
+        text-align: center;
+        letter-spacing: 1.5px;
+        text-transform: capitalize;
+    }
+
+    .underline {
+        width: 100%;
+        height: 3px;
+        background-color: #f15025;
+    }
+
+    .intro ul li {
+        list-style-position: outside;
+        margin: 16px 16px;
+        font-size: 24px;
+    }
+
+    .intro ul li::before {
+        content: "\2022";
+        color: red;
+        font-weight: bold;
+        display: inline-block;
+        width: 1em;
+        margin-left: -1em;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="title">
+            <h1> JS - ES6 </h1>
+            <div class="underline"></div>
+        </div>
+        <div class="intro">
+            <ul>
+                <li> Array Destructuring</li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+<script type="text/javascript">
+/*
+
+    Array Destructuring
+    .................... 
+
+        > fastest/easier way to access/unpack values from arrays/objects or when we are passing in as parameters to a functions
+
+    Old way of accessing values in Arrays
+    ------------------------------------
+
+        > oldway of accessing
+
+             const fruitsArr = ['orange','banana','lemon']
+
+             const orange = fruitsArr[0]
+             const banana = fruitsArr[1]
+             const lemon = fruitsArr[2]
+
+             console.log(orange,banana,lemon)
+
+        - logs
+                orange banana lemon
+
+     New way of accessing values in Arrays
+    --------------------------------------
+
+        > Come up some kind of a variable (const or let)
+
+            const []
+
+        > Then pass in the values as variables in the array - we can call them however we want
+
+             const [ peter,susan,john,bob,anna ] = friendsArr
+                or
+             const [ friend1,friend2,friend3,friend4,friend5 ] = friendsArr
+
+             console.log( peter,susan,john,bob,anna )
+
+        > logs
+             peter susan john bob anna
+
+     What if we are trying to access an index that is not in the array
+     ------------------------------------------------------------------
+
+        > returns undefined
+
+            const [ friend1,friend2,friend3,friend4,friend5,friend6] = friendsArr
+
+            console.log(friend1, friend2, friend3, friend4, friend5, friend6)
+
+        > we get undefined
+            peter susan john bob anna undefined
+
+     What would happen if we would want to skip an item
+     ---------------------------------------------------
+
+        > Suppose we are only interested with peter , john and anna
+
+        > use _ (underscore) or add a comma
+
+             const [peter,,john,,anna] = friendsArr
+    
+             console.log(peter, john , anna)
+
+        > logs
+             peter john anna
+
+
+*/
+
+// old way of accessing
+    const fruitsArr = ['orange','banana','lemon']
+    
+    const orange = fruitsArr[0]
+    const banana = fruitsArr[1]
+    const lemon = fruitsArr[2]
+
+    console.log(orange, banana, lemon)
+
+
+
+// Destructuring
+    const friendsArr = ['peter','susan','john','bob','anna']
+
+    // name you variables whatever we want
+    const [ friend1,friend2,friend3,friend4,friend5  ] = friendsArr
+
+    console.log(friend1, friend2, friend3, friend4, friend5)
+
+    // Add a comma if you would want to skip an item
+    const [peter,,john,,anna] = friendsArr
+    
+    console.log(peter, john,anna)
+
+</script>
+
+</html>
