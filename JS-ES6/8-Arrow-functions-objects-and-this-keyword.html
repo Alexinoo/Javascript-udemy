@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS ES6 - Arrow Functions - object this keyword</title>
+</head>
+<style>
+    html {
+        font-family: 'Jost', sans-serif;
+    }
+
+    .container {
+        max-width: 40rem;
+        height: 10rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+        margin: 3rem auto;
+        padding: 0.5rem;
+        background-color: #880017;
+        color: white;
+        border-radius: 12px;
+    }
+
+    .result {
+        margin-top: 3rem;
+        max-width: 40rem;
+        height: auto;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+        margin: 3rem auto;
+        padding: 2rem;
+        color: #444;
+        border-radius: 12px;
+        text-align: center;
+    }
+
+    .btn {
+        font-size: 18px;
+        text-transform: capitalize;
+        margin: 2rem;
+        padding: 6px 12px;
+        background: #555;
+        color: #fff;
+        letter-spacing: 1.5px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        border-radius: 5px;
+    }
+
+    .btn:hover {
+        background: #222;
+    }
+
+    .title h1 {
+        font-size: 24px;
+        text-align: center;
+        letter-spacing: 1.5px;
+        text-transform: capitalize;
+    }
+
+    .underline {
+        width: 100%;
+        height: 3px;
+        background-color: #f15025;
+    }
+
+    .intro ul li {
+        list-style-position: outside;
+        margin: 16px 16px;
+        font-size: 24px;
+    }
+
+    .intro ul li::before {
+        content: "\2022";
+        color: red;
+        font-weight: bold;
+        display: inline-block;
+        width: 1em;
+        margin-left: -1em;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="title">
+            <h1> JS - ES6 Arrow Functions - object and 'this' keyword</h1>
+            <div class="underline"></div>
+        </div>
+        <div class="intro">
+            <ul>
+                <li>object and 'this' keyword </li>
+            </ul>
+        </div>
+
+    </div>
+
+</body>
+<script type="text/javascript">
+/*
+
+    Arrow Functions - Objects and 'this' keyword
+    ............................................ 
+
+    Regular Functions
+    -----------------
+   
+        > 'this' refers to the parent (global window object)
+        > left of the dot
+
+            const self = this
+            setTimeout(function(){
+                console.log('this in the setTimeout:',this); 
+                console.log('self after this assigning to self :',self);
+                console.log(`Hello, my name is ${self.firstName} ${self.lastName}`);
+            },2000)
+
+    
+    Arrow Functions
+    -----------------
+    
+        > 'this' refers to the current surrounding scope
+            
+            setTimeout(()=>{
+            
+                 console.log(`Hello, my name is ${this.firstName} ${this.lastName}`);
+
+            },2000)
+*/
+
+
+////// Objects and 'this' keyword - Regular functions /////////////////////
+// setTimeout - refers to the global object - window
+
+const bob = {
+    firstName : 'bob',
+    lastName : 'smith',
+    sayName : function(){
+        console.log('this:',this);
+        const self = this
+        
+        // regular functions
+        // const self = this
+        // setTimeout(function(){
+        //  console.log('this in the setTimeout:',this); 
+        //  console.log('self after this assigning to self :',self);
+        //  console.log(`Hello, my name is ${self.firstName} ${self.lastName}`);
+        // },2000)
+
+
+        // setTimeout with arrow functions
+        // current surrounding scope is the object
+        setTimeout(()=>{
+         
+         console.log(`Hello, my name is ${this.firstName} ${this.lastName}`);
+
+        },2000)
+    }
+}
+
+////// Objects and 'this' keyword - Arrow functions /////////////////////
+// refers to the parent (global window object)
+// anna.sayName() - surrounding scope is the window
+
+const anna = {
+    firstName : 'anna',
+    lastName : 'sanders',
+    sayName : ()=>{
+        console.log(this);
+        console.log(`Hello, my name is ${this.firstName} ${this.lastName}`);
+    }
+}
+
+bob.sayName()
+// anna.sayName()
+
+
+
+</script>
+
+</html>
