@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS ES6 - Arrow Functions</title>
+</head>
+<style>
+    html {
+        font-family: 'Jost', sans-serif;
+    }
+
+    .container {
+        max-width: 40rem;
+        height: 7rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+        margin: 3rem auto;
+        padding: 0.5rem;
+        background-color: #880017;
+        color: white;
+        border-radius: 12px;
+    }
+
+     .result {
+        margin-top: 3rem;
+        max-width: 40rem;
+        height: auto;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+        margin: 3rem auto;
+        padding: 2rem;
+        color: #444;
+        border-radius: 12px;
+        text-align: center;
+    }
+
+    .btn {
+        font-size: 18px;
+        text-transform: capitalize;
+        margin: 2rem;
+        padding: 6px 12px;
+        background: #555;
+        color: #fff;
+        letter-spacing: 1.5px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        border-radius: 5px;
+    }
+    
+    .btn:hover {
+        background: #222;
+     }
+
+    .title h1 {
+        font-size: 24px;
+        text-align: center;
+        letter-spacing: 1.5px;
+        text-transform: capitalize;
+    }
+
+    .underline {
+        width: 100%;
+        height: 3px;
+        background-color: #f15025;
+    }
+
+    .intro ul li {
+        list-style-position: outside;
+        margin: 16px 16px;
+        font-size: 24px;
+    }
+
+    .intro ul li::before {
+        content: "\2022";
+        color: red;
+        font-weight: bold;
+        display: inline-block;
+        width: 1em;
+        margin-left: -1em;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="title">
+            <h1> JS - ES6 Arrow Functions</h1>
+            <div class="underline"></div>
+        </div>
+        <div class="intro">
+            <ul>
+                <li>ES6 Arrow Functions </li>
+            </ul>
+        </div>
+
+        <div class="result">
+            <button class="btn">click me</button>
+        </div>
+    </div>
+
+</body>
+<script type="text/javascript">
+/*
+
+    Arrow Functions
+    ................... 
+
+    Features
+    ----------
+
+        > Also known as Fat Arrow functions
+
+        > no name , always an expresion , assign to variable
+
+        > no function keyword
+
+        > treat 'this' keyword differently
+
+
+
+//////// ES6 Regular Functions ///////////////////
+
+    // option 1 -
+    function sayHello(){
+        console.log('hello');
+    }
+
+    sayHello()
+
+
+    // option 2 - set them as an expression  then assign to a variable
+    // invoke using that value
+    const hello = function(name){
+        console.log(`Hello ${name}`);
+    }
+
+    hello('Alex')
+
+    // option 3 - return a value
+    function tripple(value1,value2){
+        return value1*value2 * 3
+    }
+
+*/
+
+
+//////// ES6 Arrow Functions - One liner  ///////////////////
+// one liner - omit return and the curry braces {}
+// invoke directly: sayHi()
+
+const sayHi = () => console.log('hello');
+sayHi()
+
+
+
+//////// ES6 Arrow Functions - pass 1 parameter - less functionality  ///////////////////
+// omit parenthesis if it's only 1 param
+// omit curry braces as well as return
+// assin to some kind of a variable instead of invoking directly
+
+const double = value => value * 2
+const result = double(4)
+console.log(result);
+
+
+
+
+//////// ES6 Arrow Functions - pass more than 1 parameter - more functionality //////////////
+// use parenthesis if it's more than 1 param
+// use curry braces if your have more lines of code
+// use explicit return
+// assin to some kind of a variable instead of invoking directly
+
+const multiply = (num1 , num2) => {
+    const result = num1 * num2
+    // more code here
+
+    return result
+}
+
+const product = multiply(10,20)
+console.log(product);
+
+
+
+
+
+
+//////// ES6 Arrow Functions - Return an object //////////////
+// wrap the object you are returning within the paranthesis
+// assin to some kind of a variable instead of invoking directly
+
+const object = ()=> ({ name : 'john', age : 25 })
+const person = object()
+console.log(person);
+
+
+//////// ES6 Arrow Functions - Use them as callback function - WHERE THEY SHINE ///////////
+
+const numbersArr = [1,2,3,4,5,6]
+
+// filter numbers bigger than 2
+
+// one liner
+// const bigNum = numbersArr.filter(number => number > 2)
+
+// get index of each
+// explicit return
+const bigNum = numbersArr.filter((number,index)=>{
+   console.log(number,index);
+   return number > 2
+})
+
+console.log(`Numbers bigger than 2 from the numbers Array :`, bigNum);
+
+
+
+//////// ES6 Arrow Functions - Use them as addEventListener callback function ////////
+const btnElmnt = document.querySelector('.btn')
+    btnElmnt.addEventListener('click',()=> console.log('you clicked me'))
+
+</script>
+
+</html>
