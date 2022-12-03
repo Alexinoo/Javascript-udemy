@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS ES6 - Spread Operator with DOM Elements</title>
+</head>
+<style>
+    html {
+        font-family: 'Jost', sans-serif;
+    }
+
+    .container {
+        max-width: 40rem;
+        height: 8rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+        margin: 3rem auto;
+        padding: 0.5rem;
+        background-color: #880017;
+        color: white;
+        border-radius: 12px;
+    }
+
+    .title h1 {
+        font-size: 24px;
+        text-align: center;
+        letter-spacing: 1.5px;
+        text-transform: capitalize;
+    }
+
+    .underline {
+        width: 100%;
+        height: 3px;
+        background-color: #f15025;
+    }
+
+    .intro ul li {
+        list-style-position: outside;
+        margin: 16px 16px;
+        font-size: 24px;
+    }
+
+    .intro ul li::before {
+        content: "\2022";
+        color: red;
+        font-weight: bold;
+        display: inline-block;
+        width: 1em;
+        margin-left: -1em;
+    }
+
+    .content {
+        margin-top: 3rem;
+        max-width: 40rem;
+        height: auto;
+        text-align: left;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+        margin: 3rem auto;
+        padding: 0.5rem;
+    }
+    .content h1 , span {
+        font-size: 16px;
+        color: #333;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="title">
+            <h2> JS - ES6 </h2>
+            <div class="underline"></div>
+        </div>
+        <div class="intro">
+            <ul>
+                <li> Spread Operator with DOM Elements</li>
+            </ul>
+        </div>
+        <div class="content">
+            <h1>ES6</h1>
+            <h1>JavaScript</h1>
+            <h1>HTML</h1>
+            <h1>CSS</h1>
+            <h2 id="result"></h2>
+        </div>
+    </div>
+
+</body>
+<script type="text/javascript">
+/*
+
+    Spread Operator with DOM Elements
+    ..................................
+
+        > returns Nodelist - we cannot use map on a NodeList
+
+            console.log(allHeadingOneElmnts.map(item=>console.log(item)));
+
+        > Use spread operator and wrap all the headings to h2
+
+*/
+
+const allHeadingOneElmnts = document.querySelectorAll('h1')
+
+const resultElmnt = document.getElementById('result')
+
+
+// console.log(allHeadingOneElmnts.map(item=>console.log(item)));
+
+ resultElmnt.innerHTML = [...allHeadingOneElmnts].map(heading =>{
+    return `<span>${heading.textContent}</span>`;
+ }).join('')
+</script>
+
+</html>
