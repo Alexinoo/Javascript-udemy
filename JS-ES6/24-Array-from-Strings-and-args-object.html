@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS ES6 - Array.from</title>
+</head>
+<style>
+    html {
+        font-family: 'Jost', sans-serif;
+    }
+
+    .container {
+        max-width: 40rem;
+        height: 18rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+        margin: 3rem auto;
+        padding: 0.5rem;
+        background-color: #880017;
+        color: white;
+        border-radius: 12px;
+    }
+
+    .title h1 {
+        font-size: 24px;
+        text-align: center;
+        letter-spacing: 1.5px;
+        text-transform: capitalize;
+    }
+
+    .underline {
+        width: 100%;
+        height: 3px;
+        background-color: #f15025;
+    }
+
+    .intro ul li {
+        list-style-position: outside;
+        margin: 16px 16px;
+        font-size: 24px;
+    }
+
+    .intro ul li::before {
+        content: "\2022";
+        color: red;
+        font-weight: bold;
+        display: inline-block;
+        width: 1em;
+        margin-left: -1em;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="title">
+            <h1> JS - ES6 </h1>
+            <div class="underline"></div>
+        </div>
+        <div class="intro">
+            <ul>
+                <li> Array.from</li>
+                <li>Strings and Arguments object</li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+<script type="text/javascript">
+/*
+    Array.from - Strings and Arguments objects
+    ..........................................
+
+     > Array.of and Array.from  - NOT ON THE PROTOTYPE
+
+     > returns Array Object from any object with a length property or an iterable object
+
+     > turns array-like/ array-ish into array - ( String,nodeList,Set)
+
+*/
+
+//////////////////////////  Array.from  In Action //////////////////////
+
+
+// string example
+const udemyStr = 'udemy'
+console.log(Array.from(udemyStr)); //['u', 'd', 'e', 'm', 'y']
+
+
+// Arguments object
+
+function countTotal(){
+
+    // console.log(arguments);  WONT WORK!!
+    // let total = arguments.reduce((total,currValue)=>{
+    //     return total + currValue
+    // },0)
+    // return total
+
+    // Array.from(arguments) - turns array-like / array-ish into array
+    let total = Array.from(arguments).reduce((total,currValue)=>{
+        return total + currValue
+    },0)
+    return total
+} 
+
+const result = countTotal(67,89,54,100)
+console.log(result);
+
+
+</script>
+
+</html>
