@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS ES6 - new Set()</title>
+</head>
+<style>
+    html {
+        font-family: 'Jost', sans-serif;
+    }
+
+    .container {
+        max-width: 40rem;
+        height: 18rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+        margin: 3rem auto;
+        padding: 0.5rem;
+        background-color: #880017;
+        color: white;
+        border-radius: 12px;
+    }
+
+    .title h1 {
+        font-size: 24px;
+        text-align: center;
+        letter-spacing: 1.5px;
+        text-transform: capitalize;
+    }
+
+    .underline {
+        width: 100%;
+        height: 3px;
+        background-color: #f15025;
+    }
+
+    .intro ul li {
+        list-style-position: outside;
+        margin: 16px 16px;
+        font-size: 24px;
+    }
+
+    .intro ul li::before {
+        content: "\2022";
+        color: red;
+        font-weight: bold;
+        display: inline-block;
+        width: 1em;
+        margin-left: -1em;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="title">
+            <h1> JS - ES6 </h1>
+            <div class="underline"></div>
+        </div>
+        <div class="intro">
+            <ul>
+                <li>new Set()</li>
+
+            </ul>
+        </div>
+    </div>
+
+</body>
+<script type="text/javascript">
+/*
+   new Set()
+   ..............
+   
+        > returns a Set Object
+
+        > stores a collection of unique values of any type
+
+   Methods that we can use
+   -------------------------
+
+        add(value)
+        -----------
+
+            > adds only unique value to the Set object
+
+            > does not add duplicate values (already existing) 
+
+
+        delete(value)
+        -------------
+
+            > returns true if value is in the set and a successfull deletion , otherwise false
+
+        clear()
+        -----------
+
+            > removes all items
+
+        has(value)
+        -----------
+            > returns true if the value is in the set, otherwise false
+
+    iterators that we can use  entries(), values() , keys() ,  forEach()
+   ---------------------------------------------------------------------
+
+        entries()
+        ----------
+   
+*/
+
+////////////// new Set()  In Action ////////////////////////////////////////
+
+const uniqueVal = new Set()
+
+console.log(uniqueVal); //Set(0) {size: 0}
+
+
+
+// add(value) in Action///////////////////////////////////////////////////
+uniqueVal.add(true)
+uniqueVal.add(false)
+uniqueVal.add('first')
+uniqueVal.add('second')
+uniqueVal.add('first')
+uniqueVal.add('second')
+
+
+// delete(value) in Action///////////////////////////////////////////////////
+const result = uniqueVal.delete('second')
+console.log(result); //true
+
+
+
+// has(value) In Action ///////////////////////////////////////////////////
+const hasValue = uniqueVal.has('ten')
+console.log(hasValue); //false
+
+
+console.log(uniqueVal); 
+</script>
+
+</html>
