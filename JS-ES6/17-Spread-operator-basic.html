@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS ES6 - Spread operator (...) Basics</title>
+</head>
+<style>
+    html {
+        font-family: 'Jost', sans-serif;
+    }
+
+    .container {
+        max-width: 40rem;
+        height: 18rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+        margin: 3rem auto;
+        padding: 0.5rem;
+        background-color: #880017;
+        color: white;
+        border-radius: 12px;
+    }
+
+    .title h1 {
+        font-size: 24px;
+        text-align: center;
+        letter-spacing: 1.5px;
+        text-transform: capitalize;
+    }
+
+    .underline {
+        width: 100%;
+        height: 3px;
+        background-color: #f15025;
+    }
+
+    .intro ul li {
+        list-style-position: outside;
+        margin: 16px 16px;
+        font-size: 24px;
+    }
+
+    .intro ul li::before {
+        content: "\2022";
+        color: red;
+        font-weight: bold;
+        display: inline-block;
+        width: 1em;
+        margin-left: -1em;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="title">
+            <h1> JS - ES6 </h1>
+            <div class="underline"></div>
+        </div>
+        <div class="intro">
+            <ul>
+                <li>Spread operator (...) Basics</li>
+
+            </ul>
+        </div>
+    </div>
+
+</body>
+<script type="text/javascript">
+/*
+   Spread Operator - BASICS
+   ........................
+   
+    > Allows us to quickly copy all or part of an existing array or object into another array or object.
+
+    > Allows an iterable to spread/expand individually inside receiver
+
+    > Splits into single items and copy them (INSTEAD OF REFERENCING)
+*/
+
+////////////// Spread Operator In Action ////////////////////////////////////
+
+const udemyStr = 'udemy'
+
+const boysArr = ['john','peter','bob']
+const girlsArr = ['susan','anna']
+
+const bestFriendStr = 'arnold'
+
+// Example 1
+// extract udemyStr as individual letters
+const lettersArr = [...udemyStr]
+console.log(lettersArr); // ['u', 'd', 'e', 'm', 'y']
+
+
+/////////////////////////////////////////////////////////////////////////////
+
+// Example 2
+// combine boysArr , girlsArr and bestFriend into an array of friends
+
+// initial thinking - Not a flat array
+// const friendsArr = [boysArr, girlsArr, bestFriendStr]
+// console.log(friendsArr); 
+// logs [['john','peter','bob'],['susan','anna'], 'arnold']
+
+// Solution - 
+const friendsArr = [...boysArr, bestFriendStr, ...girlsArr]
+console.log(friendsArr); 
+// logs ['john', 'peter', 'bob', 'arnold', 'susan', 'anna']
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+// WHY DO WE NEED TO COPY INSTEAD OF JUST REFERENCING THEM
+
+// referencing vs copying
+
+
+// referencing
+// both of them references the same place in the memory
+// So if we mutate newFriendsArr then the friendsArr will also be mutated
+
+    //const newFriendsArr = friendsArr
+
+    // update first friend from 'john' to 'karina'
+    //newFriendsArr[0] = 'karina'
+
+    //console.log(newFriendsArr); 
+    //['karina', 'peter', 'bob', 'arnold', 'susan', 'anna']
+
+    //console.log(friendsArr); 
+    //['karina', 'peter', 'bob', 'arnold', 'susan', 'anna']
+
+
+// copying
+// Does not ovewrite the original array
+
+    const newFriendsArr = [...friendsArr]
+          newFriendsArr[0] = 'karina'
+
+          console.log('New Friends : ',newFriendsArr); 
+        //   ['karina', 'peter', 'bob', 'arnold', 'susan', 'anna']
+
+
+          console.log('Original friends : ', friendsArr); 
+        //    ['john', 'peter', 'bob', 'arnold', 'susan', 'anna']
+
+</script>
+
+</html>
