@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS ES6 - Rest operator (...rest) </title>
+</head>
+<style>
+    html {
+        font-family: 'Jost', sans-serif;
+    }
+
+    .container {
+        max-width: 40rem;
+        height: 18rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+        margin: 3rem auto;
+        padding: 0.5rem;
+        background-color: #880017;
+        color: white;
+        border-radius: 12px;
+    }
+
+    .title h1 {
+        font-size: 24px;
+        text-align: center;
+        letter-spacing: 1.5px;
+        text-transform: capitalize;
+    }
+
+    .underline {
+        width: 100%;
+        height: 3px;
+        background-color: #f15025;
+    }
+
+    .intro ul li {
+        list-style-position: outside;
+        margin: 16px 16px;
+        font-size: 24px;
+    }
+
+    .intro ul li::before {
+        content: "\2022";
+        color: red;
+        font-weight: bold;
+        display: inline-block;
+        width: 1em;
+        margin-left: -1em;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="title">
+            <h1> JS - ES6 </h1>
+            <div class="underline"></div>
+        </div>
+        <div class="intro">
+            <ul>
+                <li>Rest operator (...rest)</li>
+
+            </ul>
+        </div>
+    </div>
+
+</body>
+<script type="text/javascript">
+/*
+   Rest Operator (...rest) - With Destructuring
+   ..................................   
+
+    > gathers /collects items
+
+    > gets the rest of the item instead of specifying them one by one when destructuring
+
+    > Most common convention is adding (...rest) but you can also do 
+        ...random or ...banana (whichever name you would like)
+
+    > The actual place matters !!! , ...rest must be the last element
+   
+*/
+
+/////////// Rest Operator In Action /////////////////////////////////
+
+// Arrays
+
+const fruitsArr = ['apple','orange','lemon','peach','kiwi','banana']
+
+const [firstFruit , secondFruit,...restOfTheFruits] = fruitsArr
+
+console.log(firstFruit , secondFruit,  restOfTheFruits);
+//  apple orange ['lemon', 'peach', 'kiwi', 'banana']
+
+
+
+
+// Objects
+const personObj = { name : 'john',lastName : 'smith' ,job : 'developer' }
+
+const { job , ...restOfTheProps }= personObj
+
+console.log(job , restOfTheProps);
+// developer {name: 'john', lastName: 'smith'}
+
+
+</script>
+
+</html>
