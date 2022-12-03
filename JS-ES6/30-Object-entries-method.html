@@ -84,7 +84,7 @@
 
 ////////////// Object.entries()  In Action ////////////////////////////////////////
 const employeeObj = {
-    name : 'Alex Mwangi Wakanyi',
+    name : 'Alex',
     age : 26,
     salary : 50000
 }
@@ -92,6 +92,35 @@ const employeeObj = {
 const allArr = Object.entries(employeeObj)
 console.log(allArr); 
 // [ ['name', 'Alex Mwangi Wakanyi'], ['age', 26], ['salary', 50000] ]
+
+
+
+
+//How we can use Map to return the keys  - destructure  the array //////////////
+
+const allKeys = allArr.map( employee =>{
+    const [keys , values] = employee
+    // console.log(keys,values);
+    return keys
+} )
+
+console.log(allKeys);
+
+console.log('------------------------------------');
+
+
+// How we can use for of loop to iterate over allArr
+
+for( const item of allArr ){
+     const [keys, values] = item
+     console.log(keys,values);
+}
+
+console.log('------------------------------------');
+// use destructure right away
+    for (const [keys, values] of allArr) {        
+        console.log(keys, values);
+    }
 
 </script>
 
