@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS ES6 - Array Methods</title>
+</head>
+<style>
+    html {
+        font-family: 'Jost', sans-serif;
+    }
+
+    .container {
+        max-width: 40rem;
+        height: 18rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+        margin: 3rem auto;
+        padding: 0.5rem;
+        background-color: #880017;
+        color: white;
+        border-radius: 12px;
+    }
+
+    .title h1 {
+        font-size: 24px;
+        text-align: center;
+        letter-spacing: 1.5px;
+        text-transform: capitalize;
+    }
+
+    .underline {
+        width: 100%;
+        height: 3px;
+        background-color: #f15025;
+    }
+
+    .intro ul li {
+        list-style-position: outside;
+        margin: 16px 16px;
+        font-size: 24px;
+    }
+
+    .intro ul li::before {
+        content: "\2022";
+        color: red;
+        font-weight: bold;
+        display: inline-block;
+        width: 1em;
+        margin-left: -1em;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="title">
+            <h1> JS - ES6 - Array Methods </h1>
+            <div class="underline"></div>
+        </div>
+        <div class="intro">
+            <ul>
+                <li>Array.find() </li>
+                <li>Array.findIndex()</li>
+                <li>Array.every()</li>
+                <li>Array.some()</li>
+
+            </ul>
+        </div>
+    </div>
+
+</body>
+<script type="text/javascript">
+/*
+    ES6 - Array Methods - find(), findIndex(),every(),some() 
+    ......................................................... 
+
+    Array.find()
+    ------------
+
+        > returns a specific item in the array that matches find criteria
+
+        > unlike Array.filter() , returns a specific item and not a new array
+
+        > returns undefined if not found
+
+            const filterAnna = peopleArr.find(person => person.name === 'steven')
+
+            console.log(filterAnna) //undefined
+
+    Array.findIndex()
+    -----------------
+
+        > returns index of a specific item in the array
+
+    Array.every()
+    -----------------
+
+        > returns Boolean (true/false) if all the items in the array matches our search criteria
+
+    Array.some()
+    -----------------
+
+        > returns Boolean (true/false) if at least one of the items in the array matched our search criteria
+*/
+
+const peopleArr = [
+    { id : 1 , name : 'john' },
+    { id : 2 , name : 'peter' },
+    { id : 3 , name : 'anna' },
+]
+
+const gradesArr = ['A','B','A','B','C']
+
+const goodGradesArr = ['A','B','A','B']
+
+
+// filter anna - Array.filter() returns a new array
+// const filterAnnaArr = peopleArr.filter(person => person.name === 'anna')
+// console.log(filterAnnaArr);  //  [{ id: 3, name: 'anna' }]
+// // Accessing individual properties
+// const id = filterAnnaArr[0].id
+// const name = filterAnnaArr[0].name
+// console.log(id,name); // 3 'anna'
+
+
+///// find() - anna   //////////////////////////////////////////////////////////
+const filterAnna = peopleArr.find(person => person.name === 'anna')
+console.log(filterAnna); // {id: 3, name: 'anna'}
+// Accessing individual properties
+const id = filterAnna.id
+const name = filterAnna.name
+console.log(id,name); //3 'anna'
+
+
+
+///// findIndex() - return index where id is 3  /////////////////////////////////
+// remove that item - use slice
+const findIndex = peopleArr.findIndex(person => person.id === 3)
+console.log('index of id 3 : ',findIndex); //2
+
+// use slice() to remove
+const newPeopleArr = peopleArr.slice(0, findIndex)
+console.log(newPeopleArr);
+
+
+
+///// every()-return Boolean (true/false) when all the items matches our search////
+// logs false - not all items matched what we are looking
+// not all items equaled to C
+const gradesThatDidnotMatchC = gradesArr.every(grade => grade !== 'C')
+const isAllGoodGrades = goodGradesArr.every(grade => grade !== 'C')
+// console.log(gradesThatDidnotMatchC); //false
+// console.log(isAllGoodGrades); //true
+
+
+///// some()-return Boolean (true/false) when 1 item matches our search////
+const oneBadGrade = gradesArr.some(grade => grade === 'C')
+console.log(oneBadGrade); //true
+</script>
+
+</html>
