@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS ES6 - New String Methods</title>
+</head>
+<style>
+    html {
+        font-family: 'Jost', sans-serif;
+    }
+
+    .container {
+        max-width: 40rem;
+        height: 18rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+        margin: 3rem auto;
+        padding: 0.5rem;
+        background-color: #880017;
+        color: white;
+        border-radius: 12px;
+    }
+
+    .title h1 {
+        font-size: 24px;
+        text-align: center;
+        letter-spacing: 1.5px;
+        text-transform: capitalize;
+    }
+
+    .underline {
+        width: 100%;
+        height: 3px;
+        background-color: #f15025;
+    }
+
+    .intro ul li {
+        list-style-position: outside;
+        margin: 16px 16px;
+        font-size: 24px;
+    }
+
+    .intro ul li::before {
+        content: "\2022";
+        color: red;
+        font-weight: bold;
+        display: inline-block;
+        width: 1em;
+        margin-left: -1em;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="title">
+            <h1> JS - ES6 </h1>
+            <div class="underline"></div>
+        </div>
+        <div class="intro">
+            <ul>
+                <li> New String Methods</li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+<script type="text/javascript">
+/*
+   New String Methods
+   .................... 
+   
+        > startsWith() , endsWith() , includes() , repeat()
+
+   startsWith()
+   -------------
+
+        > returns boolean (true/false) if a string starts with a specified string , otherwise, false
+
+        > The startsWith() method is case sensitive.
+
+        > Also takes in a second parameter , start-position that is 0-index based
+            -helps us to omit the junk and we are able to specify the start position
+
+        > syntax
+            string.startsWith(searchValue, start)
+
+
+        > Example 1
+            const isStartWith = person.startsWith('Pet')
+            console.log(isStartWith); //true
+
+        > Example 2
+            const isStartWith = person.startsWith('pet')
+            console.log(isStartWith); //false
+
+        > Example 3
+            const isEndWith = employee.startsWith('EMP',6)
+            console.log(isEndWith); //true
+
+
+   endsWith()
+   -------------
+
+        > returns boolean (true/false) if a string ends with a specified string , otherwise, false
+
+        > The endsWith() method is case sensitive.
+
+        > syntax
+            string.endsWith(searchvalue, length)
+
+            WHERE :-
+            searchvalue - The string to search for.
+            length - The length of the string to search.
+
+    includes()
+    ------------
+
+        > returns Boolean if a string contains a specified string
+
+        > The includes() method is case sensitive.
+
+        > syntax
+            string.includes(searchvalue, start)
+
+            WHERE:-
+            searchvalue - The string to search for.
+            start - The position to start from. Default is 0
+
+    repeat()
+    ------------
+
+        > returns a string with a number of copies of a string
+
+        > returns a new string
+
+        > does not change the original string
+
+        > syntax
+
+            string.repeat(count)
+
+            WHERE :-
+            count - The number of copies / How may times we would want to repeat a specific string
+
+*/
+
+const personStr = 'Peter Smith'
+const employeeStr = '23456-EMP-PETER-SMITH'
+const managerStr = '23456-MAN-JOHN-DOE'
+
+
+
+// startsWith()
+const isStartWith = personStr.startsWith('Pet')
+console.log(isStartWith); //true
+
+// startsWith() - case-sesitive
+// const isStartWith = personStr.startsWith('pet')
+// console.log(isStartWith); //false
+
+const isStartWithPosition = employeeStr.startsWith('EMP', 6)
+console.log(isStartWithPosition); //true
+
+
+/////////////////////////////////////////////////////////////////////////////
+
+// endsWith()
+const isEndWith = managerStr.endsWith('DOE') 
+console.log(isEndWith); //true
+
+// endsWith() - case-sensitive
+// const isEndWith = managerStr.endsWith('dOE') 
+// console.log(isEndWith); //false
+
+const isEndWithMAN = managerStr.endsWith('MAN',9) 
+console.log(isEndWithMAN); //true
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+
+// includes()
+
+const includesPeter = employeeStr.includes('PETER')
+console.log('employee includes PETER ? : ',includesPeter);
+
+//case-sensitive
+// const includesPeter = employeeStr.includes('pETER')
+// console.log('employeeStr includes PETER ? : ',includesPeter);
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+
+// repeat()
+// repeat 5 times - default argument
+
+const multiplyPeople = (person,amount=5)=> person.repeat(amount)
+
+ const people  = multiplyPeople(personStr)
+
+ console.log('No of copies on personStr : ',people);
+
+</script>
+
+
+</html>
