@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS ES6 - Rest operator - Function arguments </title>
+</head>
+<style>
+    html {
+        font-family: 'Jost', sans-serif;
+    }
+
+    .container {
+        max-width: 40rem;
+        height: 18rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+        margin: 3rem auto;
+        padding: 0.5rem;
+        background-color: #880017;
+        color: white;
+        border-radius: 12px;
+    }
+
+    .title h1 {
+        font-size: 24px;
+        text-align: center;
+        letter-spacing: 1.5px;
+        text-transform: capitalize;
+    }
+
+    .underline {
+        width: 100%;
+        height: 3px;
+        background-color: #f15025;
+    }
+
+    .intro ul li {
+        list-style-position: outside;
+        margin: 16px 16px;
+        font-size: 24px;
+    }
+
+    .intro ul li::before {
+        content: "\2022";
+        color: red;
+        font-weight: bold;
+        display: inline-block;
+        width: 1em;
+        margin-left: -1em;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="title">
+            <h1> JS - ES6 </h1>
+            <div class="underline"></div>
+        </div>
+        <div class="intro">
+            <ul>
+                <li>Rest operator (...rest)</li>
+                <li>With Function arguments (name , ...scores)</li>
+
+            </ul>
+        </div>
+    </div>
+
+</body>
+<script type="text/javascript">
+/*
+   Rest Operator (...rest) - With Function parameters
+   ..................................................  
+
+    > allows a function to accept an indefinite number of arguments as an array
+
+    > decide what functionality you would want to perfom
+
+    > We can only pass ...rest as an argument to a function
+
+        const getAverage = (name,...scores) => {
+   
+            let average_score = 0
+            for(const score of scores){
+                average_score += score
+            }
+            console.log(`${name}'s average score is ${average_score / scores.length }`);
+        }
+
+    > pass as parameter to a function - use spread (...testScoresArr) 
+        - to spreads individual items
+        getAverage('Alex', ...testScoresArr)
+   
+*/
+
+/////////// Rest Operator In Action /////////////////////////////////
+
+// function params
+
+const testScoresArr = [78, 90, 56, 43,99,65]
+
+const getAverage = (name,...scores) => {
+    console.log(name);
+    console.log(scores);
+
+    let average_score = 0
+    for(const score of scores){
+        average_score += score
+    }
+    console.log(`${name}'s average score is ${average_score / scores.length }`);
+}
+
+getAverage('John', 78,90,56,43)
+
+getAverage('Alex', ...testScoresArr) //passed as spread operator
+</script>
+
+</html>
