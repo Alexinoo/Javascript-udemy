@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS ES6 - Spread operator With Objects { ...object }</title>
+</head>
+<style>
+    html {
+        font-family: 'Jost', sans-serif;
+    }
+
+    .container {
+        max-width: 40rem;
+        height: 18rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+        margin: 3rem auto;
+        padding: 0.5rem;
+        background-color: #880017;
+        color: white;
+        border-radius: 12px;
+    }
+
+    .title h1 {
+        font-size: 24px;
+        text-align: center;
+        letter-spacing: 1.5px;
+        text-transform: capitalize;
+    }
+
+    .underline {
+        width: 100%;
+        height: 3px;
+        background-color: #f15025;
+    }
+
+    .intro ul li {
+        list-style-position: outside;
+        margin: 16px 16px;
+        font-size: 24px;
+    }
+
+    .intro ul li::before {
+        content: "\2022";
+        color: red;
+        font-weight: bold;
+        display: inline-block;
+        width: 1em;
+        margin-left: -1em;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="title">
+            <h1> JS - ES6 </h1>
+            <div class="underline"></div>
+        </div>
+        <div class="intro">
+            <ul>
+                <li>Spread operator - With Objects - { ...object }</li>
+
+            </ul>
+        </div>
+    </div>
+
+</body>
+<script type="text/javascript">
+/*
+   Spread Operator (Objects) - { ...object }
+   ..........................................
+   
+    > Starting with ES2018 , ES8
+
+    > We are also able to do that with an object
+
+    > Works exactly the same like what we had with arrays
+
+    > use { ...object , more properties }
+
+    > Allows us to add more properties to the new object
+
+        -Add salary of 50000
+
+        const newPerson = {...person , salary : 50000 }
+
+    > Allows us to update too existing properties to suit our needs
+
+        -Update name to Peter and job to CEO
+        
+        const newPerson = {...person , salary : 50000 , firstName : 'Peter' , job : 'CEO'}
+*/
+
+////////////// Spread Operator (Objects) In Action /////////////////////////
+
+const person = {
+    firstName : 'Bob',
+    job : 'Developer'
+}
+
+// copying person Object and add salary
+// Ovewrite firstName to peter / and job to CEO
+const newPerson = {...person , salary : 50000 , firstName : 'Peter' , job : 'CEO'}
+
+// logs
+console.log('Original Person : ',person);
+// { firstName: 'Bob', job: 'Developer' }
+
+console.log('New Person : ',newPerson );
+// {firstName: 'Peter', job: 'CEO', salary: 50000}
+
+</script>
+
+</html>
