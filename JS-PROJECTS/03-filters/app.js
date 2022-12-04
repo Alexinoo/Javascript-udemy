@@ -5,7 +5,12 @@ let filteredProductsArr = [...products]
 const prodContDivElmnt = document.querySelector('.products-container')
 
 const displayProducts = ()=>{
+
     // if statement
+    if(filteredProductsArr.length === 0){
+        prodContDivElmnt.innerHTML =`<h6>sorry, no products matched your search.</h6>`
+        return
+    }
 
     prodContDivElmnt.innerHTML = filteredProductsArr.map( ({id,title,image,price}) => {
       return `<article class="product" data-id="${id}">
