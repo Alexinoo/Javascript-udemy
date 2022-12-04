@@ -19,3 +19,15 @@ const displayProducts = ()=>{
 }
 
 displayProducts()
+
+// Text Filter / search functionality
+const formElmnt = document.querySelector('.input-form')
+const inputElmnt = document.querySelector('.search-input')
+
+formElmnt.addEventListener('keyup',()=>{
+    const searchProduct = inputElmnt.value
+    // search based on input value 
+    //  returns all if includes('') - which what we wanted
+    filteredProductsArr = products.filter(({title}) => title.toLowerCase().includes(searchProduct))
+    displayProducts()
+})
