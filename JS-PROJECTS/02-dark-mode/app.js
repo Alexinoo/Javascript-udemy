@@ -20,11 +20,14 @@ const articleSectionElmnt = document.querySelector('.articles')
 const articleElmntArr = articles.map(article => {
 
     const { title , date , length ,snippet } = article
+
+    // format date
+    const formattedDate = moment(date).format("MMM Do YYYY")
     return `
           <article class="post">
            <h2>${title}</h2>
            <div class="post-info">
-            <span>${date}</span>
+            <span>${formattedDate}</span>
             <span>${length} min read</span>
            </div>
            <p>${snippet}</p>
@@ -32,3 +35,6 @@ const articleElmntArr = articles.map(article => {
 }).join('')
 
 articleSectionElmnt.innerHTML = articleElmntArr
+
+// console.log(articles);
+// console.log(moment);
