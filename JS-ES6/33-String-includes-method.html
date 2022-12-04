@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS ES6 - String includes()</title>
+</head>
+<style>
+    html {
+        font-family: 'Jost', sans-serif;
+    }
+
+    .container {
+        max-width: 40rem;
+        height: 18rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+        margin: 3rem auto;
+        padding: 0.5rem;
+        background-color: #880017;
+        color: white;
+        border-radius: 12px;
+    }
+
+    .title h1 {
+        font-size: 24px;
+        text-align: center;
+        letter-spacing: 1.5px;
+        text-transform: capitalize;
+    }
+
+    .underline {
+        width: 100%;
+        height: 3px;
+        background-color: #f15025;
+    }
+
+    .intro ul li {
+        list-style-position: outside;
+        margin: 16px 16px;
+        font-size: 24px;
+    }
+
+    .intro ul li::before {
+        content: "\2022";
+        color: red;
+        font-weight: bold;
+        display: inline-block;
+        width: 1em;
+        margin-left: -1em;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="title">
+            <h1> JS - ES6 </h1>
+            <div class="underline"></div>
+        </div>
+        <div class="intro">
+            <ul>
+                <li> String includes()</li>
+                
+
+            </ul>
+        </div>
+    </div>
+
+</body>
+<script type="text/javascript">
+/*
+
+    String includes()
+    ................... 
+
+        > returns Boolean - true if a string contains a specified string. 
+        
+        > Otherwise ,if that is not the case , returns false
+
+        > include() is case-sensitive
+
+        > syntax
+                string.includes(searchvalue, start)
+
+                WHERE
+                searchValue - REQUIRED - The string to search for.
+                start - OPTIONAL - The position to start from - default is 0
+
+        > Use case
+
+            search functionality in a portal /website for let's say products /companies e.t.c
+
+        > Examples
+
+                 const firstName = 'Alex'
+
+                 const isIncludesle = firstName.includes('le')
+                 const isIncludesPeter = firstName.includes('peter')
+
+                 console.log(isIncludes); //true
+                 console.log(isIncludesPeter); //false
+
+        > With optional parameter
+
+                 console.log(firstName.includes('A', 1)); //false
+*/
+
+
+//////// includes() In Action ////////////////////////////////////////////////////
+
+// Strings
+const firstName = 'Alex'
+const isIncludes = firstName.includes('le')
+console.log(isIncludes); //true
+
+
+// Object
+const product = {
+    title : 'Leather Chair' 
+}
+
+const isLeatherChair = product.title.includes('Chair')
+console.log(isLeatherChair); //true
+
+
+// Array Of Objects
+const products = [
+    { title : 'Modern Poster' },
+    { title : 'Bar Stool' },
+    { title : 'Armchair' },
+    { title : 'Leather Chair' },
+]
+
+
+const searchValue = 'a'
+
+const filteredProducts = products.filter(product => product.title.toLowerCase().includes(searchValue) )
+
+console.log(filteredProducts);
+
+
+</script>
+
+
+</html>
