@@ -25,6 +25,8 @@ const displayProducts = ()=>{
 
 displayProducts()
 
+
+
 // Text Filter / search functionality
 const formElmnt = document.querySelector('.input-form')
 const inputElmnt = document.querySelector('.search-input')
@@ -36,3 +38,18 @@ formElmnt.addEventListener('keyup',()=>{
     filteredProductsArr = products.filter(({title}) => title.toLowerCase().includes(searchProduct))
     displayProducts()
 })
+
+
+
+// Display filter buttons
+// select company buttons
+const cmpArtElmnt = document.querySelector('.companies')
+
+const displayButtons = ()=> {
+    const btnElmntsArr = ['All',...new Set(products.map(({company})=> company))]
+    cmpArtElmnt.innerHTML = btnElmntsArr.map(company => {
+        return `<button class="company-btn" data-id="${company}">${company}</button>`
+    }).join('')
+}
+
+displayButtons()
