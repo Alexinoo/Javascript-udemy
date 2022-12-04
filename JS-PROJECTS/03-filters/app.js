@@ -53,3 +53,20 @@ const displayButtons = ()=> {
 }
 
 displayButtons()
+
+
+// Filter Based on Company
+// listen click event on the parent of the company buttons
+cmpArtElmnt.addEventListener('click',(e)=>{
+    if(e.target.classList.contains('company-btn')){
+        if(e.target.dataset.id === 'All'){
+            filteredProductsArr = [...products]
+        }else{
+            filteredProductsArr = products.filter(({company})=> company === e.target.dataset.id)
+        }
+
+        // clear search input
+        inputElmnt.value = ''
+        displayProducts()
+    }
+})
