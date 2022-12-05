@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS ES6 - MODULES : Default Export</title>
+</head>
+<style>
+    html {
+        font-family: 'Jost', sans-serif;
+    }
+
+    .container {
+        max-width: 40rem;
+        height: 8rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+        margin: 3rem auto;
+        padding: 0.5rem;
+        background-color: #880017;
+        color: white;
+        border-radius: 12px;
+    }
+
+    .btn {
+        font-size: 18px;
+        text-transform: capitalize;
+        margin: 2rem;
+        padding: 6px 12px;
+        background: #555;
+        color: #fff;
+        letter-spacing: 1.5px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        border-radius: 5px;
+    }
+
+    .btn:hover {
+        background: #222;
+    }
+
+    .content {
+        /* margin-top: 8rem; */
+        max-width: auto;
+        height: auto;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+        margin: 4rem auto;
+        padding: 3rem 6rem;
+        color: #444;
+        border-radius: 12px;
+    }
+
+    .title h1 {
+        font-size: 24px;
+        text-align: center;
+        letter-spacing: 1.5px;
+        text-transform: capitalize;
+    }
+
+    .underline {
+        width: 100%;
+        height: 3px;
+        background-color: #f15025;
+    }
+
+    .intro ul li {
+        list-style-position: outside;
+        margin: 16px 16px;
+        font-size: 24px;
+    }
+
+    .intro ul li::before {
+        content: "\2022";
+        color: red;
+        font-weight: bold;
+        display: inline-block;
+        width: 1em;
+        margin-left: -1em;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="title">
+            <h1> JS - ES6 MODULES </h1>
+            <div class="underline"></div>
+        </div>
+        <div class="intro">
+            <ul>
+                <li>Default Export</li>
+            </ul>
+        </div>
+        <div class="content"></div>
+        <button class="btn">show people</button>
+    </div>
+
+</body>
+<script type="module">
+/*
+
+Limitations of Jamming everything in one file
+.............................................. 
+
+    > global name space - we can't have another variable with a name employeesObj
+
+    > hard to navigate when the the file/code gets bigger
+
+So what would be the solution
+-------------------------------
+
+    > Modules        
+
+        - Names need to match with named exports , however , with default export , we can call it whatever we want
+
+             import whatever from './utils/showPeople.js' 
+
+
+*/
+
+import { randomValue , employeesObj } from './utils/data.js' 
+
+import showInfo from './utils/showPeople.js' 
+
+
+const contentDivElmnt = document.querySelector('.content')
+const btnElmnt = document.querySelector('.btn')
+
+btnElmnt.addEventListener('click',()=>{
+    contentDivElmnt.innerHTML = showInfo(employeesObj)
+})
+
+
+</script>
+
+</html>
