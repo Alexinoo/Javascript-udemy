@@ -15,6 +15,8 @@ Two Flavours of exporting data to other files
 
         - Inorder to access it - we need to import it where we need to work with it using the same name as the variable
 
+        - We can have as many named exports as possible ..whether that could be array/objects / String / Number etc
+
     > syntax 
     
         import { variable } from '/relative path' - named export
