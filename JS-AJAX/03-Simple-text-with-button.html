@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS AJAX - Simple Text With A button</title>
+</head>
+<style>
+    html {
+        font-family: 'Jost', sans-serif;
+    }
+
+    .container {
+        max-width: 40rem;
+        height: 10rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+        margin: 3rem auto;
+        padding: 0.5rem;
+        background-color: #880017;
+        color: white;
+        border-radius: 12px;
+    }
+
+    .content {
+        margin-top: 6rem;
+        color: gray;
+        background-color: #fff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+        height: 6rem;
+        border-radius: 12px;
+        text-align: center;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .title h1 {
+        font-size: 24px;
+        text-align: center;
+        letter-spacing: 1.5px;
+        text-transform: capitalize;
+    }
+
+    .underline {
+        width: 100%;
+        height: 3px;
+        background-color: #f15025;
+    }
+
+    .intro ul li {
+        list-style-position: outside;
+        margin: 16px 16px;
+        font-size: 24px;
+    }
+
+    .intro ul li::before {
+        content: "\2022";
+        color: red;
+        font-weight: bold;
+        display: inline-block;
+        width: 1em;
+        margin-left: -1em;
+    }
+
+    .btn {
+        margin-top: 2rem;
+        font-size: 16px;
+        color: #fff;
+        background-color:#555;
+        padding: 6px 12px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: all 0.5s ease-in-out;
+    }
+    .btn:hover {        
+        color: #fff;
+        background-color:#222;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="title">
+            <h1> JS - AJAX</h1>
+            <div class="underline"></div>
+        </div>
+        <div class="intro">
+            <ul>
+                <li>Simple Text - Add Button</li>
+            </ul>
+        </div>
+        <div class="content">
+        </div>
+        <button class="btn" type="button">show text</button>
+    </div>
+
+</body>
+<script type="text/javascript">
+/*
+
+Simple Text Example With a Button
+
+XMLHttpRequest - Provided by the Browser
+-------------------------------------------
+
+    > special object provided by the browser
+
+    > In order to access it with JS, we have a following setup
+
+    > create the object with some kind of a variable name , common convention is calling it xhr
+
+        const xhr = new XMLHttpRequest
+
+    > This gives us a new instance of XMLHttpRequest constructor
+
+    > set up two methods and one property
+
+    xhr.open()
+    -----------
+
+        > Takes in 2 methods 
+
+            xhr.open(method , url)
+
+                WHERE !!
+                method - GET/POST/PUT/DELETE
+                url - path to our resource
+                
+
+     xhr.onreadystatechange property
+    ----------------------------------
+
+        > Assigned to a callback
+
+            xhr.onreadystatechange = callback
+
+        > callback is the function executed when the readyState changes
+
+        > readyState starts with 0 all the way upto 4
+
+            0 - UNSENT - Client has been created. open() not called yet
+
+            1 - OPENED - open() has been called
+
+            2 - HEADERS_RECEIVED - send() has been called,headers and status are available
+
+            3 - LOADING - Downloading - responseText holds partial data
+
+            4 - DONE - Operation is complete
+
+        > check if xhr.readyState is 4 and the xhr.status  is 200 / 404 - then do something
+
+
+      xhr.responseText property
+      -------------------------
+
+        > use xhr.responseText to access the text in our resource
+
+    
+      xhr.send() -MUST MUST MUST MUST !!!!
+      ------------------------------------
+
+        > sends the request to the server
+
+*/
+
+const btnElmnt = document.querySelector('.btn')
+btnElmnt.addEventListener('click',()=>{
+    getData()
+})
+
+// get data function
+
+function getData(){
+    const xhr = new XMLHttpRequest()
+    xhr.open('GET', './api/sample.txt')
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            const textParaElmnt = document.createElement('p')
+            const contentDiv = document.querySelector('.content')
+            textParaElmnt.textContent = xhr.responseText
+
+            contentDiv.appendChild(textParaElmnt)
+
+        } else {
+            // logged when the ready state was 2 and 3
+            console.log({
+                status: xhr.status,
+                text: xhr.statusText,
+                state: xhr.readyState
+            });
+        }
+    }
+
+    xhr.send()
+}
+
+</script>
+
+</html>
