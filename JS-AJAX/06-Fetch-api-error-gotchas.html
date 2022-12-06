@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS AJAX - Fetch API - Errors Gotchas</title>
+</head>
+<style>
+    html {
+        font-family: 'Jost', sans-serif;
+    }
+
+    .container {
+        max-width: 40rem;
+        height: 10rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+        margin: 3rem auto;
+        padding: 0.5rem;
+        background-color: #880017;
+        color: white;
+        border-radius: 12px;
+    }
+
+    .content {
+        margin-top: 6rem;
+        color: gray;
+        background-color: #fff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+        height: auto;
+        border-radius: 12px;
+        text-align: center;
+        padding: 10px 20px;
+    }
+
+    .title h1 {
+        font-size: 24px;
+        text-align: center;
+        letter-spacing: 1.5px;
+        text-transform: capitalize;
+    }
+
+    .underline {
+        width: 100%;
+        height: 3px;
+        background-color: #f15025;
+    }
+
+    .intro ul li {
+        list-style-position: outside;
+        margin: 16px 16px;
+        font-size: 16px;
+    }
+
+    .intro ul li::before {
+        content: "\2022";
+        color: red;
+        font-weight: bold;
+        display: inline-block;
+        width: 1em;
+        margin-left: -1em;
+    }
+
+    .btn {
+        margin-top: 2rem;
+        font-size: 16px;
+        color: #fff;
+        background-color: #555;
+        padding: 6px 12px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: all 0.5s ease-in-out;
+    }
+
+    .btn:hover {
+        color: #fff;
+        background-color: #222;
+    }
+
+    span {
+        font-size: 18px;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="title">
+            <h1> JS - AJAX - Fetch API (ES6) Errors Gotchas </h1>
+            <div class="underline"></div>
+        </div>
+        <div class="intro">
+            <ul>
+                <li>Fetch API </li>                
+                <li>Errors Gotchas</li>
+            </ul>
+        </div>
+
+</body>
+<script type="text/javascript">
+/*
+
+Fetch API  - Errors Gotchas
+......................
+
+    > When it comes to fetch , only treats network errors as Errors
+
+    > For example, if we mess up the url path , we will get back 404 which means resource Not Found
+
+    > Later on , we can take a look on how we can handle that properly when our fetch requests are gonna get more complex
+
+    > response.json() is the one that is triggering the error and not the fatch that url is incorrect i.e This means we cannot turn our response into json
+
+    > This means that we are getting the response but not able to return it into response.json()
+        Response {type: 'basic', url: 'http://127.0.0.1:5500/JS-AJAX/api/people.jsons', redirected: false, status: 404, ok: false, …}
+
+    > But when it comes to data it is undefined because we are not returning any promise when we chain .then(data => console.log(data))
+
+    > And also note that we are not logging that error in the catch() block
+*/
+
+const btnElmnt = document.querySelector('.btn')
+const contentDivElmnt = document.querySelector('.content')
+
+const url = './api/people.jsons'
+
+// One Liner
+fetch(url).then(response => console.log(response)).then(data=>console.log(data)).catch(err=> console.log(error))
+
+
+</script>
+
+</html>
