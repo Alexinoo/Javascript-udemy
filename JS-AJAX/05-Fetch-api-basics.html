@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS AJAX - Fetch API</title>
+</head>
+<style>
+    html {
+        font-family: 'Jost', sans-serif;
+    }
+
+    .container {
+        max-width: 40rem;
+        height: 18rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+        margin: 3rem auto;
+        padding: 0.5rem;
+        background-color: #880017;
+        color: white;
+        border-radius: 12px;
+    }
+
+    .content {
+        margin-top: 6rem;
+        color: gray;
+        background-color: #fff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+        height: auto;
+        border-radius: 12px;
+        text-align: center;
+        padding: 10px 20px;
+    }
+
+    .title h1 {
+        font-size: 24px;
+        text-align: center;
+        letter-spacing: 1.5px;
+        text-transform: capitalize;
+    }
+
+    .underline {
+        width: 100%;
+        height: 3px;
+        background-color: #f15025;
+    }
+
+    .intro ul li {
+        list-style-position: outside;
+        margin: 16px 16px;
+        font-size: 16px;
+    }
+
+    .intro ul li::before {
+        content: "\2022";
+        color: red;
+        font-weight: bold;
+        display: inline-block;
+        width: 1em;
+        margin-left: -1em;
+    }
+
+    .btn {
+        margin-top: 2rem;
+        font-size: 16px;
+        color: #fff;
+        background-color: #555;
+        padding: 6px 12px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: all 0.5s ease-in-out;
+    }
+
+    .btn:hover {
+        color: #fff;
+        background-color: #222;
+    }
+
+    span {
+        font-size: 18px;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="title">
+            <h1> JS - AJAX - Fetch API (ES6) vs XHRHttpRequest </h1>
+            <div class="underline"></div>
+        </div>
+        <div class="intro">
+            <ul>
+                <li>Fetch API </li>
+                <li>Built in and provided by the browser</li>
+                <li>Promise based</li>
+                <li>XHR is not wrong</li>
+                <li>Fetch is an alternative modern approach with simpler and cleaner syntax</li>
+                <li>Result is same ..gets dynamically behind the scenes</li>
+            </ul>
+        </div>      
+
+</body>
+<script type="text/javascript">
+/*
+
+Fetch API  - Modern JS
+......................
+
+    > Latest and greatest resource we have to handle AJAX requests
+
+    > Built in and provided by the browser
+
+    > Promise based
+
+    > XHR is not wrong
+
+    > Fetch is an alternative modern approach with simpler and cleaner syntax
+
+    > Result is same ..gets dynamically behind the scenes
+
+    > fetch API is supported by most of the modern browsers today
+
+Syntax
+-----------
+    > It is a function
+
+    > Takes in one argument - url
+
+        fetch(url)
+
+    > Returns a promise (NOT A MUST TO ASSIGN TO A VARIABLE)
+        const response = fetch(url)
+
+        -Can chain directly
+            fetch(url)
+            .then(res => console.log(res))
+            .catch(error=>console.log(error))
+
+    > Means, we can use .then() to get the response and .catch() to catch the errors
+
+    > .then( resp => console.log(res) ) does not return the data directly but a response Object
+
+    > the response object contains useful properties and methods
+        e.g.
+        Properties
+        -----------
+            status : 200
+            statusText : 'OK',
+            ok : true,
+            url : 'http://127.0.0.1:5500/JS-AJAX/api/people.json'
+
+        Methods
+        -----------
+            json: ƒ json()  
+            
+            - converts the response that we are getting into JSON data
+
+            - returns a promise
+
+    > So why is returning a promise from the callback so important
+
+        -If we are returning a promise, we will have to chain another .then() to access the data
+
+        - We need to write explicit return response.json()
+
+        - And in order to access that data we need to chain with .then() which takes in a callback and access our data
+
+    > Error handling is handled in the catch() block
+        catch(err=> console.log(error))
+*/
+
+const btnElmnt = document.querySelector('.btn')
+const contentDivElmnt = document.querySelector('.content')
+
+const url = './api/people.json'
+
+
+// OPTION 1 - Assign to a variable
+// const response = fetch(url)
+// response
+// .then(data => console.log(data))
+// .catch(error => console.log(error))
+
+
+
+// OPTION 2 - Invoke directly
+fetch(url)
+.then(res => {    
+//response object
+// useful props and methods
+// res.json() converts response into JSON data
+return res.json()
+})
+.then(data => console.log(data))
+.catch(error => console.log(error))
+
+// One Liner
+// fetch(url).then(response => response.json()).then(data=>console.log(data)).catch(err=> console.log(error))
+
+
+</script>
+
+</html>
