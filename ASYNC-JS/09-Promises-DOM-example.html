@@ -160,6 +160,7 @@ btnElmnt.addEventListener('click',()=>{
     .then(()=>addColor(2000, h1TwoElmnt, 'green'))
     .then(()=>addColor(1000, h1ThreeElmnt, 'blue'))
     .catch(error => console.log(error))
+    .finally(()=>console.log('finally block always executed'))
  
 })
 
