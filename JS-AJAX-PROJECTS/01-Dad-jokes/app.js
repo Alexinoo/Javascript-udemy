@@ -22,6 +22,8 @@ btnElmnt.addEventListener('click',async()=>{
 // Mostly useful with POST
 
 const fetchDadJoke = async()=> {
+
+    pElmnt.textContent = 'Loading...'
     const response = await fetch(url ,{
         headers : {
             Accept : 'application/json',
