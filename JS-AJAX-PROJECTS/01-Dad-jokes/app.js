@@ -22,14 +22,25 @@ btnElmnt.addEventListener('click',async()=>{
 // Mostly useful with POST
 
 const fetchDadJoke = async()=> {
+    
+    try {
+        pElmnt.style.color = '#000000'
+        pElmnt.textContent = 'Loading...'
 
-    pElmnt.textContent = 'Loading...'
-    const response = await fetch(url ,{
+        const response = await fetch(url ,{
         headers : {
-            Accept : 'application/json',
+            Accept : 'applications/json',
             'User-Agent' : 'learning app'
         }
-    })
-    const {joke} = await response.json()
-    pElmnt.textContent = joke
+        })
+        
+        const {joke} = await response.json()
+        pElmnt.textContent = joke
+
+    }
+     catch (error) {
+         pElmnt.style.color = 'red'
+         pElmnt.innerHTML = 'There was some error getting the data !!..'
+    }
+    
 }
