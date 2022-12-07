@@ -29,18 +29,25 @@ const fetchDadJoke = async()=> {
 
         const response = await fetch(url ,{
         headers : {
-            Accept : 'applications/json',
+            Accept : 'application/json',
             'User-Agent' : 'learning app'
         }
         })
+
+        if(!response.ok){
+            // console.log({ok : response.ok ,status : response.status,          statusText : response.statusText
+            // });
+            throw new Error('resource not found!!!..')
+        }
         
         const {joke} = await response.json()
         pElmnt.textContent = joke
 
     }
-     catch (error) {
+     catch ({message}) {
+        // access the error that was thrown error.message or destructure right away
          pElmnt.style.color = 'red'
-         pElmnt.innerHTML = 'There was some error getting the data !!..'
+         pElmnt.innerHTML = 'there was an error..'
     }
     
 }
