@@ -35,7 +35,7 @@ const displayProducts = (list)=>{
         const { url:img } = product.fields.image[0]
         const formatPrice = price/100
 
-        return `<a href="product.html" class="single-product" data-id="${id}">
+        return `<a href="product.html" class="single-product">
             <img src="${img}" alt="couch" class="single-product-img img">
             <footer>
               <h5 class="name">${title}</h5>
