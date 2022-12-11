@@ -1,13 +1,23 @@
 import $ from './utils/getElement.js'
+import getUser from './utils/fetchUser.js'
 
-const url = 'https://randomuser.me/api/'
 
 // select Elements
 const imgElmnt = $('.user-img')
 const userTitleParaElmnt = $('.user-title')
-const uservalueParaElmnt = $('.user-values')
-const randomUserBtn = $('.btn')
+const uservalueParaElmnt = $('.user-value')
+const randomUserBtnElmnt = $('.btn')
 
 const iconElmnts = [...document.querySelectorAll('.icon')]
 
-console.log(iconElmnts);
+
+const showUser = async()=>{
+    //get user from api 
+    const person = await getUser()
+    console.log(person);
+
+    //display user
+}
+
+window.addEventListener('DOMContentLoaded',showUser)
+randomUserBtnElmnt.addEventListener('click',showUser)
