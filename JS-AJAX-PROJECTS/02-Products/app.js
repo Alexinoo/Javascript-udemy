@@ -24,8 +24,27 @@ const fetchProducts = async()=>{
     }    
 }
 
+// {fields:{name,price ,image[0].url , company , colors  }}
+
 const displayProducts = (list)=>{
-    console.log(list);
+
+    const prodList = list.map((product) => {
+        // destructuring / alias
+        const {id} = product
+        const {name:title ,price} = product.fields
+        const { url:img } = product.fields.image[0]
+        const formatPrice = price/100
+
+        return `<a href="product.html" class="single-product" data-id="${id}">
+            <img src="${img}" alt="couch" class="single-product-img img">
+            <footer>
+              <h5 class="name">${title}</h5>
+              <span class="price">$${formatPrice}</span>
+            </footer>
+          </a>`
+    }).join('')
+
+    prodCenterDiv.innerHTML = `<div class="products-container">${prodList}</div>`
 }
 
 const start = async()=>{
