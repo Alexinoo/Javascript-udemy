@@ -16,7 +16,7 @@ const displayUser = (person)=> {
    userTitleParaElmnt.textContent = `My name is`
 
     // remove the .active from all before loading new user 
-   iconBtnElmnts.forEach(btn=>btn.classList.remove('active'))
+   removeActive(iconBtnElmnts)
 
     // add .active class to the first icon by default
    iconBtnElmnts[0].classList.add('active')
@@ -34,11 +34,15 @@ const displayUser = (person)=> {
             uservalueParaElmnt.textContent = person[label]
 
             // add .active class to the clicked button : Remove first before adding
-            iconBtnElmnts.forEach(btn=>btn.classList.remove('active'))
+            removeActive(iconBtnElmnts)
             btn.classList.add('active')
         })
     })
 
+}
+
+function removeActive(buttons){
+    buttons.forEach(btn=>btn.classList.remove('active'))
 }
 
 export default displayUser
