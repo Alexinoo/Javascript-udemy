@@ -33,8 +33,10 @@ const displayProduct = (product)=>{
     // change document title
     document.title = title.toUpperCase()
 
-    // colors
-
+    // colors Array
+    const colorsList = colors.map(color=>{
+        return `<span class="product-color" style="background:${color};"></span>`
+    }).join('')
 
     prodSecElmnt.innerHTML = `<div class="product-wrapper">
             <img src="${img}" alt="" class="img">
@@ -43,8 +45,7 @@ const displayProduct = (product)=>{
                 <h5>${company}</h5>
                 <span>$${price/100}</span>
                 <div class="colors">
-                    <span class="product-color"></span>
-                    <span class="product-color" style="background:green;"></span>
+                    ${colorsList}
                 </div>
                 <p>${description}</p>
                 <button class="btn">add to cart</button>
