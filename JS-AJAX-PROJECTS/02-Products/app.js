@@ -17,11 +17,20 @@ const fetchProducts = async()=>{
             throw new Error('resource not found..')
         }
         const data = await response.json()
-        console.log(data);
+        return data
         
     } catch (error) {
         prodCenterDiv.innerHTML = `<p class="error">there was an error</p>`
     }    
 }
 
-fetchProducts()
+const displayProducts = (list)=>{
+    console.log(list);
+}
+
+const start = async()=>{
+    const data = await fetchProducts()
+    displayProducts(data)
+}
+
+start()
