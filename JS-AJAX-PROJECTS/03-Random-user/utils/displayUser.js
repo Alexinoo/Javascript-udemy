@@ -1,4 +1,5 @@
 import $ from './getElement.js'
+import removeActive from './removeActive.js'
 
 // select Elements
 const imgElmnt = $('.user-img')
@@ -41,8 +42,6 @@ const displayUser = (person)=> {
 
 }
 
-function removeActive(buttons){
-    buttons.forEach(btn=>btn.classList.remove('active'))
-}
+
 
 export default displayUser
