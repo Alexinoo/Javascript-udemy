@@ -8,15 +8,19 @@ const pElmnt = document.querySelector('.error')
 
 // Fetch Products
 const fetchProducts = async()=>{
+
+    prodCenterDiv.innerHTML = `<div class="loading"></div>`
+
     try {
         const response = await fetch(url)
         if(!response.ok){
             throw new Error('resource not found..')
         }
         const data = await response.json()
+        console.log(data);
         
     } catch (error) {
-        console.log(error || error.message );
+        prodCenterDiv.innerHTML = `<p class="error">there was an error</p>`
     }    
 }
 
