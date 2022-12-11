@@ -1,22 +1,19 @@
 import $ from './utils/getElement.js'
 import getUser from './utils/fetchUser.js'
+import displayUser from './utils/displayUser.js'
 
-
-// select Elements
-const imgElmnt = $('.user-img')
-const userTitleParaElmnt = $('.user-title')
-const uservalueParaElmnt = $('.user-value')
+// select Element
 const randomUserBtnElmnt = $('.btn')
 
-const iconElmnts = [...document.querySelectorAll('.icon')]
 
 
 const showUser = async()=>{
     //get user from api 
     const person = await getUser()
-    console.log(person);
+    // console.log(person);
 
     //display user
+    displayUser(person)
 }
 
 window.addEventListener('DOMContentLoaded',showUser)
