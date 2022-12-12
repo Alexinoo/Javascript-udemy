@@ -31,3 +31,36 @@ sliderContDivElmnt.innerHTML = peopleArr.map((person,slideIndex) => {
           </div>
         </article>`
 }).join('')
+
+
+
+// controls the next/slide functionality
+const startSlider = (type)=> {
+    // add .next class to the .active
+    // add .active class to .last
+    const activeSlideElmnt = document.querySelector('.active')
+    const lastSlideElmnt = document.querySelector('.last')
+
+    let nextSlideElmnt = activeSlideElmnt.nextElementSibling
+    
+    // remove .active class from the activeSlideElmnt - since we have multiple classes use ['active'] to be more specific
+    // remove .next class from the nextSlideElmnt
+    // remove .last class from the lastSlideElmnt
+    activeSlideElmnt.classList.remove(['active'])
+    nextSlideElmnt.classList.remove(['next'])
+    lastSlideElmnt.classList.remove(['last'])
+
+    // Add classes
+    activeSlideElmnt.classList.add('last')
+    nextSlideElmnt.classList.add('active')
+    lastSlideElmnt.classList.add('next')
+}
+
+
+// Evnt Listeners
+nextBtnElmnt.addEventListener('click',()=>{
+    startSlider('next')
+})
+prevBtnElmnt.addEventListener('click',()=>{
+    startSlider('prev')
+})
