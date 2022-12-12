@@ -56,6 +56,23 @@ const startSlider = (type)=> {
     nextSlideElmnt.classList.remove(['next'])
     lastSlideElmnt.classList.remove(['last'])
 
+    if(type === 'prev'){
+        activeSlideElmnt.classList.add('next')
+        lastSlideElmnt.classList.add('active')
+
+        nextSlideElmnt = lastSlideElmnt.previousElementSibling
+
+        // check whether nextSlideElmnt exist
+        // set nextSlideElmnt to the sliderContDivElmnt.lastElementChild
+        if(!nextSlideElmnt){
+           nextSlideElmnt = sliderContDivElmnt.lastElementChild 
+        }
+        nextSlideElmnt.classList.remove(['next'])
+        nextSlideElmnt.classList.add('last')
+        return
+    }
+
+
     // Add classes
     activeSlideElmnt.classList.add('last')
     nextSlideElmnt.classList.add('active')
@@ -67,7 +84,7 @@ const startSlider = (type)=> {
 
 // Evnt Listeners
 nextBtnElmnt.addEventListener('click',()=>{
-    startSlider('next')
+    startSlider()
 })
 prevBtnElmnt.addEventListener('click',()=>{
     startSlider('prev')
