@@ -42,6 +42,12 @@ const startSlider = (type)=> {
     const lastSlideElmnt = document.querySelector('.last')
 
     let nextSlideElmnt = activeSlideElmnt.nextElementSibling
+
+    // End Of An Array
+    // If there is no next slide - start from the 1st 
+    if(!nextSlideElmnt){
+        nextSlideElmnt = sliderContDivElmnt.firstElementChild
+    }
     
     // remove .active class from the activeSlideElmnt - since we have multiple classes use ['active'] to be more specific
     // remove .next class from the nextSlideElmnt
@@ -54,6 +60,8 @@ const startSlider = (type)=> {
     activeSlideElmnt.classList.add('last')
     nextSlideElmnt.classList.add('active')
     lastSlideElmnt.classList.add('next')
+
+
 }
 
 
