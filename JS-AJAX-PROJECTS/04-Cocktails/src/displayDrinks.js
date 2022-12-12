@@ -1,5 +1,6 @@
 
 import $ from './getElement.js'
+import { hideLoading } from './toggleLoading.js'
 
 const displayDrinks = ({drinks})=>{
     // select div.section-center - display drinks if request successful
@@ -11,7 +12,7 @@ const displayDrinks = ({drinks})=>{
     // check value of drinks
     if(!drinks){
         // hide loading
-
+        hideLoading()
         h2TitleElmnt.textContent = 'sorry, no drinks matched your search'
         sectionCentDivElmnt.innerHTML = null
         return
@@ -29,7 +30,7 @@ const displayDrinks = ({drinks})=>{
     }).join('')
 
     // hide loading
-
+    hideLoading()
     h2TitleElmnt.textContent = ''
     sectionCentDivElmnt.innerHTML = newDrinks
 
