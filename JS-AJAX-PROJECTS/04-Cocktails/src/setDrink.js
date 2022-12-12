@@ -1,18 +1,18 @@
 
-const setDrink = (section)=> {
-
-    // add event listener on  either img/title
-
+const setDrink = (section)=>{
+    
+    // add event listener on either image/title
+    // event bubble to parentElement
     section.addEventListener('click',function(e){
-        // prevent default behavior of the link
-        //e.preventDefault();
+       
+        // e.preventDefault();
         
-        // get parent elmnt - fetch data-id 
-        // event bubbling
+        // get data-id property
         const id = e.target.parentElement.dataset.id
 
-        // save to localStorage
-        // JSON.stringify - useful in complicated datatype
+        // save to local storage
+        //JSON.stringify / JSON.parse - useful in more complicated datatypes
+
         localStorage.setItem('drink',id)
     })
 }
