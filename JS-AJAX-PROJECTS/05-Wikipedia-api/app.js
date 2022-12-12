@@ -1,4 +1,7 @@
-import { url , page_url } from './wiki-urls.js'
+// import { url , page_url } from './wiki-urls.js'
+
+const url =
+  'https://en.wikipedia.org/w/api.php?action=query&list=search&srlimit=20&format=json&origin=*&srsearch=';
 
 // Select Elements
 const formElmnt = document.querySelector('.form')
@@ -17,8 +20,33 @@ formElmnt.addEventListener('submit',(e)=>{
     fetchPages(value)
 })
 
+
+
 const fetchPages = async(searchValue)=>{
-    console.log(searchValue);
+   resultsDivElmnt.innerHTML = `<div class="loading"></div>` 
+   try {
+
+    const response = await fetch(`${url}${searchValue}`)
+    const data = await response.json() 
+    const results = data.query.search //dig into the data
+
+    // check for empty array
+    if(results.length === 0){
+        resultsDivElmnt.innerHTML = `<div class="error">no matching results. Please try again.</div>`
+        return
+    }
+    renderResults(results)
+    
+   }
+    catch (error) {
+     resultsDivElmnt.innerHTML = `<div class="error">there was an error...</div>` 
+   }
+}
+
+
+
+const renderResults = (list)=>{
+    console.log(list);
 }
 
 
